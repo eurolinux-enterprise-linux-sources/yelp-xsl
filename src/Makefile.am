@@ -1,4 +1,4 @@
-SUBDIRS = icons js xslt doc
+SUBDIRS = js xslt doc
 DIST_SUBDIRS = $(SUBDIRS) po
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
@@ -20,7 +20,7 @@ DISTCLEANFILES =					\
 	intltool-merge    				\
 	intltool-update
 
-DISTCHECK_CONFIGURE_FLAGS = --enable-doc
+AM_DISTCHECK_CONFIGURE_FLAGS = --enable-doc
 
 ChangeLog:
 	@if test -f $(top_srcdir)/.git/HEAD; then \

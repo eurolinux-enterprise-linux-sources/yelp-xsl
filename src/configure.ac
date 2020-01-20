@@ -1,8 +1,9 @@
-AC_INIT([yelp-xsl],[3.20.1],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
+# Do not split AC_INIT across multiple lines without making localbuild.sh smarter
+AC_INIT([yelp-xsl],[3.28.0],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
 
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-bzip2])
+AM_INIT_AUTOMAKE([1.11.2 no-dist-gzip dist-bzip2])
 
 # Check for programs
 dnl  In the interest of portability, we don't use GNU awk extensions,
@@ -55,14 +56,6 @@ fi
 AC_CONFIG_FILES([
 Makefile
 yelp-xsl.pc
-icons/Makefile
-icons/hicolor/Makefile
-icons/hicolor/24x24/Makefile
-icons/hicolor/24x24/status/Makefile
-icons/hicolor/48x48/Makefile
-icons/hicolor/48x48/status/Makefile
-icons/hicolor/scalable/Makefile
-icons/hicolor/scalable/status/Makefile
 js/Makefile
 doc/Makefile
 doc/yelp-xsl/Makefile
@@ -70,6 +63,7 @@ po/Makefile.in
 xslt/Makefile
 xslt/common/Makefile
 xslt/common/domains/Makefile
+xslt/common/icons/Makefile
 xslt/docbook/Makefile
 xslt/docbook/common/Makefile
 xslt/docbook/html/Makefile

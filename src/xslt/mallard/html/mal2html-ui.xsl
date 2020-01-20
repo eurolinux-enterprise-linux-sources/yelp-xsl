@@ -98,16 +98,15 @@ http://projectmallard.org/ui/1.0/ui_expanded.html</xsl:text>
 <!--**==========================================================================
 mal2html.ui.links.tiles
 Output links as thumbnail tiles.
-:Revision:version="3.8" date="2012-10-27" status="final"
+:Revision:version="3.28" date="2015-10-22" status="volatile"
 $node: A #{links} element to link from.
 $links: A list of links, as from a template in !{mal-link}.
 $role: A link role, used to select the appropriate title and thumbnail.
 
-This template outputs links as thumbnail tiles, as per the UI extension.
-For each link, it outputs an inline-block #{div} element with a thumbnail,
-title, and desc (unless the #{nodesc} style hint is used). This template calls
-*{mal2html.ui.links.img} to find the best-match thumbnail and output the HTML
-#{img} element for each link.
+This template outputs links as thumbnail tiles. For each link, it outputs
+a #{div} element with a thumbnail, title, and desc (unless the #{nodesc}
+style hint is used). This template calls *{mal2html.ui.links.img} to find
+the best-match thumbnail and output the HTML #{img} element for each link.
 
 This template handles link sorting.
 -->
@@ -115,119 +114,87 @@ This template handles link sorting.
   <xsl:param name="node" select="."/>
   <xsl:param name="links"/>
   <xsl:param name="role"/>
-  <xsl:variable name="width">
-    <xsl:choose>
-      <xsl:when test="$node/@uix:width">
-        <xsl:value-of select="$node/@uix:width"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>200</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="height">
-    <xsl:choose>
-      <xsl:when test="$node/@uix:height">
-        <xsl:value-of select="$node/@uix:height"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>200</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="tiles-side">
-    <xsl:if test="contains(concat(' ', $node/@style, ' '), ' tiles-side ')">
-      <xsl:text>ui-tile-side</xsl:text>
-    </xsl:if>
-  </xsl:variable>
-  <xsl:for-each select="$links">
-    <xsl:sort data-type="number" select="@groupsort"/>
-    <xsl:sort select="mal:title[@type = 'sort']"/>
-    <xsl:variable name="link" select="."/>
-    <xsl:for-each select="$mal.cache">
-      <xsl:variable name="target" select="key('mal.cache.key', $link/@xref)"/>
-      <div class="ui-tile {$link/@class} {$tiles-side}">
-        <xsl:for-each select="$link/@*">
-          <xsl:if test="starts-with(name(.), 'data-')">
-            <xsl:copy-of select="."/>
-          </xsl:if>
-        </xsl:for-each>
-        <xsl:variable name="infos" select="$target/mal:info | $link[@href]/mal:info"/>
-        <xsl:variable name="thumbs" select="$infos/uix:thumb"/>
-        <a>
-          <xsl:attribute name="href">
-            <xsl:call-template name="mal.link.target">
-              <xsl:with-param name="node" select="$node"/>
-              <xsl:with-param name="xref" select="$link/@xref"/>
-              <xsl:with-param name="href" select="$link/@href"/>
-            </xsl:call-template>
-          </xsl:attribute>
-          <xsl:attribute name="title">
-            <xsl:call-template name="mal.link.tooltip">
-              <xsl:with-param name="node" select="$node"/>
-              <xsl:with-param name="xref" select="$link/@xref"/>
-              <xsl:with-param name="href" select="$link/@href"/>
-              <xsl:with-param name="role" select="$role"/>
-              <xsl:with-param name="info" select="$link[@href]/mal:info"/>
-            </xsl:call-template>
-          </xsl:attribute>
-          <span class="ui-tile-img" style="width: {$width}px; height: {$height}px;">
-            <xsl:call-template name="mal2html.ui.links.img">
-              <xsl:with-param name="node" select="$node"/>
-              <xsl:with-param name="thumbs" select="$thumbs"/>
-              <xsl:with-param name="role" select="$role"/>
-              <xsl:with-param name="width" select="$width"/>
-              <xsl:with-param name="height" select="$height"/>
-            </xsl:call-template>
-          </span>
-          <span class="ui-tile-text">
-            <xsl:attribute name="style">
-              <xsl:text>max-width: </xsl:text>
-              <xsl:choose>
-                <xsl:when test="$tiles-side != ''">
-                  <xsl:value-of select="2 * number($width)"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="$width"/>
-                </xsl:otherwise>
-              </xsl:choose>
-              <xsl:text>px;</xsl:text>
+  <div class="links-tiles">
+    <xsl:for-each select="$links">
+      <xsl:sort data-type="number" select="@groupsort"/>
+      <xsl:sort select="mal:title[@type = 'sort']"/>
+      <xsl:variable name="link" select="."/>
+      <xsl:for-each select="$mal.cache">
+        <xsl:variable name="target" select="key('mal.cache.key', $link/@xref)"/>
+        <div class="links-tile {$link/@class}">
+          <xsl:for-each select="$link/@*">
+            <xsl:if test="starts-with(name(.), 'data-')">
+              <xsl:copy-of select="."/>
+            </xsl:if>
+          </xsl:for-each>
+          <xsl:variable name="infos" select="$target/mal:info | $link[@href]/mal:info"/>
+          <xsl:variable name="thumbs" select="$infos/uix:thumb"/>
+          <a>
+            <xsl:attribute name="href">
+              <xsl:call-template name="mal.link.target">
+                <xsl:with-param name="node" select="$node"/>
+                <xsl:with-param name="xref" select="$link/@xref"/>
+                <xsl:with-param name="href" select="$link/@href"/>
+              </xsl:call-template>
             </xsl:attribute>
-            <span class="title">
-              <xsl:call-template name="mal.link.content">
+            <xsl:attribute name="title">
+              <xsl:call-template name="mal.link.tooltip">
                 <xsl:with-param name="node" select="$node"/>
                 <xsl:with-param name="xref" select="$link/@xref"/>
                 <xsl:with-param name="href" select="$link/@href"/>
                 <xsl:with-param name="role" select="$role"/>
                 <xsl:with-param name="info" select="$link[@href]/mal:info"/>
               </xsl:call-template>
+            </xsl:attribute>
+            <span class="links-tile-img">
+              <xsl:call-template name="mal2html.ui.links.img">
+                <xsl:with-param name="node" select="$node"/>
+                <xsl:with-param name="thumbs" select="$thumbs"/>
+                <xsl:with-param name="role" select="$role"/>
+              </xsl:call-template>
             </span>
-            <xsl:if test="not(contains(concat(' ', $node/@style, ' '), ' nodesc '))">
-              <xsl:variable name="desc">
-                <xsl:call-template name="mal.link.desc">
+            <span class="links-tile-text">
+              <span class="title">
+                <xsl:call-template name="mal.link.content">
                   <xsl:with-param name="node" select="$node"/>
                   <xsl:with-param name="xref" select="$link/@xref"/>
                   <xsl:with-param name="href" select="$link/@href"/>
                   <xsl:with-param name="role" select="$role"/>
                   <xsl:with-param name="info" select="$link[@href]/mal:info"/>
                 </xsl:call-template>
-              </xsl:variable>
-              <xsl:if test="exsl:node-set($desc)/node()">
-                <span class="desc">
-                  <xsl:copy-of select="$desc"/>
-                </span>
+              </span>
+              <xsl:if test="not(contains(concat(' ', $node/@style, ' '), ' nodesc '))">
+                <xsl:variable name="desc">
+                  <xsl:call-template name="mal.link.desc">
+                    <xsl:with-param name="node" select="$node"/>
+                    <xsl:with-param name="xref" select="$link/@xref"/>
+                    <xsl:with-param name="href" select="$link/@href"/>
+                    <xsl:with-param name="role" select="$role"/>
+                    <xsl:with-param name="info" select="$link[@href]/mal:info"/>
+                  </xsl:call-template>
+                </xsl:variable>
+                <xsl:variable name="desc_" select="exsl:node-set($desc)/node()"/>
+                <xsl:if test="$desc_/node()">
+                  <span class="desc">
+                    <xsl:apply-templates mode="_mal2html.links.divs.nolink.mode"
+                                         select="$desc_"/>
+                  </span>
+                </xsl:if>
               </xsl:if>
-            </xsl:if>
-          </span>
-        </a>
-      </div>
+            </span>
+          </a>
+        </div>
+      </xsl:for-each>
     </xsl:for-each>
-  </xsl:for-each>
+    <!-- blank tiles for homogeneous sizing -->
+    <div class="links-tile"></div>
+    <div class="links-tile"></div>
+  </div>
 </xsl:template>
 
 
-<!--**==========================================================================
-mal2html.ui.links.hover
+<!--DEPRECATED==================================================================
+_mal2html.ui.links.hover
 Output links with thumbnails shown on hover.
 :Revision:version="3.4" date="2012-02-26" status="final"
 $node: A #{links} element to link from.
@@ -244,7 +211,8 @@ are hovered.
 
 This template handles link sorting.
 -->
-<xsl:template name="mal2html.ui.links.hover">
+<!--#* _mal2html.ui.links.hover -->
+<xsl:template name="_mal2html.ui.links.hover">
   <xsl:param name="node"/>
   <xsl:param name="links"/>
   <xsl:param name="role"/>
@@ -268,10 +236,17 @@ This template handles link sorting.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <div class="links-ui-hover" style="width: {$width}px; height: {$height}px;">
+  <xsl:message>
+    <xsl:text>DEPRECATION WARNING: The uix:thumbs attribute on the links element is deprecated.</xsl:text>
+  </xsl:message>
+  <div class="links-uix-hover">
+  <div class="links-uix-hover-img" style="width: {$width}px; height: {$height}px;">
     <xsl:for-each select="$node/uix:thumb[1]">
       <img>
-        <xsl:copy-of select="@src"/>
+        <xsl:call-template name="mal2html.ui.links.img.src">
+          <xsl:with-param name="node" select="$node"/>
+          <xsl:with-param name="thumb" select="."/>
+        </xsl:call-template>
         <xsl:call-template name="mal2html.ui.links.img.attrs">
           <xsl:with-param name="node" select="$node"/>
           <xsl:with-param name="thumb" select="."/>
@@ -281,7 +256,7 @@ This template handles link sorting.
       </img>
     </xsl:for-each>
   </div>
-  <ul class="links-ui-hover">
+  <ul class="links-uix-hover">
     <xsl:for-each select="$links">
       <xsl:sort data-type="number" select="@groupsort"/>
       <xsl:sort select="mal:title[@type = 'sort']"/>
@@ -312,7 +287,7 @@ This template handles link sorting.
                 <xsl:with-param name="info" select="$link[@href]/mal:info"/>
               </xsl:call-template>
             </xsl:attribute>
-            <span class="links-ui-hover-img" style="width: {$width}px; height: {$height}px;">
+            <span class="links-uix-hover-img" style="width: {$width}px; height: {$height}px;">
               <xsl:call-template name="mal2html.ui.links.img">
                 <xsl:with-param name="node" select="$node"/>
                 <xsl:with-param name="thumbs" select="$thumbs"/>
@@ -335,14 +310,14 @@ This template handles link sorting.
       </xsl:for-each>
     </xsl:for-each>
   </ul>
-  <div class="clear"/>
+  </div>
 </xsl:template>
 
 
 <!--**==========================================================================
 mal2html.ui.links.img
 Output an image for a link using UI thumbnails.
-:Revision:version="3.8" date="2012-10-27" status="final"
+:Revision:version="3.28" date="2017-08-11" status="final"
 $node: A #{links} element to link from.
 $thumbs: A list of candidate #{uix:thumb} elements.
 $role: A link role, used to select the appropriate thumbnail.
@@ -351,9 +326,9 @@ $height: The height to fit thumbnails into.
 
 This template selects the best-fit thumbnail from ${thumbs}, based on how well
 the aspect ratio and dimensions of each image matches the ${width} and ${height}
-parameters. It outputs an HTML #{img} element for the best-fit thumbnail and
-calls ${mal2html.ui.links.img.attrs} to output #{width} and #{height}
-attributes.
+parameters. It outputs an HTML #{img} element for the best-fit thumbnail. It
+calls ${mal2thml.ui.links.img.src} to output the #{src} attribute, and calls
+${mal2html.ui.links.img.attrs} to output #{width} and #{height} attributes.
 
 Before checking for a best-fit thumbnail on dimensions, this template first
 looks for #{uix:thumb} elements with the #{type} attribute set to #{"links"}.
@@ -386,9 +361,10 @@ ${node} element.
         <xsl:sort data-type="number" select="math:abs($width - @width)"/>
         <xsl:sort data-type="number" select="math:abs($height - @height)"/>
         <xsl:if test="position() = 1">
-          <xsl:attribute name="src">
-            <xsl:value-of select="@src"/>
-          </xsl:attribute>
+          <xsl:call-template name="mal2html.ui.links.img.src">
+            <xsl:with-param name="node" select="$node"/>
+            <xsl:with-param name="thumb" select="."/>
+          </xsl:call-template>
           <xsl:call-template name="mal2html.ui.links.img.attrs">
             <xsl:with-param name="node" select="$node"/>
             <xsl:with-param name="thumb" select="."/>
@@ -401,15 +377,16 @@ ${node} element.
   </xsl:when>
   <xsl:when test="$node/uix:thumb">
     <img>
-      <xsl:attribute name="src">
-        <xsl:value-of select="$node/uix:thumb/@src"/>
-      </xsl:attribute>
-          <xsl:call-template name="mal2html.ui.links.img.attrs">
-            <xsl:with-param name="node" select="$node"/>
-            <xsl:with-param name="thumb" select="$node/uix:thumb"/>
-            <xsl:with-param name="width" select="$width"/>
-            <xsl:with-param name="height" select="$height"/>
-          </xsl:call-template>
+      <xsl:call-template name="mal2html.ui.links.img.src">
+        <xsl:with-param name="node" select="$node"/>
+        <xsl:with-param name="thumb" select="$node/uix:thumb"/>
+      </xsl:call-template>
+      <xsl:call-template name="mal2html.ui.links.img.attrs">
+        <xsl:with-param name="node" select="$node"/>
+        <xsl:with-param name="thumb" select="$node/uix:thumb"/>
+        <xsl:with-param name="width" select="$width"/>
+        <xsl:with-param name="height" select="$height"/>
+      </xsl:call-template>
     </img>
   </xsl:when>
   </xsl:choose>
@@ -417,11 +394,33 @@ ${node} element.
 
 
 <!--**==========================================================================
+mal2html.ui.links.img.src
+Output the #{src} attribute for a thumbnail image.
+:Revision:version="3.28" date="2017-08-11" status="final"
+$node: A #{links} element to link from.
+$thumb: A #{uix:thumb} element.
+$width: The width to fit thumbnails into.
+$height: The height to fit thumbnails into.
+
+This template outputs #{src} attribute for the HTML #{img} element created
+from ${thumb}. By default, it just copies the #{src} attribute of ${thumb}.
+Override this template if you need to support multi-directory output.
+-->
+<xsl:template name="mal2html.ui.links.img.src">
+  <xsl:param name="node"/>
+  <xsl:param name="thumb"/>
+  <xsl:attribute name="src">
+    <xsl:value-of select="$thumb/@src"/>
+  </xsl:attribute>
+</xsl:template>
+
+
+<!--**==========================================================================
 mal2html.ui.links.img.attrs
 Output the #{width} and #{height} attributes for a thumbnail image.
-:Revision:version="3.4" date="2012-02-25" status="final"
+:Revision:version="3.28" date="2017-08-11" status="final"
 $node: A #{links} element to link from.
-$thumbs: A list of candidate #{uix:thumb} elements.
+$thumb: A #{uix:thumb} element.
 $width: The width to fit thumbnails into.
 $height: The height to fit thumbnails into.
 
@@ -499,133 +498,95 @@ ${node} element.
 
 <!-- = ui:overlay = -->
 <xsl:template mode="mal2html.block.mode" match="uix:overlay">
-  <xsl:variable name="media" select="mal:media[1]"/>
-  <xsl:variable name="width">
-    <xsl:choose>
-      <xsl:when test="@width">
-        <xsl:value-of select="@width"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>80</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="height">
-    <xsl:choose>
-      <xsl:when test="@height">
-        <xsl:value-of select="@height"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:text>80</xsl:text>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
-  <xsl:variable name="tiles-side">
-    <xsl:if test="contains(concat(' ', @style, ' '), ' tiles-side ')">
-      <xsl:text>ui-tile-side</xsl:text>
-    </xsl:if>
-  </xsl:variable>
-  <div class="ui-tile {$tiles-side}">
-    <a href="{$media/@src}" class="ui-overlay">
-      <span class="ui-tile-img" style="width: {$width}px; height: {$height}px;">
-        <xsl:choose>
-          <xsl:when test="$media/uix:thumb">
-            <img src="{$media/uix:thumb[1]/@src}">
-              <xsl:call-template name="mal2html.ui.links.img.attrs">
-                <xsl:with-param name="node" select="."/>
-                <xsl:with-param name="thumb" select="$media/uix:thumb[1]"/>
-                <xsl:with-param name="width" select="$width"/>
-                <xsl:with-param name="height" select="$height"/>
-              </xsl:call-template>
-            </img>
-          </xsl:when>
-          <!-- FIXME: audio/video with image child -->
-          <!--
-          <xsl:when test="($media/@type = 'video' or $media/@type = 'audio') and
-            $media/mal:media[not(@type) or @type = 'image']">
-          </xsl:when>
-          -->
-          <xsl:when test="$media/@type = 'video'">
-            <video src="{$media/@src}">
-              <xsl:call-template name="mal2html.ui.links.img.attrs">
-                <xsl:with-param name="node" select="."/>
-                <xsl:with-param name="thumb" select="$media"/>
-                <xsl:with-param name="width" select="$width"/>
-                <xsl:with-param name="height" select="$height"/>
-              </xsl:call-template>
-            </video>
-          </xsl:when>
-          <xsl:otherwise>
-            <img src="{$media/@src}">
-              <xsl:call-template name="mal2html.ui.links.img.attrs">
-                <xsl:with-param name="node" select="."/>
-                <xsl:with-param name="thumb" select="$media"/>
-                <xsl:with-param name="width" select="$width"/>
-                <xsl:with-param name="height" select="$height"/>
-              </xsl:call-template>
-            </img>
-          </xsl:otherwise>
-        </xsl:choose>
-      </span>
-      <xsl:if test="$media/uix:thumb/uix:caption">
-        <span class="ui-tile-text">
-          <xsl:attribute name="style">
-            <xsl:text>max-width: </xsl:text>
-            <xsl:choose>
-              <xsl:when test="$tiles-side != ''">
-                <xsl:value-of select="2 * number($width)"/>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:value-of select="$width"/>
-              </xsl:otherwise>
-            </xsl:choose>
-            <xsl:text>px;</xsl:text>
-          </xsl:attribute>
-          <xsl:variable name="title" select="$media/uix:thumb/uix:caption/mal:title[1]"/>
-          <xsl:if test="$title">
-            <span>
-              <xsl:attribute name="class">
-                <xsl:text>title</xsl:text>
-                <xsl:if test="contains(concat(' ', $title/@style, ' '), ' center ')">
-                  <xsl:text> center</xsl:text>
-                </xsl:if>
-              </xsl:attribute>
-              <xsl:apply-templates mode="mal2html.inline.mode" select="$title/node()"/>
+        <xsl:variable name="media" select="mal:media[1]"/>
+        <xsl:variable name="width">
+          <xsl:choose>
+            <xsl:when test="@width">
+              <xsl:value-of select="@width"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>280</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <xsl:variable name="height">
+          <xsl:choose>
+            <xsl:when test="@height">
+              <xsl:value-of select="@height"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>280</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:variable>
+        <div class="links-tile">
+          <a href="{$media/@src}" class="ui-overlay">
+            <span class="links-tile-img">
+              <xsl:choose>
+                <xsl:when test="$media/uix:thumb">
+                  <img src="{$media/uix:thumb[1]/@src}" width="{$width}"/>
+                </xsl:when>
+                <!-- FIXME: audio/video with image child -->
+                <!--
+                    <xsl:when test="($media/@type = 'video' or $media/@type = 'audio') and
+                    $media/mal:media[not(@type) or @type = 'image']">
+                    </xsl:when>
+                -->
+                <xsl:when test="$media/@type = 'video'">
+                  <video src="{$media/@src}" width="{$width}"/>
+                </xsl:when>
+                <xsl:otherwise>
+                  <img src="{$media/@src}" width="{$width}"/>
+                </xsl:otherwise>
+              </xsl:choose>
             </span>
-          </xsl:if>
-          <xsl:variable name="desc" select="$media/uix:thumb/uix:caption/mal:desc[1]"/>
-          <xsl:if test="$desc">
-            <span>
-              <xsl:attribute name="class">
-                <xsl:text>desc</xsl:text>
-                <xsl:if test="contains(concat(' ', $desc/@style, ' '), ' center ')">
-                  <xsl:text> center</xsl:text>
+            <xsl:if test="$media/uix:thumb/uix:caption">
+              <span class="links-tile-text">
+                <xsl:variable name="title" select="$media/uix:thumb/uix:caption/mal:title[1]"/>
+                <xsl:if test="$title">
+                  <span>
+                    <xsl:attribute name="class">
+                      <xsl:text>title</xsl:text>
+                      <xsl:if test="contains(concat(' ', $title/@style, ' '), ' center ')">
+                        <xsl:text> center</xsl:text>
+                      </xsl:if>
+                    </xsl:attribute>
+                    <xsl:apply-templates mode="mal2html.inline.mode" select="$title/node()"/>
+                  </span>
                 </xsl:if>
-              </xsl:attribute>
-              <xsl:apply-templates mode="mal2html.inline.mode" select="$desc/node()"/>
-            </span>
-          </xsl:if>
-        </span>
-      </xsl:if>
-    </a>
-    <div class="ui-overlay">
-      <div class="inner">
-        <a href="#" class="ui-overlay-close">
-          <xsl:attribute name="title">
-            <xsl:call-template name="l10n.gettext">
-              <xsl:with-param name="msgid" select="'Close'"/>
-            </xsl:call-template>
-          </xsl:attribute>
-          <xsl:text>⨯</xsl:text>
-        </a>
-        <xsl:apply-templates mode="mal2html.block.mode" select="uix:caption/mal:title[1]"/>
-        <div class="contents">
-          <xsl:apply-templates mode="mal2html.block.mode" select="$media"/>
+                <xsl:variable name="desc" select="$media/uix:thumb/uix:caption/mal:desc[1]"/>
+                <xsl:if test="$desc">
+                  <span>
+                    <xsl:attribute name="class">
+                      <xsl:text>desc</xsl:text>
+                      <xsl:if test="contains(concat(' ', $desc/@style, ' '), ' center ')">
+                        <xsl:text> center</xsl:text>
+                      </xsl:if>
+                    </xsl:attribute>
+                    <xsl:apply-templates mode="mal2html.inline.mode" select="$desc/node()"/>
+                  </span>
+                </xsl:if>
+              </span>
+            </xsl:if>
+          </a>
+          <div class="ui-overlay">
+            <div class="inner">
+              <a href="#" class="ui-overlay-close">
+                <xsl:attribute name="title">
+                  <xsl:call-template name="l10n.gettext">
+                    <xsl:with-param name="msgid" select="'Close'"/>
+                  </xsl:call-template>
+                </xsl:attribute>
+                <xsl:text>⨯</xsl:text>
+              </a>
+              <xsl:apply-templates mode="mal2html.block.mode" select="uix:caption/mal:title[1]"/>
+              <div class="contents">
+                <xsl:apply-templates mode="mal2html.block.mode" select="$media"/>
+              </div>
+              <xsl:apply-templates mode="mal2html.block.mode" select="uix:caption/mal:desc[1]"/>
+            </div>
+          </div>
         </div>
-        <xsl:apply-templates mode="mal2html.block.mode" select="uix:caption/mal:desc[1]"/>
-      </div>
-    </div>
-  </div>
 </xsl:template>
 
 </xsl:stylesheet>

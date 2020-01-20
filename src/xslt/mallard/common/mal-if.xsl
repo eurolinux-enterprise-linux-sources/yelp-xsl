@@ -189,7 +189,7 @@ of dynamically showing or hiding content based on those tokens.
             <xsl:otherwise>
               <xsl:variable name="subcond">
                 <xsl:for-each select="str:tokenize($subexpr, ' ')[.!='1']">
-                  <xsl:if test="position != 1">
+                  <xsl:if test="position() != 1">
                     <xsl:text>__</xsl:text>
                   </xsl:if>
                   <xsl:value-of select="."/>
@@ -234,7 +234,7 @@ of dynamically showing or hiding content based on those tokens.
   <xsl:choose>
     <xsl:when test="$token = 'lang:C' or $token = 'lang:c'">
       <xsl:choose>
-        <xsl:when test="not(ancestor-or-self::*/@xml:lang)">
+        <xsl:when test="not($node/ancestor-or-self::*/@xml:lang)">
           <xsl:text>1</xsl:text>
         </xsl:when>
         <xsl:otherwise>

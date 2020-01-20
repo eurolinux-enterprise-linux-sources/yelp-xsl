@@ -1,9 +1,7 @@
 # Occitan translation for gnome-doc-utils.
 # Copyright (C) 2004-2011 the GNOME Foudnation
 # This file is distributed under the same license as the gnome-doc-utils package.
-# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008, 2010.
-# Cédric Valmary (Tot en Òc) <cvalmary@yahoo.fr>, 2010-2013.
-# None <None>, 2013.
+# Yannig Marchegay (Kokoyaya) <yannig@marchegay.org>, 2006-2008
 # Cédric Valmary (Tot en òc) <cvalmary@yahoo.fr>, 2015.
 # Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>, 2016.
 msgid ""
@@ -11,8 +9,8 @@ msgstr ""
 "Project-Id-Version: gnome-doc-utils fr\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-"
 "xsl&keywords=I18N+L10N&component=General\n"
-"POT-Creation-Date: 2016-02-29 15:19+0000\n"
-"PO-Revision-Date: 2016-02-29 19:17+0200\n"
+"POT-Creation-Date: 2016-05-10 16:57+0000\n"
+"PO-Revision-Date: 2016-05-08 18:52+0200\n"
 "Last-Translator: Cédric Valmary (totenoc.eu) <cvalmary@yahoo.fr>\n"
 "Language-Team: Tot En Òc\n"
 "Language: oc\n"
@@ -23,7 +21,6 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Launchpad-Export-Date: 2012-09-01 04:04+0000\n"
 "X-Project-Style: gnome\n"
-"MIME-Versocion: 1.0\n"
 
 #. (itstool) path: msg/msgstr
 #. Translate to default:RTL if your language should be displayed
@@ -57,6 +54,7 @@ msgstr ", "
 #. Make sure to include leading or trailing spaces if you want them.
 #.
 #: yelp-xsl.xml.in:60
+#, no-wrap
 msgid ", and "
 msgstr ", e "
 
@@ -67,6 +65,7 @@ msgstr ", e "
 #. Make sure to include leading or trailing spaces if you want them.
 #.
 #: yelp-xsl.xml.in:71
+#, no-wrap
 msgid " and "
 msgstr " e "
 
@@ -300,7 +299,7 @@ msgstr "Vejatz tanben"
 #.
 #: yelp-xsl.xml.in:286
 msgid "Scale images down"
-msgstr "Redusir la talha dels imatges"
+msgstr "Reduire la talha dels imatges"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a sidebar note.
@@ -333,7 +332,7 @@ msgstr "Astúcia"
 #. Title for a list of translators.
 #: yelp-xsl.xml.in:316
 msgid "Translated By"
-msgstr "Traduch per"
+msgstr "Traduit per"
 
 #. (itstool) path: msg/msgstr
 #. Figures can automatically scale images down to fit the page width.
@@ -353,7 +352,7 @@ msgstr "Alèrta"
 #. Title for a list of authors.
 #: yelp-xsl.xml.in:334
 msgid "Written By"
-msgstr "Escrich per"
+msgstr "Escrit per"
 
 #. (itstool) path: msg/msgstr
 #. ID: biblioentry.tooltip

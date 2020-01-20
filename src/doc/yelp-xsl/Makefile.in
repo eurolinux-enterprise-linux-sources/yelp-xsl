@@ -443,7 +443,7 @@ uninstall-am:
 .PHONY: xsldoc-clean
 clean-local: xsldoc-clean
 xsldoc-clean:
-	rm -f $(xsldoc_pages) C/*.*.page C/index.cache
+	rm -f $(xsldoc_pages) C/*.*.page C/*-*.page C/index.cache
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
