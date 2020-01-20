@@ -1,6 +1,6 @@
 Name:           yelp-xsl
 Version:        3.8.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        XSL stylesheets for the yelp help browser
 
 License:        LGPLv2+
@@ -53,6 +53,9 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.8.1-2
+- Mass rebuild 2013-12-27
+
 * Tue May 14 2013 Matthias Clasen <mclasen@redhat.com> - 3.8.1-1
 - Update to 3.8.1
 
