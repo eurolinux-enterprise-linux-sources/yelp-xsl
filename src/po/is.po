@@ -1,40 +1,22 @@
-# Danish translation of Gnome Documentation Utilities.
-# Copyright (C) 2005-2007 Shaun McCance
-# This file is distributed under the same license as the gnome-doc-utils package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 #
-# Martin Willemoes Hansen <mwh@sysrq.dk>, 2005.
-# Kenneth Nielsen <k.nielsen81@gmail.com>, 2007.
-# Ask Hjorth Larsen <asklarsen@gmail.com>, 2007.
-# Aputsiaq Niels Janussen <aj@isit.gl>, 2011.
-#
-# Den dokumentation som de bliver ved med at henvise til findes d. 12/4 2007 her:
-# http://svn.gnome.org/viewcvs/gnome-doc-utils/trunk/i18n/STYLESHEETS.xhtml?revision=593
-# Bemærk ydeligere at jeg i alle de strenge der har at gøre med XML markup oversættelse
-# har fjernet msgid tagget og skiftet til ny linje mellem hvert msgstr tag. Begge
-# dele er lovlige i henhold til det skript der skal håndtere disse streng bagefter og
-# jeg synes det letter læsningen
-# De specielle strenge der indeholder XML markup oversættelse bruges til at danne en
-# tekstformattering af DocBook som er sådan som vi ville have den på dansk. Det er derfor
-# med vilje og netop hele pointen at nogle af strengene varierer fra den engelske version.
-# Det skal fremtidige oversættere være opmærksom på specielt hvis i rette nogle fuzzy
-# strenge at i ikke bare laver dem om sådan så de ser ud som den engelske, for det er ikke
-# sikkert det er det der har gjort at den er blevet fuzzy.
-# Jeg har vedhæftet de strenge hvor den danske med vilje afviger fra den engelske med
-# kommentaren DANSK og givet en kort beskrivelse af hvad meningen er.
+# Sveinn í Felli <sv1@fellsnet.is>, 2015.
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-doc-utils\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-20 23:21+0100\n"
-"PO-Revision-Date: 2016-03-20 20:40+0100\n"
-"Last-Translator: Aputsiaq Niels Janussen <aj@isit.gl>\n"
-"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
-"Language: da\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-"
+"xsl&keywords=I18N+L10N&component=General\n"
+"POT-Creation-Date: 2015-10-27 15:00+0000\n"
+"PO-Revision-Date: 2015-10-29 09:19+0000\n"
+"Last-Translator: Sveinn í Felli <sv1@fellsnet.is>\n"
+"Language-Team: Icelandic <translation-team-is@lists.sourceforge.net>\n"
+"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Virtaal 0.6.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 1.5\n"
 
 #. (itstool) path: msg/msgstr
 #. Translate to default:RTL if your language should be displayed
@@ -70,7 +52,7 @@ msgstr ", "
 #: yelp-xsl.xml.in:60
 #, no-wrap
 msgid ", and "
-msgstr ", og "
+msgstr " og "
 
 #. (itstool) path: msg/msgstr
 #. This is used as a list item seperator for inline lists of exactly two
@@ -115,25 +97,25 @@ msgstr "Sv:"
 #.
 #: yelp-xsl.xml.in:109
 msgid "About"
-msgstr "Om"
+msgstr "Um"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for an advanced note.
 #: yelp-xsl.xml.in:114
 msgid "Advanced"
-msgstr "Avanceret"
+msgstr "Ítarlegt"
 
 #. (itstool) path: msg/msgstr
 #. Default title for a bibliography.
 #: yelp-xsl.xml.in:119
 msgid "Bibliography"
-msgstr "Litteraturliste"
+msgstr "Heimildaskrá"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a note about a software bug.
 #: yelp-xsl.xml.in:124
 msgid "Bug"
-msgstr "Fejl"
+msgstr "Galli"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. Content has been written and
@@ -141,19 +123,19 @@ msgstr "Fejl"
 #.
 #: yelp-xsl.xml.in:132
 msgid "Candidate"
-msgstr "Kandidat"
+msgstr "Tillaga"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for an close button.
 #: yelp-xsl.xml.in:137
 msgid "Close"
-msgstr "Luk"
+msgstr "Loka"
 
 #. (itstool) path: msg/msgstr
 #. Default title for a colophon section.
 #: yelp-xsl.xml.in:142
 msgid "Colophon"
-msgstr "Kolofon"
+msgstr "Baktitill"
 
 #. (itstool) path: msg/msgstr
 #. Title for license information when it's a CC license.
@@ -165,7 +147,7 @@ msgstr "Creative Commons"
 #. Default title for a dedication section.
 #: yelp-xsl.xml.in:152
 msgid "Dedication"
-msgstr "Dedikation"
+msgstr "Tileinkun"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. Most content has been
@@ -173,13 +155,13 @@ msgstr "Dedikation"
 #.
 #: yelp-xsl.xml.in:160
 msgid "Draft"
-msgstr "Kladde"
+msgstr "Drög"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list of editors.
 #: yelp-xsl.xml.in:165
 msgid "Edited By"
-msgstr "Redigeret af"
+msgstr "Breytt af"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. A senior member of the
@@ -187,19 +169,19 @@ msgstr "Redigeret af"
 #.
 #: yelp-xsl.xml.in:173
 msgid "Final"
-msgstr "Endelig"
+msgstr "Lokaútgáfa"
 
 #. (itstool) path: msg/msgstr
 #. Default title for a glossary.
 #: yelp-xsl.xml.in:178
 msgid "Glossary"
-msgstr "Ordforklaring"
+msgstr "Orðasafn"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for an important note.
 #: yelp-xsl.xml.in:183
 msgid "Important"
-msgstr "Vigtigt"
+msgstr "Mikilvægt"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. Work has begun, but
@@ -207,50 +189,50 @@ msgstr "Vigtigt"
 #.
 #: yelp-xsl.xml.in:191
 msgid "Incomplete"
-msgstr "Ufærdig"
+msgstr "Ófullgert"
 
 #. (itstool) path: msg/msgstr
 #. Default title for an index of terms in a book.
 #: yelp-xsl.xml.in:196
 msgid "Index"
-msgstr "Indeks"
+msgstr "Atriðaskrá"
 
 #. (itstool) path: msg/msgstr
 #. Default title for a DocBook legal notice.
 #: yelp-xsl.xml.in:201
 msgid "Legal"
-msgstr "Juridisk"
+msgstr "Lagalegt"
 
 #. (itstool) path: msg/msgstr
 #. Generic title for license information when it's not a known license.
 #.
 #: yelp-xsl.xml.in:208
 msgid "License"
-msgstr "Licens"
+msgstr "Notkunarleyfi"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list of maintainers.
 #: yelp-xsl.xml.in:213
 msgid "Maintained By"
-msgstr "Vedligeholdes af"
+msgstr "Umsjónarmaður"
 
 #. (itstool) path: msg/msgstr
 #. Automatic heading above a list of guide links.
 #: yelp-xsl.xml.in:218
 msgid "More Information"
-msgstr "Flere oplysninger"
+msgstr "Nánari upplýsingar"
 
 #. (itstool) path: msg/msgstr
 #. Link text for a link to the next page in a series.
 #: yelp-xsl.xml.in:223
 msgid "Next"
-msgstr "Næste"
+msgstr "Næsta"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a note.
 #: yelp-xsl.xml.in:228
 msgid "Note"
-msgstr "Note"
+msgstr "Minnispunktur"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list contributors other than authors, editors, translators,
@@ -258,7 +240,7 @@ msgstr "Note"
 #.
 #: yelp-xsl.xml.in:236
 msgid "Other Credits"
-msgstr "Andre medvirkende"
+msgstr "Önnur framlög"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. Content was once current,
@@ -266,31 +248,31 @@ msgstr "Andre medvirkende"
 #.
 #: yelp-xsl.xml.in:244
 msgid "Outdated"
-msgstr "Forældet"
+msgstr "Úrelt"
 
 #. (itstool) path: msg/msgstr
 #. Tooltip on play/pause buttons for audio and video objects.
 #: yelp-xsl.xml.in:249
 msgid "Pause"
-msgstr "Pause"
+msgstr "Í bið"
 
 #. (itstool) path: msg/msgstr
 #. Tooltip on play/pause buttons for audio and video objects.
 #: yelp-xsl.xml.in:254
 msgid "Play"
-msgstr "Afspil"
+msgstr "Spila"
 
 #. (itstool) path: msg/msgstr
 #. Link text for a link to the previous page in a series.
 #: yelp-xsl.xml.in:259
 msgid "Previous"
-msgstr "Forrige"
+msgstr "Fyrri"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list of publishers.
 #: yelp-xsl.xml.in:264
 msgid "Published By"
-msgstr "Udgivet af"
+msgstr "Gefið út af"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. Content has been written
@@ -298,13 +280,13 @@ msgstr "Udgivet af"
 #.
 #: yelp-xsl.xml.in:272
 msgid "Ready for review"
-msgstr "Klar til gennemsyn"
+msgstr "Senda í yfirlestur"
 
 #. (itstool) path: msg/msgstr
 #. Automatic heading above a list of see-also links.
 #: yelp-xsl.xml.in:277
 msgid "See Also"
-msgstr "Se også"
+msgstr "Sjá einnig"
 
 #. (itstool) path: msg/msgstr
 #. Figures can automatically scale images down to fit the page width.
@@ -313,20 +295,20 @@ msgstr "Se også"
 #.
 #: yelp-xsl.xml.in:286
 msgid "Scale images down"
-msgstr "Nedskalér billeder"
+msgstr "Kvarða myndir niður"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a sidebar note.
 #: yelp-xsl.xml.in:291
 msgid "Sidebar"
-msgstr "Sidebjælke"
+msgstr "Hliðarspjald"
 
 #. (itstool) path: msg/msgstr
 #. Revision status of a document or page. No content has been written yet.
 #.
 #: yelp-xsl.xml.in:298
 msgid "Stub"
-msgstr "Stub"
+msgstr "Stubbur"
 
 #. (itstool) path: msg/msgstr
 #. Default title for a refsynopsisdiv element. This is the common section
@@ -334,19 +316,19 @@ msgstr "Stub"
 #.
 #: yelp-xsl.xml.in:306
 msgid "Synopsis"
-msgstr "Synopsis"
+msgstr "Samantekt"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a tip.
 #: yelp-xsl.xml.in:311
 msgid "Tip"
-msgstr "Tip"
+msgstr "Vísbending"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list of translators.
 #: yelp-xsl.xml.in:316
 msgid "Translated By"
-msgstr "Oversat af"
+msgstr "Þýtt af"
 
 #. (itstool) path: msg/msgstr
 #. Figures can automatically scale images down to fit the page width.
@@ -354,19 +336,19 @@ msgstr "Oversat af"
 #.
 #: yelp-xsl.xml.in:324
 msgid "View images at normal size"
-msgstr "Vis billeder i normal størrelse"
+msgstr "Skoða myndir í venjulegri stærð"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for a warning.
 #: yelp-xsl.xml.in:329
 msgid "Warning"
-msgstr "Advarsel"
+msgstr "Aðvörun"
 
 #. (itstool) path: msg/msgstr
 #. Title for a list of authors.
 #: yelp-xsl.xml.in:334
 msgid "Written By"
-msgstr "Skrevet af"
+msgstr "Skrifað af"
 
 #. (itstool) path: msg/msgstr
 #. ID: biblioentry.tooltip
@@ -380,7 +362,7 @@ msgstr "Skrevet af"
 #.
 #: yelp-xsl.xml.in:350
 msgid "View the bibliography entry <biblioentry.label/>."
-msgstr "Vis opslag i litteraturliste <biblioentry.label/>."
+msgstr "Skoða heimildafærsluna <biblioentry.label/>."
 
 #. (itstool) path: msg/msgstr
 #. ID: biblioentry.label
@@ -449,7 +431,7 @@ msgstr "[<citation.label/>]"
 #.
 #: yelp-xsl.xml.in:419
 msgid "from <comment.name/> on <comment.date/>"
-msgstr "fra <comment.name/> den <comment.date/>"
+msgstr "frá <comment.name/> þann <comment.date/>"
 
 #. (itstool) path: msg/msgstr
 #. ID: comment.name
@@ -477,7 +459,7 @@ msgstr "fra <comment.name/> den <comment.date/>"
 #.
 #: yelp-xsl.xml.in:447
 msgid "from <comment.name/>"
-msgstr "fra <comment.name/>"
+msgstr "frá <comment.name/>"
 
 #. (itstool) path: msg/msgstr
 #. ID: copyright.format
@@ -502,7 +484,7 @@ msgstr "© <copyright.years/> <copyright.name/>"
 #.
 #: yelp-xsl.xml.in:472
 msgid "Send email to ‘<string/>’."
-msgstr "Send e-mail til \"<string/>\"."
+msgstr "Senda tölvupóst á ‘<string/>’."
 
 #. (itstool) path: msg/msgstr
 #. ID: glossentry.tooltip
@@ -514,7 +496,7 @@ msgstr "Send e-mail til \"<string/>\"."
 #.
 #: yelp-xsl.xml.in:484
 msgid "Read the definition for ‘<glossterm/>’."
-msgstr "Læs ordforklaringen til ‘<glossterm/>’."
+msgstr "Lesa skilgreininguna fyrir ‘<glossterm/>’."
 
 #. (itstool) path: msg/msgstr
 #. ID: glosssee.format
@@ -535,7 +517,7 @@ msgstr "Læs ordforklaringen til ‘<glossterm/>’."
 #.
 #: yelp-xsl.xml.in:505
 msgid "See <glosssee/>."
-msgstr "Se <glosssee/>."
+msgstr "Sjá <glosssee/>."
 
 #. (itstool) path: msg/msgstr
 #. ID: glossseealso.format
@@ -557,7 +539,7 @@ msgstr "Se <glosssee/>."
 #.
 #: yelp-xsl.xml.in:527
 msgid "See also <glosssee/>."
-msgstr "Se også <glosssee/>."
+msgstr "Sjá einnig <glosssee/>."
 
 #. (itstool) path: msg/msgstr
 #. ID: quote.format
@@ -596,7 +578,7 @@ msgstr "‘<node/>’"
 #.
 #: yelp-xsl.xml.in:566
 msgid "See <seeie/>."
-msgstr "Se <seeie/>."
+msgstr "Sjá <seeie/>."
 
 #. (itstool) path: msg/msgstr
 #. ID: seealsoie.format
@@ -611,326 +593,5 @@ msgstr "Se <seeie/>."
 #.
 #: yelp-xsl.xml.in:581
 msgid "See also <seeie/>."
-msgstr "Se også <seeie/>."
+msgstr "Sjá einnig <seeie/>."
 
-#~ msgid "yelp-quote-201C.png"
-#~ msgstr "yelp-quote-201C.png"
-
-#~ msgid "Contents"
-#~ msgstr "Indhold"
-
-#~ msgid "Further Reading"
-#~ msgstr "Yderligere information"
-
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "Preface"
-#~ msgstr "Forord"
-
-#~ msgid " — "
-#~ msgstr " — "
-
-#~ msgid "<msgid>appendix.digit</msgid> <msgstr>A</msgstr>"
-#~ msgstr "<msgstr>A</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>appendix.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Appendix "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Appendiks <number/></msgstr>"
-
-#~ msgid "<msgid>appendix.number</msgid> <msgstr><parent/>.<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid ""
-#~ "<msgid>appendix.xref</msgid> <msgstr>Appendix <number/> ― <title/></"
-#~ "msgstr>"
-#~ msgstr "<msgstr>Appendiks <number/> ― <title/></msgstr>"
-
-#~ msgid ""
-#~ "<msgid>biblioentry.tooltip</msgid> <msgstr>View the bibliography entry "
-#~ "<label/>.</msgstr>"
-#~ msgstr "<msgstr>Vis litteraturlistereferencen <label/>.</msgstr>"
-
-#~ msgid "<msgid>bibliography.xref</msgid> <msgstr><title/></msgstr>"
-#~ msgstr "<msgstr><title/></msgstr>"
-
-#~ msgid "<msgid>bibliolabel.format</msgid> <msgstr>[<bibliolabel/>]</msgstr>"
-#~ msgstr "<msgstr>[<bibliolabel/>]</msgstr>"
-
-# DANSK Her har jeg valgt at sige at hvis der refereres til nummeret på
-# en bog i en serie så skal nummeret skrive med romertal.
-#~ msgid "<msgid>book.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>I</msgstr>"
-
-#~ msgid "<msgid>book.xref</msgid> <msgstr><title/></msgstr>"
-#~ msgstr "<msgstr><title/></msgstr>"
-
-#~ msgid "<msgid>chapter.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>chapter.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Chapter "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Kapitel <number/></msgstr>"
-
-#~ msgid "<msgid>chapter.number</msgid> <msgstr><parent/>.<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid ""
-#~ "<msgid>chapter.xref</msgid> <msgstr>Chapter <number/> ― <title/></msgstr>"
-#~ msgstr "<msgstr>Kapitel <number/> ― <title/></msgstr>"
-
-#~ msgid "<msgid>citation.format</msgid> <msgstr>[<citation/>]</msgstr>"
-#~ msgstr "<msgstr>[<citation/>]</msgstr>"
-
-# DANSK Her har jeg valgt at sige at alle steder hvor der refereres til navnet på noget (men uden at der lænkes til det) der skal de referencer stå som italic i gåseøjne
-#~ msgid ""
-#~ "<msgid>citetitle.format</msgid> <msgstr role='article'>“<node/>”</msgstr> "
-#~ "<msgstr><i><node/></i></msgstr>"
-#~ msgstr "<msgstr><i>“<node/>”</i></msgstr> "
-
-#~ msgid ""
-#~ "<msgid>email.tooltip</msgid> <msgstr>Send email to ‘<string/>’.</msgstr>"
-#~ msgstr "<msgstr>Send e-mail til: <string/>.</msgstr>"
-
-#~ msgid "<msgid>example.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>example.label</msgid> <msgstr role='header'><i>Example <number/></"
-#~ "i>&#x2003;</msgstr> <msgstr role='li'>Example <number/>&#x2002;</msgstr> "
-#~ "<msgstr>Example <number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><i>Eksempel <number/></i>&#x2003;</msgstr> <msgstr "
-#~ "role='li'>Eksempel <number/>&#x2002;</msgstr> <msgstr>Eksempel <number/></"
-#~ "msgstr>"
-
-#~ msgid "<msgid>example.number</msgid> <msgstr><parent/>-<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>-<digit/></msgstr>"
-
-#~ msgid "<msgid>example.xref</msgid> <msgstr>Example <number/></msgstr>"
-#~ msgstr "<msgstr>Eksempel <number/></msgstr>"
-
-#~ msgid "<msgid>figure.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>figure.label</msgid> <msgstr role='header'><i>Figure <number/></"
-#~ "i>&#x2003;</msgstr> <msgstr role='li'>Figure <number/>&#x2002;</msgstr> "
-#~ "<msgstr>Figure <number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><i>Figur <number/></i>&#x2003;</msgstr> <msgstr "
-#~ "role='li'>Figur <number/>&#x2002;</msgstr> <msgstr>Figur <number/></"
-#~ "msgstr>"
-
-# DANSK Her har jeg valgt at den først adskiller i figurnumre skal være . og ikke -
-#~ msgid "<msgid>figure.number</msgid> <msgstr><parent/>-<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid "<msgid>figure.xref</msgid> <msgstr>Figure <number/></msgstr>"
-#~ msgstr "<msgstr>Figur <number/></msgstr>"
-
-#~ msgid "<msgid>glossary.xref</msgid> <msgstr><title/></msgstr>"
-#~ msgstr "<msgstr><title/></msgstr>"
-
-#~ msgid "<msgid>glossentry.abbrev.format</msgid> <msgstr>(<node/>)</msgstr>"
-#~ msgstr "<msgstr>(<node/>)</msgstr>"
-
-# DANSK Her har jeg valgt ikke at lave en speciel formattering ligesom på engelsk til "se" og "se også" elementer
-#~ msgid ""
-#~ "<msgid>glossentry.xref</msgid> <msgstr role='glosssee'><glossterm/></"
-#~ "msgstr> <msgstr>‘<glossterm/>’</msgstr>"
-#~ msgstr "<msgstr><glossterm/></msgstr>"
-
-#~ msgid "<msgid>glosssee.format</msgid> <msgstr>See <glosssee/>.</msgstr>"
-#~ msgstr "<msgstr>Se <glosssee/>.</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>glossseealso.format</msgid> <msgstr>See also <glosssee/>.</msgstr>"
-#~ msgstr "<msgstr>Se også <glosssee/>.</msgstr>"
-
-#~ msgid "<msgid>manvolnum.format</msgid> <msgstr>(<node/>)</msgstr>"
-#~ msgstr "<msgstr>(<node/>)</msgstr>"
-
-# DANSK Her er valge almindelige tal fremfor for romertal
-#~ msgid "<msgid>part.digit</msgid> <msgstr>I</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>part.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Part "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Del <number/></msgstr>"
-
-#~ msgid "<msgid>part.xref</msgid> <msgstr>Part <number/> ― <title/></msgstr>"
-#~ msgstr "<msgstr>Del <number/> ― <title/></msgstr>"
-
-#~ msgid "<msgid>preface.xref</msgid> <msgstr><title/></msgstr>"
-#~ msgstr "<msgstr><title/></msgstr>"
-
-#~ msgid "<msgid>question.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>question.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Question "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Spørgsmål <number/></msgstr>"
-
-#~ msgid "<msgid>question.xref</msgid> <msgstr>Question <number/></msgstr>"
-#~ msgstr "<msgstr>Spørgsmål <number/></msgstr>"
-
-# DANSK på engelsk laves et speciel tilfælde for indre citaterm det
-# vælger jeg og ignorere ogsætter således alle citater mellem gåseøjne 
-#~ msgid ""
-#~ "<msgid>quote.format</msgid> <msgstr role='inner'>‘<node/>’</msgstr> "
-#~ "<msgstr>“<node/>”</msgstr>"
-#~ msgstr "<msgstr>“<node/>”</msgstr>"
-
-#~ msgid "<msgid>refentry.xref</msgid> <msgstr><title/></msgstr>"
-#~ msgstr "<msgstr><title/></msgstr>"
-
-#~ msgid "<msgid>refsection.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>refsection.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Section "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Afsnit <number/></msgstr>"
-
-#~ msgid "<msgid>refsection.number</msgid> <msgstr><parent/>.<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid ""
-#~ "<msgid>refsection.xref</msgid> <msgstr>Section <number/> ― <title/></"
-#~ "msgstr>"
-#~ msgstr "<msgstr>Afsnit <number/> ― <title/></msgstr>"
-
-#~ msgid "<msgid>section.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>section.label</msgid> <msgstr role='header'><number/>.&#x2003;</"
-#~ "msgstr> <msgstr role='li'><number/>.&#x2002;</msgstr> <msgstr>Section "
-#~ "<number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><number/>.&#x2003;</msgstr> <msgstr "
-#~ "role='li'><number/>.&#x2002;</msgstr> <msgstr>Afsnit <number/></msgstr>"
-
-#~ msgid "<msgid>section.number</msgid> <msgstr><parent/>.<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid ""
-#~ "<msgid>section.xref</msgid> <msgstr>Section <number/> ― <title/></msgstr>"
-#~ msgstr "<msgstr>Afsnit <number/> ― <title/></msgstr>"
-
-#~ msgid "<msgid>seealsoie.format</msgid> <msgstr>See also <seeie/>.</msgstr>"
-#~ msgstr "<msgstr>Se også <seeie/>.</msgstr>"
-
-#~ msgid "<msgid>seeie.format</msgid> <msgstr>See <seeie/>.</msgstr>"
-#~ msgstr "<msgstr>Se <seeie/>.</msgstr>"
-
-#~ msgid "<msgid>synopfragment.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid "<msgid>synopfragment.label</msgid> <msgstr>(<number/>)</msgstr>"
-#~ msgstr "<msgstr>(<number/>)</msgstr>"
-
-#~ msgid "<msgid>table.digit</msgid> <msgstr>1</msgstr>"
-#~ msgstr "<msgstr>1</msgstr>"
-
-#~ msgid ""
-#~ "<msgid>table.label</msgid> <msgstr role='header'><i>Table <number/></"
-#~ "i>&#x2003;</msgstr> <msgstr role='li'>Table <number/>&#x2002;</msgstr> "
-#~ "<msgstr>Table <number/></msgstr>"
-#~ msgstr ""
-#~ "<msgstr role='header'><i>Tabel <number/></i>&#x2003;</msgstr> <msgstr "
-#~ "role='li'>Tabel <number/>&#x2002;</msgstr> <msgstr>Tabel <number/></"
-#~ "msgstr>"
-
-# DANSK Her bruges igen . i stedet for - som adskiller i numrene
-#~ msgid "<msgid>table.number</msgid> <msgstr><parent/>-<digit/></msgstr>"
-#~ msgstr "<msgstr><parent/>.<digit/></msgstr>"
-
-#~ msgid "<msgid>table.xref</msgid> <msgstr>Table <number/></msgstr>"
-#~ msgstr "<msgstr>Tabel <number/></msgstr>"
-
-#~ msgid "<msgstr form='0'>Author</msgstr> <msgstr form='1'>Authors</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form='0'>Forfatter</msgstr><msgstr form='1'>Forfattere</msgstr>"
-
-#~ msgid ""
-#~ "<msgstr form='0'>Collaborator</msgstr> <msgstr form='1'>Collaborators</"
-#~ "msgstr>"
-#~ msgstr ""
-#~ "<msgstr form='0'>Samarbejdspartner</msgstr><msgstr "
-#~ "form='1'>Samarbejdspartnere</msgstr>"
-
-#~ msgid ""
-#~ "<msgstr form='0'>Copyright</msgstr> <msgstr form='1'>Copyrights</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form=\"0\">Ophavsret</msgstr> <msgstr form=\"1\">Ophavsret</"
-#~ "msgstr>"
-
-#~ msgid "<msgstr form='0'>Editor</msgstr> <msgstr form='1'>Editors</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form=\"0\">Redaktør</msgstr><msgstr form=\"1\">Redaktører</msgstr>"
-
-#~ msgid ""
-#~ "<msgstr form='0'>Other Contributor</msgstr> <msgstr form='1'>Other "
-#~ "Contributors</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form=\"0\">Anden bidragyder</msgstr><msgstr form=\"1\">Andre "
-#~ "bidragydere</msgstr>"
-
-#~ msgid ""
-#~ "<msgstr form='0'>Publisher</msgstr> <msgstr form='1'>Publishers</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form=\"0\">Udgiver</msgstr><msgstr form=\"1\">Udgivere</msgstr>"
-
-#~ msgid ""
-#~ "<msgstr form='0'>Translator</msgstr> <msgstr form='1'>Translators</msgstr>"
-#~ msgstr ""
-#~ "<msgstr form=\"0\">Oversætter</msgstr><msgstr form=\"1\">Oversættere</"
-#~ "msgstr>"
-
-#~ msgid "A:&#x2003;"
-#~ msgstr "Sv:&#x2003;"
-
-#~ msgid "About This Document"
-#~ msgstr "Om dette dokument"
-
-#~ msgid "Affiliation"
-#~ msgstr "Tilknytning"
-
-#~ msgid "Caution"
-#~ msgstr "Forsigtig"
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "Legal Notice"
-#~ msgstr "Juridisk information"
-
-#~ msgid "Q:&#x2003;"
-#~ msgstr "Sp:&#x2003;"
-
-#~ msgid "Revision History"
-#~ msgstr "Revisionshistorik"
-
-#~ msgid "See"
-#~ msgstr "Se"

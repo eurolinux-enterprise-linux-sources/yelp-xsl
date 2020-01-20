@@ -113,8 +113,8 @@ using #{xsl:element}.
 
 <!--@@==========================================================================
 html.mathml.namespace
-The XML namespace for the output document.
-:Revision:version="3.8" date="2012-11-13" status="final"
+The XML namespace for MathML in the output document.
+:Revision:version="3.18" date="2015-05-04" status="final"
 
 This parameter specifies the XML namespace for MathML in output documents. It
 will be set automatically based on the ${html.xhtml} parameter, either to the
@@ -125,6 +125,28 @@ parameter when using #{xsl:element}.
   <xsl:choose>
     <xsl:when test="$html.xhtml">
       <xsl:value-of select="'http://www.w3.org/1998/Math/MathML'"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:text></xsl:text>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:variable>
+
+
+<!--@@==========================================================================
+html.svg.namespace
+The XML namespace for SVG in the output document.
+:Revision:version="3.18" date="2015-05-04" status="final"
+
+This parameter specifies the XML namespace for SVG in output documents. It
+will be set automatically based on the ${html.xhtml} parameter, either to the
+SVG namespace namespace, or to the empty namespace. Stylesheets can use this
+parameter when using #{xsl:element}.
+-->
+<xsl:variable name="html.svg.namespace">
+  <xsl:choose>
+    <xsl:when test="$html.xhtml">
+      <xsl:value-of select="'http://www.w3.org/2000/svg'"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:text></xsl:text>
@@ -229,11 +251,23 @@ use this to process output files without blocking earlier output.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:param>
-  <exsl:document href="{$href}">
-    <xsl:call-template name="html.page">
-      <xsl:with-param name="node" select="$node"/>
-    </xsl:call-template>
-  </exsl:document>
+  <xsl:choose>
+    <xsl:when test="$html.xhtml">
+      <exsl:document href="{$href}">
+	<xsl:call-template name="html.page">
+	  <xsl:with-param name="node" select="$node"/>
+	</xsl:call-template>
+      </exsl:document>
+    </xsl:when>
+    <xsl:otherwise>
+      <exsl:document href="{$href}" method="html"
+		     doctype-system="about:legacy-compat">
+	<xsl:call-template name="html.page">
+	  <xsl:with-param name="node" select="$node"/>
+	</xsl:call-template>
+      </exsl:document>
+    </xsl:otherwise>
+  </xsl:choose>
   <xsl:apply-templates mode="html.output.after.mode" select="$node"/>
 </xsl:template>
 
@@ -453,6 +487,39 @@ This template is a stub, called by *{html.page}. You can override this template
 to provide additional elements in the HTML #{head} element of output files.
 -->
 <xsl:template name="html.head.custom">
+  <xsl:param name="node" select="."/>
+</xsl:template>
+
+
+<!--**==========================================================================
+html.linktrails.empty
+Stub to output something when no link trails are present.
+:Stub: true
+:Revision:version="3.20" date="2015-10-02" status="final"
+$node: The source element a page is bring created for.
+
+This template is a stub. It is called by templates that output link trails when
+there are no link trails to output. Some customizations prepend extra site links
+to link trails. This template allows them to output those links even when no link
+trails would otherwise be present.
+-->
+<xsl:template name="html.linktrails.empty">
+  <xsl:param name="node" select="."/>
+</xsl:template>
+
+
+<!--**==========================================================================
+html.linktrails.prefix
+Stub to output extra content before a link trail.
+:Stub: true
+:Revision:version="3.20" date="2015-10-02" status="final"
+$node: A source-specific element providing information about the link trail.
+
+This template is a stub. It is called by templates that output link trails
+before the normal links are output. This template is useful for adding extra
+site links at the beginning of each link trail.
+-->
+<xsl:template name="html.linktrails.prefix">
   <xsl:param name="node" select="."/>
 </xsl:template>
 
@@ -703,7 +770,6 @@ div.sect {
 }
 div.sect div.sect {
   margin-top: 1.44em;
-  margin-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 1.72em;
 }
 div.trails {
   margin: 0;
@@ -1051,6 +1117,7 @@ div.example {
     <xsl:value-of select="$color.gray_border"/><xsl:text>;
   padding-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 1em;
 }
+div.example > div.inner > div.region > div.desc { font-style: italic; }
 div.figure {
   margin-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 1.72em;
   padding: 4px;
@@ -1574,14 +1641,14 @@ template to provide additional CSS that will be used by all HTML output.
 <!--**==========================================================================
 html.js
 Output all JavaScript for an HTML output page.
-:Revision:version="1.0" date="2010-12-31" status="final"
+:Revision:version="3.20" date="2016-01-18" status="final"
 $node: The node to create JavaScript for.
 
 This template creates the JavaScript for an HTML output page. It calls the
-template *{html.js.jquery} to output references to jQuery files. It then
-calls *{html.js.custom} to output references to custom JavaScript files.
-Finally, it outputs an HTML #{script} tag and calls *{html.js.content} to
-ouput the contents of that tag.
+templates *{html.js.jquery}, *{html.js.syntax}, and *{html.js.mathjax} to
+output references to external libraries. It then calls *{html.js.custom} to
+output references to custom JavaScript files. Finally, it calls
+*{html.js.script} to output local JavaScript created by *{html.js.content}.
 -->
 <xsl:template name="html.js">
   <xsl:param name="node" select="."/>
@@ -1594,11 +1661,9 @@ ouput the contents of that tag.
   <xsl:call-template name="html.js.custom">
     <xsl:with-param name="node" select="$node"/>
   </xsl:call-template>
-  <script type="text/javascript">
-    <xsl:call-template name="html.js.content">
-      <xsl:with-param name="node" select="$node"/>
-    </xsl:call-template>
-  </script>
+  <xsl:call-template name="html.js.script">
+    <xsl:with-param name="node" select="$node"/>
+  </xsl:call-template>
 </xsl:template>
 
 
@@ -1657,17 +1722,39 @@ copy, override this template and provide the necessary files.
 
 
 <!--**==========================================================================
-html.js.content
-Output JavaScript content for an HTML output page.
-:Revision:version="3.4" date="2011-11-04" status="final"
+html.js.script
+Output a JavaScript #{script} tag containing local content.
+:Revision:version="3.20" date="2016-01-18" status="final"
 $node: The node to create JavaScript for.
 
-This template is called by *{html.js} to output JavaScript content. It does not
-output an HTML #{script} tag. The JavaScript output by this template or templates
-it calls may depend on the jQuery code referenced by *{html.js.jquery}. This
-template calls the templates *{html.js.core}, *{html.js.ui}, *{html.js.media},
-and *{html.js.syntax}. It then calls the mode
-%{html.js.mode} on ${node} and calls the template *{html.js.content.custom}.
+This template is called by *{html.js} to output JavaScript content. It outputs
+a #{script} tag and calls *{html.js.content} to output the contents. To force
+all JavaScript into external files, override this template to output a #{script}
+tag referencing an external file with the #{src} attribute, then output the
+result of *{html.js.content} to that file.
+-->
+<xsl:template name="html.js.script">
+  <xsl:param name="node" select="."/>
+  <script type="text/javascript">
+    <xsl:call-template name="html.js.content">
+      <xsl:with-param name="node" select="$node"/>
+    </xsl:call-template>
+  </script>
+</xsl:template>
+
+
+<!--**==========================================================================
+html.js.content
+Output JavaScript content for an HTML output page.
+:Revision:version="3.20" date="2016-01-18" status="final"
+$node: The node to create JavaScript for.
+
+This template is called by *{html.js.script} to output JavaScript content. It
+does not output an HTML #{script} tag. The JavaScript output by this template
+or templates it calls may depend on the jQuery code referenced by
+*{html.js.jquery}. This template calls the templates *{html.js.core},
+*{html.js.ui}, and *{html.js.media}. It then calls the mode %{html.js.mode}
+on ${node} and calls the template *{html.js.content.custom}.
 -->
 <xsl:template name="html.js.content">
   <xsl:param name="node" select="."/>
@@ -2052,7 +2139,7 @@ function yelp_init_video (element) {
       if (element.currentTime >= parseFloat(ttml.getAttribute('data-ttml-begin')) &&
           (!ttml.hasAttribute('data-ttml-end') ||
            element.currentTime < parseFloat(ttml.getAttribute('data-ttml-end')) )) {
-        if (ttml.tagName == 'span')
+        if (ttml.tagName == 'span' || ttml.tagName == 'SPAN')
           ttml.style.display = 'inline';
         else
           ttml.style.display = 'block';

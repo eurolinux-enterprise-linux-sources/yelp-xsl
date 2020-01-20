@@ -18,6 +18,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">default:LTR</msgstr>
 <msgstr xml:lang="bn">default:LTR</msgstr>
 <msgstr xml:lang="bn-IN">default:LTR</msgstr>
+<msgstr xml:lang="bs">default:LTR</msgstr>
 <msgstr xml:lang="ca">default:LTR</msgstr>
 <msgstr xml:lang="ca-valencia">default:LTR</msgstr>
 <msgstr xml:lang="cs">default:LTR</msgstr>
@@ -30,22 +31,24 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="en-GB">default:LTR</msgstr>
 <msgstr xml:lang="eo">default:LTR</msgstr>
 <msgstr xml:lang="es">default:LTR</msgstr>
-<msgstr xml:lang="et">LTR</msgstr>
+<msgstr xml:lang="et">default:LTR</msgstr>
 <msgstr xml:lang="eu">default:LTR</msgstr>
 <msgstr xml:lang="fa">default:RTL</msgstr>
 <msgstr xml:lang="fi">default:LTR</msgstr>
 <msgstr xml:lang="fr">default:LTR</msgstr>
+<msgstr xml:lang="fur">default:LTR</msgstr>
 <msgstr xml:lang="ga">default:LTR</msgstr>
 <msgstr xml:lang="gl">default:LTR</msgstr>
 <msgstr xml:lang="gu">default:LTR</msgstr>
 <msgstr xml:lang="he">default:RTL</msgstr>
-<msgstr xml:lang="hi">डिफ़ॉल्ट:LTR</msgstr>
+<msgstr xml:lang="hi">default:LTR</msgstr>
 <msgstr xml:lang="hu">default:LTR</msgstr>
 <msgstr xml:lang="id">default:LTR</msgstr>
+<msgstr xml:lang="is">default:LTR</msgstr>
 <msgstr xml:lang="it">default:LTR</msgstr>
 <msgstr xml:lang="ja">default:LTR</msgstr>
 <msgstr xml:lang="ka">default:LTR</msgstr>
-<msgstr xml:lang="km">លំនាំ​ដើម ៖ LTR</msgstr>
+<msgstr xml:lang="km">default:LTR</msgstr>
 <msgstr xml:lang="kn">default:LTR</msgstr>
 <msgstr xml:lang="ko">default:LTR</msgstr>
 <msgstr xml:lang="ky">default:LTR</msgstr>
@@ -69,9 +72,9 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="pt-BR">default:LTR</msgstr>
 <msgstr xml:lang="ro">default:LTR</msgstr>
 <msgstr xml:lang="ru">default:LTR</msgstr>
-<msgstr xml:lang="si">සාමාන්‍ය:LTR</msgstr>
+<msgstr xml:lang="si">default:LTR</msgstr>
 <msgstr xml:lang="sk">default:LTR</msgstr>
-<msgstr xml:lang="sl">privzeto:LTR</msgstr>
+<msgstr xml:lang="sl">default:LTR</msgstr>
 <msgstr xml:lang="sq">default:LTR</msgstr>
 <msgstr xml:lang="sr">default:LTR</msgstr>
 <msgstr xml:lang="sr-Latn">default:LTR</msgstr>
@@ -100,6 +103,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="bg">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="bn">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="bn-IN">, </msgstr>
+<msgstr xml:space="preserve" xml:lang="bs">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca-valencia">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="cs">, </msgstr>
@@ -118,6 +122,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="fa">،‏ </msgstr>
 <msgstr xml:space="preserve" xml:lang="fi">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="fr">, </msgstr>
+<msgstr xml:space="preserve" xml:lang="fur">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="ga">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="gl">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="gu">, </msgstr>
@@ -125,6 +130,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="hi">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="hu">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="id">, </msgstr>
+<msgstr xml:space="preserve" xml:lang="is">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="it">, </msgstr>
 <msgstr xml:space="preserve" xml:lang="ja">、</msgstr>
 <msgstr xml:space="preserve" xml:lang="ka">, </msgstr>
@@ -184,6 +190,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="be-Latn"> dy </msgstr>
 <msgstr xml:space="preserve" xml:lang="bg"> и </msgstr>
 <msgstr xml:space="preserve" xml:lang="bn-IN">, এবং </msgstr>
+<msgstr xml:space="preserve" xml:lang="bs">i </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca-valencia"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="cs"> a </msgstr>
@@ -201,6 +208,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="fa">، و </msgstr>
 <msgstr xml:space="preserve" xml:lang="fi"> ja </msgstr>
 <msgstr xml:space="preserve" xml:lang="fr"> et </msgstr>
+<msgstr xml:space="preserve" xml:lang="fur"> e </msgstr>
 <msgstr xml:space="preserve" xml:lang="ga">, agus </msgstr>
 <msgstr xml:space="preserve" xml:lang="gl">, e </msgstr>
 <msgstr xml:space="preserve" xml:lang="gu">, અને </msgstr>
@@ -208,6 +216,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="hi">, and </msgstr>
 <msgstr xml:space="preserve" xml:lang="hu"> és </msgstr>
 <msgstr xml:space="preserve" xml:lang="id">, dan </msgstr>
+<msgstr xml:space="preserve" xml:lang="is"> og </msgstr>
 <msgstr xml:space="preserve" xml:lang="it"> e </msgstr>
 <msgstr xml:space="preserve" xml:lang="ja"> と </msgstr>
 <msgstr xml:space="preserve" xml:lang="km">, និង </msgstr>
@@ -263,6 +272,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="be-Latn"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="bg"> и </msgstr>
 <msgstr xml:space="preserve" xml:lang="bn-IN"> এবং </msgstr>
+<msgstr xml:space="preserve" xml:lang="bs"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="ca-valencia"> i </msgstr>
 <msgstr xml:space="preserve" xml:lang="cs"> a </msgstr>
@@ -280,6 +290,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="fa"> و </msgstr>
 <msgstr xml:space="preserve" xml:lang="fi"> ja </msgstr>
 <msgstr xml:space="preserve" xml:lang="fr"> et </msgstr>
+<msgstr xml:space="preserve" xml:lang="fur"> e </msgstr>
 <msgstr xml:space="preserve" xml:lang="ga"> agus </msgstr>
 <msgstr xml:space="preserve" xml:lang="gl"> e </msgstr>
 <msgstr xml:space="preserve" xml:lang="gu"> અને </msgstr>
@@ -287,6 +298,7 @@ $ make yelp-xsl.pot
 <msgstr xml:space="preserve" xml:lang="hi"> और </msgstr>
 <msgstr xml:space="preserve" xml:lang="hu"> és </msgstr>
 <msgstr xml:space="preserve" xml:lang="id"> dan </msgstr>
+<msgstr xml:space="preserve" xml:lang="is"> og </msgstr>
 <msgstr xml:space="preserve" xml:lang="it"> e </msgstr>
 <msgstr xml:space="preserve" xml:lang="ja"> と </msgstr>
 <msgstr xml:space="preserve" xml:lang="km"> និង </msgstr>
@@ -342,6 +354,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">E:</msgstr>
 <msgstr xml:lang="be">П:</msgstr>
 <msgstr xml:lang="bg">В:</msgstr>
+<msgstr xml:lang="bs">P:</msgstr>
 <msgstr xml:lang="ca">P:</msgstr>
 <msgstr xml:lang="ca-valencia">P:</msgstr>
 <msgstr xml:lang="cs">Ot:</msgstr>
@@ -356,11 +369,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">س:</msgstr>
 <msgstr xml:lang="fi">K:</msgstr>
 <msgstr xml:lang="fr">Q :</msgstr>
+<msgstr xml:lang="fur">D:</msgstr>
 <msgstr xml:lang="gl">P:</msgstr>
 <msgstr xml:lang="he">שאלה:</msgstr>
 <msgstr xml:lang="hi">Q:</msgstr>
 <msgstr xml:lang="hu">K:</msgstr>
 <msgstr xml:lang="id">T:</msgstr>
+<msgstr xml:lang="is">Sp:</msgstr>
 <msgstr xml:lang="it">D:</msgstr>
 <msgstr xml:lang="ja">Q:</msgstr>
 <msgstr xml:lang="km">សំណួរ ៖</msgstr>
@@ -372,6 +387,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">ചോ:</msgstr>
 <msgstr xml:lang="nb">Q:</msgstr>
 <msgstr xml:lang="nl">V:</msgstr>
+<msgstr xml:lang="oc">Q :</msgstr>
 <msgstr xml:lang="pa">ਸ:</msgstr>
 <msgstr xml:lang="pl">Pytanie:</msgstr>
 <msgstr xml:lang="pt">P:</msgstr>
@@ -404,6 +420,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">R:</msgstr>
 <msgstr xml:lang="be">А:</msgstr>
 <msgstr xml:lang="bg">О:</msgstr>
+<msgstr xml:lang="bs">O:</msgstr>
 <msgstr xml:lang="ca">R:</msgstr>
 <msgstr xml:lang="ca-valencia">R:</msgstr>
 <msgstr xml:lang="cs">Odp:</msgstr>
@@ -418,11 +435,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ج:</msgstr>
 <msgstr xml:lang="fi">V:</msgstr>
 <msgstr xml:lang="fr">R :</msgstr>
+<msgstr xml:lang="fur">R:</msgstr>
 <msgstr xml:lang="gl">R:</msgstr>
 <msgstr xml:lang="he">תשובה:</msgstr>
 <msgstr xml:lang="hi">A:</msgstr>
 <msgstr xml:lang="hu">V:</msgstr>
 <msgstr xml:lang="id">J:</msgstr>
+<msgstr xml:lang="is">Sv:</msgstr>
 <msgstr xml:lang="it">R:</msgstr>
 <msgstr xml:lang="ja">A:</msgstr>
 <msgstr xml:lang="km">ចម្លើយ ៖</msgstr>
@@ -434,6 +453,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">ഉ:</msgstr>
 <msgstr xml:lang="nb">A:</msgstr>
 <msgstr xml:lang="nl">A:</msgstr>
+<msgstr xml:lang="oc">A :</msgstr>
 <msgstr xml:lang="pa">ਜ:</msgstr>
 <msgstr xml:lang="pl">Odpowiedź:</msgstr>
 <msgstr xml:lang="pt">R:</msgstr>
@@ -467,6 +487,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">বিষয়ে</msgstr>
 <msgstr xml:lang="be">Аб дакуменце</msgstr>
 <msgstr xml:lang="bg">Относно</msgstr>
+<msgstr xml:lang="bs">O programu</msgstr>
 <msgstr xml:lang="ca">Quant a</msgstr>
 <msgstr xml:lang="ca-valencia">Quant a</msgstr>
 <msgstr xml:lang="cs">O dokumentu</msgstr>
@@ -481,11 +502,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">درباره</msgstr>
 <msgstr xml:lang="fi">Tietoja</msgstr>
 <msgstr xml:lang="fr">À propos</msgstr>
+<msgstr xml:lang="fur">Informazions</msgstr>
 <msgstr xml:lang="gl">Sobre</msgstr>
 <msgstr xml:lang="he">על אודות</msgstr>
 <msgstr xml:lang="hi">के बारे में</msgstr>
 <msgstr xml:lang="hu">Névjegy</msgstr>
 <msgstr xml:lang="id">Tentang</msgstr>
+<msgstr xml:lang="is">Um</msgstr>
 <msgstr xml:lang="it">Informazioni</msgstr>
 <msgstr xml:lang="ja">このドキュメントについて</msgstr>
 <msgstr xml:lang="km">អំពី</msgstr>
@@ -497,6 +520,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">യെല്‍പ്പിനെപറ്റി</msgstr>
 <msgstr xml:lang="nb">Om</msgstr>
 <msgstr xml:lang="nl">Info</msgstr>
+<msgstr xml:lang="oc">A prepaus</msgstr>
 <msgstr xml:lang="pa">ਇਸ ਬਾਰੇ</msgstr>
 <msgstr xml:lang="pl">Informacje</msgstr>
 <msgstr xml:lang="pt">Sobre</msgstr>
@@ -529,6 +553,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Avanzáu</msgstr>
 <msgstr xml:lang="be">Адмыслова</msgstr>
 <msgstr xml:lang="bg">Допълнителна информация</msgstr>
+<msgstr xml:lang="bs">Napredno</msgstr>
 <msgstr xml:lang="ca">Avançat</msgstr>
 <msgstr xml:lang="ca-valencia">Avançat</msgstr>
 <msgstr xml:lang="cs">Pokročilé</msgstr>
@@ -543,11 +568,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">پیشرفته</msgstr>
 <msgstr xml:lang="fi">Edistyneet</msgstr>
 <msgstr xml:lang="fr">Avancé</msgstr>
+<msgstr xml:lang="fur">Avanzât</msgstr>
 <msgstr xml:lang="gl">Avanzada</msgstr>
 <msgstr xml:lang="he">מתקדם</msgstr>
 <msgstr xml:lang="hi">विस्तृत</msgstr>
 <msgstr xml:lang="hu">Speciális</msgstr>
 <msgstr xml:lang="id">Tingkat Lanjut</msgstr>
+<msgstr xml:lang="is">Ítarlegt</msgstr>
 <msgstr xml:lang="it">Avanzato</msgstr>
 <msgstr xml:lang="ja">高度</msgstr>
 <msgstr xml:lang="km">កម្រិត​ខ្ពស់</msgstr>
@@ -559,6 +586,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">സങ്കീര്‍ണ്ണം</msgstr>
 <msgstr xml:lang="nb">Avansert</msgstr>
 <msgstr xml:lang="nl">Geavanceerd</msgstr>
+<msgstr xml:lang="oc">Detalhs avançat</msgstr>
 <msgstr xml:lang="pa">ਤਕਨੀਕੀ</msgstr>
 <msgstr xml:lang="pl">Zaawansowane</msgstr>
 <msgstr xml:lang="pt">Avançado</msgstr>
@@ -594,6 +622,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Библиография</msgstr>
 <msgstr xml:lang="bn">গ্রন্থপঞ্জি</msgstr>
 <msgstr xml:lang="bn-IN">গ্রন্থপঞ্জি</msgstr>
+<msgstr xml:lang="bs">Bibliografija</msgstr>
 <msgstr xml:lang="ca">Bibliografia</msgstr>
 <msgstr xml:lang="ca-valencia">Bibliografia</msgstr>
 <msgstr xml:lang="cs">Bibliografie</msgstr>
@@ -612,6 +641,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">فهرست کتب</msgstr>
 <msgstr xml:lang="fi">Lähdeluettelo</msgstr>
 <msgstr xml:lang="fr">Bibliographie</msgstr>
+<msgstr xml:lang="fur">Bibliografie</msgstr>
 <msgstr xml:lang="ga">Leabharliosta</msgstr>
 <msgstr xml:lang="gl">Bibliografía</msgstr>
 <msgstr xml:lang="gu">સંદર્ભગ્રંથ</msgstr>
@@ -619,6 +649,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">पुस्तकसूची</msgstr>
 <msgstr xml:lang="hu">Irodalomjegyzék</msgstr>
 <msgstr xml:lang="id">Bibliografi</msgstr>
+<msgstr xml:lang="is">Heimildaskrá</msgstr>
 <msgstr xml:lang="it">Bibliografia</msgstr>
 <msgstr xml:lang="ja">参考文献</msgstr>
 <msgstr xml:lang="ka">ბიბლიოგრაფია</msgstr>
@@ -659,7 +690,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="tr">Biblografya</msgstr>
 <msgstr xml:lang="ug">كىتابلار مۇندەرىجىسى</msgstr>
 <msgstr xml:lang="uk">Додаткові документи</msgstr>
-<msgstr xml:lang="vi">Mục lục thư tịch</msgstr>
+<msgstr xml:lang="vi">Thư mục</msgstr>
 <msgstr xml:lang="zh-CN">参考书目</msgstr>
 <msgstr xml:lang="zh-HK">參考書目</msgstr>
 <msgstr xml:lang="zh-TW">參考書目</msgstr>
@@ -672,6 +703,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Bug</msgstr>
 <msgstr xml:lang="be">Хіба</msgstr>
 <msgstr xml:lang="bg">Грешка</msgstr>
+<msgstr xml:lang="bs">Greška</msgstr>
 <msgstr xml:lang="ca">Errada</msgstr>
 <msgstr xml:lang="ca-valencia">Errada</msgstr>
 <msgstr xml:lang="cs">Chyba</msgstr>
@@ -686,11 +718,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">باگ</msgstr>
 <msgstr xml:lang="fi">Vika</msgstr>
 <msgstr xml:lang="fr">Anomalie</msgstr>
+<msgstr xml:lang="fur">Erôr</msgstr>
 <msgstr xml:lang="gl">Fallo</msgstr>
 <msgstr xml:lang="he">באג</msgstr>
 <msgstr xml:lang="hi">बग</msgstr>
 <msgstr xml:lang="hu">Hiba</msgstr>
 <msgstr xml:lang="id">Kutu</msgstr>
+<msgstr xml:lang="is">Galli</msgstr>
 <msgstr xml:lang="it">Bug</msgstr>
 <msgstr xml:lang="ja">バグ</msgstr>
 <msgstr xml:lang="km">កំហុស</msgstr>
@@ -702,6 +736,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">പിഴവ്</msgstr>
 <msgstr xml:lang="nb">Feil</msgstr>
 <msgstr xml:lang="nl">Bug</msgstr>
+<msgstr xml:lang="oc">Anomalia</msgstr>
 <msgstr xml:lang="pa">ਬੱਗ</msgstr>
 <msgstr xml:lang="pl">Błąd</msgstr>
 <msgstr xml:lang="pt">Erro</msgstr>
@@ -733,6 +768,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Candidatu</msgstr>
 <msgstr xml:lang="be">Кандыдат</msgstr>
 <msgstr xml:lang="bg">Версия-кандидат</msgstr>
+<msgstr xml:lang="bs">Kandidat</msgstr>
 <msgstr xml:lang="ca">Candidat</msgstr>
 <msgstr xml:lang="ca-valencia">Candidat</msgstr>
 <msgstr xml:lang="cs">Kandidát</msgstr>
@@ -747,11 +783,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">کاندیدا</msgstr>
 <msgstr xml:lang="fi">Luonnos</msgstr>
 <msgstr xml:lang="fr">Candidat</msgstr>
+<msgstr xml:lang="fur">Bon</msgstr>
 <msgstr xml:lang="gl">Candidato</msgstr>
 <msgstr xml:lang="he">מועמד</msgstr>
 <msgstr xml:lang="hi">कंडीडेट</msgstr>
 <msgstr xml:lang="hu">Jelölt</msgstr>
 <msgstr xml:lang="id">Kandidat</msgstr>
+<msgstr xml:lang="is">Tillaga</msgstr>
 <msgstr xml:lang="it">Idoneo</msgstr>
 <msgstr xml:lang="ja">候補版</msgstr>
 <msgstr xml:lang="km">បេក្ខជន</msgstr>
@@ -763,9 +801,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">സ്ഥാനാര്‍ഥി</msgstr>
 <msgstr xml:lang="nb">Kandidat</msgstr>
 <msgstr xml:lang="nl">Kandidaat</msgstr>
+<msgstr xml:lang="oc">Candidat(a)</msgstr>
 <msgstr xml:lang="pa">ਉਮੀਦਵਾਰ</msgstr>
 <msgstr xml:lang="pl">Kandydat</msgstr>
-<msgstr xml:lang="pt">Proposto</msgstr>
+<msgstr xml:lang="pt">Candidato</msgstr>
 <msgstr xml:lang="pt-BR">Candidato</msgstr>
 <msgstr xml:lang="ro">Candidat</msgstr>
 <msgstr xml:lang="ru">Кандидат</msgstr>
@@ -792,6 +831,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">বন্ধ কৰক</msgstr>
 <msgstr xml:lang="be">Закрыць</msgstr>
 <msgstr xml:lang="bg">Затваряне</msgstr>
+<msgstr xml:lang="bs">ZatvorI</msgstr>
 <msgstr xml:lang="ca">Tanca</msgstr>
 <msgstr xml:lang="ca-valencia">Tanca</msgstr>
 <msgstr xml:lang="cs">Zavřít</msgstr>
@@ -804,11 +844,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">بستن</msgstr>
 <msgstr xml:lang="fi">Sulje</msgstr>
 <msgstr xml:lang="fr">Fermer</msgstr>
+<msgstr xml:lang="fur">Siere</msgstr>
 <msgstr xml:lang="gl">Pechar</msgstr>
 <msgstr xml:lang="he">סגירה</msgstr>
 <msgstr xml:lang="hi">बंद करें</msgstr>
 <msgstr xml:lang="hu">Bezárás</msgstr>
 <msgstr xml:lang="id">Tutup</msgstr>
+<msgstr xml:lang="is">Loka</msgstr>
 <msgstr xml:lang="it">Chiudi</msgstr>
 <msgstr xml:lang="ja">閉じる</msgstr>
 <msgstr xml:lang="ko">닫기</msgstr>
@@ -816,6 +858,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="lv">Aizvērt</msgstr>
 <msgstr xml:lang="ml">അടയ്ക്കുക</msgstr>
 <msgstr xml:lang="nb">Lukk</msgstr>
+<msgstr xml:lang="oc">Tampar</msgstr>
 <msgstr xml:lang="pa">ਬੰਦ ਕਰੋ</msgstr>
 <msgstr xml:lang="pl">Zamknij</msgstr>
 <msgstr xml:lang="pt">Fechar</msgstr>
@@ -826,9 +869,12 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">Zapri</msgstr>
 <msgstr xml:lang="sr">Затвори</msgstr>
 <msgstr xml:lang="sr-Latn">Zatvori</msgstr>
+<msgstr xml:lang="sv">Stäng</msgstr>
 <msgstr xml:lang="ta">மூடுக</msgstr>
 <msgstr xml:lang="tg">Пӯшидан</msgstr>
+<msgstr xml:lang="tr">Kapat</msgstr>
 <msgstr xml:lang="ug">ياپ</msgstr>
+<msgstr xml:lang="vi">Đóng</msgstr>
 <msgstr xml:lang="zh-CN">关闭</msgstr>
 <msgstr xml:lang="zh-HK">關閉</msgstr>
 <msgstr xml:lang="zh-TW">關閉</msgstr>
@@ -844,6 +890,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Послеслов</msgstr>
 <msgstr xml:lang="bn">প্রকাশনার সীল</msgstr>
 <msgstr xml:lang="bn-IN">গ্রন্থপরিচয়</msgstr>
+<msgstr xml:lang="bs">Impresum</msgstr>
 <msgstr xml:lang="ca">Colofó</msgstr>
 <msgstr xml:lang="ca-valencia">Colofó</msgstr>
 <msgstr xml:lang="cs">Tiráž</msgstr>
@@ -861,6 +908,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">اطلاعات نشر</msgstr>
 <msgstr xml:lang="fi">Loppukirjoitus</msgstr>
 <msgstr xml:lang="fr">Colophon</msgstr>
+<msgstr xml:lang="fur">Colophon</msgstr>
 <msgstr xml:lang="ga">Colafan</msgstr>
 <msgstr xml:lang="gl">Colofón</msgstr>
 <msgstr xml:lang="gu">ગ્રંથપરિચય</msgstr>
@@ -868,6 +916,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">पुष्पिका</msgstr>
 <msgstr xml:lang="hu">Kolofon</msgstr>
 <msgstr xml:lang="id">Tanda Penerbit</msgstr>
+<msgstr xml:lang="is">Baktitill</msgstr>
 <msgstr xml:lang="it">Colophon</msgstr>
 <msgstr xml:lang="ja">出版社のマーク</msgstr>
 <msgstr xml:lang="ka">დასრულება</msgstr>
@@ -887,10 +936,11 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ne">कोलोफोन</msgstr>
 <msgstr xml:lang="nl">Colofon</msgstr>
 <msgstr xml:lang="nn">Kolofon</msgstr>
+<msgstr xml:lang="oc">Colophon</msgstr>
 <msgstr xml:lang="or">ପୁସ୍ତକ ପରିଚୟ</msgstr>
 <msgstr xml:lang="pa">ਲੇਖਕ-ਸੂਚੀ</msgstr>
 <msgstr xml:lang="pl">Kolofon</msgstr>
-<msgstr xml:lang="pt">Notas Finais</msgstr>
+<msgstr xml:lang="pt">Notas finais</msgstr>
 <msgstr xml:lang="pt-BR">Colofão</msgstr>
 <msgstr xml:lang="ro">Colofon</msgstr>
 <msgstr xml:lang="ru">Заключение</msgstr>
@@ -907,7 +957,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="tr">Kolofon</msgstr>
 <msgstr xml:lang="ug">نەشر ھوقۇقى بېتى</msgstr>
 <msgstr xml:lang="uk">Післямова</msgstr>
-<msgstr xml:lang="vi">Lời ghi cuối sách</msgstr>
+<msgstr xml:lang="vi">Lời kết</msgstr>
 <msgstr xml:lang="wa">Notes di rawete</msgstr>
 <msgstr xml:lang="zh-CN">版权页</msgstr>
 <msgstr xml:lang="zh-HK">版權頁</msgstr>
@@ -920,6 +970,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">সৃজক সাধাৰণসমূহ</msgstr>
 <msgstr xml:lang="be">Creative Commons</msgstr>
 <msgstr xml:lang="bg">Криейтив Комънс</msgstr>
+<msgstr xml:lang="bs">Creative Commons</msgstr>
 <msgstr xml:lang="ca">Creative Commons</msgstr>
 <msgstr xml:lang="ca-valencia">Creative Commons</msgstr>
 <msgstr xml:lang="cs">Creative Commons</msgstr>
@@ -934,11 +985,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">Creative Commons</msgstr>
 <msgstr xml:lang="fi">Creative Commons</msgstr>
 <msgstr xml:lang="fr">Creative Commons</msgstr>
+<msgstr xml:lang="fur">Creative Commons</msgstr>
 <msgstr xml:lang="gl">Creative Commons</msgstr>
 <msgstr xml:lang="he">Creative Commons</msgstr>
 <msgstr xml:lang="hi">क्रियेटिव कोमनस</msgstr>
 <msgstr xml:lang="hu">Creative Commons</msgstr>
 <msgstr xml:lang="id">Creative Commons</msgstr>
+<msgstr xml:lang="is">Creative Commons</msgstr>
 <msgstr xml:lang="it">Creative Commons</msgstr>
 <msgstr xml:lang="ja">Creative Commons</msgstr>
 <msgstr xml:lang="km">Creative Commons</msgstr>
@@ -950,6 +1003,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">ക്രീയേറ്റീവ് കോമണ്‍സ്</msgstr>
 <msgstr xml:lang="nb">Creative Commons</msgstr>
 <msgstr xml:lang="nl">Creative Commons</msgstr>
+<msgstr xml:lang="oc">Creative Commons</msgstr>
 <msgstr xml:lang="pa">ਕਰੀਏਟਿਵ ਕਾਮਨਜ਼</msgstr>
 <msgstr xml:lang="pl">Creative Commons</msgstr>
 <msgstr xml:lang="pt">Creative Commons</msgstr>
@@ -984,6 +1038,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Посвещение</msgstr>
 <msgstr xml:lang="bn">সমর্পণ</msgstr>
 <msgstr xml:lang="bn-IN">উৎসর্গ</msgstr>
+<msgstr xml:lang="bs">Posveta</msgstr>
 <msgstr xml:lang="ca">Dedicatòria</msgstr>
 <msgstr xml:lang="ca-valencia">Dedicatòria</msgstr>
 <msgstr xml:lang="cs">Věnování</msgstr>
@@ -1002,6 +1057,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">تقدیم‌نامه</msgstr>
 <msgstr xml:lang="fi">Omistuskirjoitus</msgstr>
 <msgstr xml:lang="fr">Dédicace</msgstr>
+<msgstr xml:lang="fur">Dediche</msgstr>
 <msgstr xml:lang="ga">Toirbhirt</msgstr>
 <msgstr xml:lang="gl">Dedicatoria</msgstr>
 <msgstr xml:lang="gu">સમર્પણ</msgstr>
@@ -1009,6 +1065,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">समर्पण</msgstr>
 <msgstr xml:lang="hu">Dedikáció</msgstr>
 <msgstr xml:lang="id">Persembahan</msgstr>
+<msgstr xml:lang="is">Tileinkun</msgstr>
 <msgstr xml:lang="it">Dedica</msgstr>
 <msgstr xml:lang="ja">献辞</msgstr>
 <msgstr xml:lang="ka">ეძღვნება</msgstr>
@@ -1028,6 +1085,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ne">समर्पण</msgstr>
 <msgstr xml:lang="nl">Opgedragen aan</msgstr>
 <msgstr xml:lang="nn">Tileigna</msgstr>
+<msgstr xml:lang="oc">Dedicàcia</msgstr>
 <msgstr xml:lang="or">ଉତ୍ସର୍ଗ</msgstr>
 <msgstr xml:lang="pa">ਸਮਰਪਤ</msgstr>
 <msgstr xml:lang="pl">Dedykacja</msgstr>
@@ -1040,7 +1098,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sq">Dedikimi</msgstr>
 <msgstr xml:lang="sr">Посвета</msgstr>
 <msgstr xml:lang="sr-Latn">Posveta</msgstr>
-<msgstr xml:lang="sv">Tillägning</msgstr>
+<msgstr xml:lang="sv">Dedikation</msgstr>
 <msgstr xml:lang="ta">அர்பணிப்பு</msgstr>
 <msgstr xml:lang="te">అంకితము</msgstr>
 <msgstr xml:lang="tg">Вафодорӣ</msgstr>
@@ -1063,6 +1121,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="be">Чарнавік</msgstr>
 <msgstr xml:lang="bg">Чернова</msgstr>
 <msgstr xml:lang="bn-IN">খসড়া</msgstr>
+<msgstr xml:lang="bs">Nacrt</msgstr>
 <msgstr xml:lang="ca">Esborrany</msgstr>
 <msgstr xml:lang="ca-valencia">Esborrany</msgstr>
 <msgstr xml:lang="cs">Koncept</msgstr>
@@ -1078,6 +1137,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">چرک‌نویس</msgstr>
 <msgstr xml:lang="fi">Vedos</msgstr>
 <msgstr xml:lang="fr">Brouillon</msgstr>
+<msgstr xml:lang="fur">Stampon</msgstr>
 <msgstr xml:lang="ga">Dréacht</msgstr>
 <msgstr xml:lang="gl">Esbozo</msgstr>
 <msgstr xml:lang="gu">ડ્રાફ્ટ</msgstr>
@@ -1085,6 +1145,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">मसौदा</msgstr>
 <msgstr xml:lang="hu">Vázlat</msgstr>
 <msgstr xml:lang="id">Draft</msgstr>
+<msgstr xml:lang="is">Drög</msgstr>
 <msgstr xml:lang="it">Bozza</msgstr>
 <msgstr xml:lang="ja">ドラフト</msgstr>
 <msgstr xml:lang="km">សេចក្ដី​ព្រាង</msgstr>
@@ -1098,6 +1159,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="mr">मसूदा</msgstr>
 <msgstr xml:lang="nb">Skisse</msgstr>
 <msgstr xml:lang="nl">Concept</msgstr>
+<msgstr xml:lang="oc">Borrolhon</msgstr>
 <msgstr xml:lang="or">ଡ୍ରାଫଟ୍</msgstr>
 <msgstr xml:lang="pa">ਡਰਾਫਟ</msgstr>
 <msgstr xml:lang="pl">Szkic</msgstr>
@@ -1130,6 +1192,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">সম্পাদিত</msgstr>
 <msgstr xml:lang="be">Рэдагаванне</msgstr>
 <msgstr xml:lang="bg">Редактирано от</msgstr>
+<msgstr xml:lang="bs">Uredili</msgstr>
 <msgstr xml:lang="ca">Editat per</msgstr>
 <msgstr xml:lang="ca-valencia">Editat per</msgstr>
 <msgstr xml:lang="cs">Upravili</msgstr>
@@ -1144,11 +1207,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ویرایش توسط</msgstr>
 <msgstr xml:lang="fi">Muokannut</msgstr>
 <msgstr xml:lang="fr">Revu par</msgstr>
+<msgstr xml:lang="fur">Scrit di</msgstr>
 <msgstr xml:lang="gl">Editado por</msgstr>
 <msgstr xml:lang="he">נערך על ידי</msgstr>
 <msgstr xml:lang="hi">द्वारा संपादित</msgstr>
 <msgstr xml:lang="hu">Szerkesztette</msgstr>
 <msgstr xml:lang="id">Disunting Oleh</msgstr>
+<msgstr xml:lang="is">Breytt af</msgstr>
 <msgstr xml:lang="it">Redatto da</msgstr>
 <msgstr xml:lang="ja">編集者</msgstr>
 <msgstr xml:lang="km">បាន​កែសម្រួល​ដោយ</msgstr>
@@ -1160,9 +1225,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">തിരുത്തിയത്</msgstr>
 <msgstr xml:lang="nb">Redigert av</msgstr>
 <msgstr xml:lang="nl">Geredigeerd door</msgstr>
+<msgstr xml:lang="oc">Modificat(-ada) per</msgstr>
 <msgstr xml:lang="pa">ਸੋਧ ਕੀਤੀ</msgstr>
 <msgstr xml:lang="pl">Zredagowane przez</msgstr>
-<msgstr xml:lang="pt">Editado Por</msgstr>
+<msgstr xml:lang="pt">Editado por</msgstr>
 <msgstr xml:lang="pt-BR">Editado por</msgstr>
 <msgstr xml:lang="ro">Modificat de</msgstr>
 <msgstr xml:lang="ru">Отредактировано</msgstr>
@@ -1192,6 +1258,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="be">Канчатковы</msgstr>
 <msgstr xml:lang="bg">Завършено</msgstr>
 <msgstr xml:lang="bn-IN">চুড়ান্ত</msgstr>
+<msgstr xml:lang="bs">Konačni</msgstr>
 <msgstr xml:lang="ca">Acabat</msgstr>
 <msgstr xml:lang="ca-valencia">Acabat</msgstr>
 <msgstr xml:lang="cs">Konečné</msgstr>
@@ -1207,6 +1274,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نهایی</msgstr>
 <msgstr xml:lang="fi">Lopullinen</msgstr>
 <msgstr xml:lang="fr">Final</msgstr>
+<msgstr xml:lang="fur">Definitîf</msgstr>
 <msgstr xml:lang="ga">Deireanach</msgstr>
 <msgstr xml:lang="gl">Final</msgstr>
 <msgstr xml:lang="gu">છેલ્લુ</msgstr>
@@ -1214,6 +1282,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">अंतिम</msgstr>
 <msgstr xml:lang="hu">Végleges</msgstr>
 <msgstr xml:lang="id">Akhir</msgstr>
+<msgstr xml:lang="is">Lokaútgáfa</msgstr>
 <msgstr xml:lang="it">Definitivo</msgstr>
 <msgstr xml:lang="ja">最終版</msgstr>
 <msgstr xml:lang="km">ចុងក្រោយ</msgstr>
@@ -1226,6 +1295,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="mr">ठरले</msgstr>
 <msgstr xml:lang="nb">Endelig</msgstr>
 <msgstr xml:lang="nl">Eindversie</msgstr>
+<msgstr xml:lang="oc">Definitiu</msgstr>
 <msgstr xml:lang="or">ଅନ୍ତିମ</msgstr>
 <msgstr xml:lang="pa">ਅੰਤਮ</msgstr>
 <msgstr xml:lang="pl">Ostateczny</msgstr>
@@ -1262,6 +1332,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Речник</msgstr>
 <msgstr xml:lang="bn">শব্দাবলী</msgstr>
 <msgstr xml:lang="bn-IN">শব্দপঞ্জি</msgstr>
+<msgstr xml:lang="bs">Rječnik</msgstr>
 <msgstr xml:lang="ca">Glossari</msgstr>
 <msgstr xml:lang="ca-valencia">Glossari</msgstr>
 <msgstr xml:lang="cs">Slovník pojmů</msgstr>
@@ -1280,6 +1351,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">واژه‌نامه</msgstr>
 <msgstr xml:lang="fi">Sanasto</msgstr>
 <msgstr xml:lang="fr">Glossaire</msgstr>
+<msgstr xml:lang="fur">Glossari</msgstr>
 <msgstr xml:lang="ga">Gluais</msgstr>
 <msgstr xml:lang="gl">Glosario</msgstr>
 <msgstr xml:lang="gu">શબ્દકોષ</msgstr>
@@ -1287,6 +1359,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">शब्दावली</msgstr>
 <msgstr xml:lang="hu">Szójegyzék</msgstr>
 <msgstr xml:lang="id">Daftar Istilah</msgstr>
+<msgstr xml:lang="is">Orðasafn</msgstr>
 <msgstr xml:lang="it">Glossario</msgstr>
 <msgstr xml:lang="ja">用語集</msgstr>
 <msgstr xml:lang="ka">ლექსიკონი</msgstr>
@@ -1347,6 +1420,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Важно</msgstr>
 <msgstr xml:lang="bn">গুরুত্বপূর্ণ</msgstr>
 <msgstr xml:lang="bn-IN">গুরুত্বপূর্ণ</msgstr>
+<msgstr xml:lang="bs">Važna</msgstr>
 <msgstr xml:lang="ca">Important</msgstr>
 <msgstr xml:lang="ca-valencia">Important</msgstr>
 <msgstr xml:lang="cs">Důležité</msgstr>
@@ -1365,6 +1439,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نکتهٔ مهم</msgstr>
 <msgstr xml:lang="fi">Tärkeä</msgstr>
 <msgstr xml:lang="fr">Important</msgstr>
+<msgstr xml:lang="fur">Impuartant</msgstr>
 <msgstr xml:lang="ga">Tábhachtach</msgstr>
 <msgstr xml:lang="gl">Importante</msgstr>
 <msgstr xml:lang="gu">મહત્વનું</msgstr>
@@ -1372,6 +1447,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">महत्वपूर्ण</msgstr>
 <msgstr xml:lang="hu">Fontos</msgstr>
 <msgstr xml:lang="id">Penting</msgstr>
+<msgstr xml:lang="is">Mikilvægt</msgstr>
 <msgstr xml:lang="it">Importante</msgstr>
 <msgstr xml:lang="ja">重要</msgstr>
 <msgstr xml:lang="ka">მნიშვნელოვანი</msgstr>
@@ -1431,6 +1507,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="be">Не скончана</msgstr>
 <msgstr xml:lang="bg">Незавършен</msgstr>
 <msgstr xml:lang="bn-IN">অসমাপ্ত</msgstr>
+<msgstr xml:lang="bs">Nepotpuno</msgstr>
 <msgstr xml:lang="ca">Incomplet</msgstr>
 <msgstr xml:lang="ca-valencia">Incomplet</msgstr>
 <msgstr xml:lang="cs">Neúplné</msgstr>
@@ -1446,6 +1523,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ناتمام</msgstr>
 <msgstr xml:lang="fi">Keskeneräinen</msgstr>
 <msgstr xml:lang="fr">Inachevé</msgstr>
+<msgstr xml:lang="fur">Incomplet</msgstr>
 <msgstr xml:lang="ga">Neamhiomlán</msgstr>
 <msgstr xml:lang="gl">Incompleto</msgstr>
 <msgstr xml:lang="gu">અપૂરતુ</msgstr>
@@ -1453,6 +1531,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">अपूर्ण</msgstr>
 <msgstr xml:lang="hu">Befejezetlen</msgstr>
 <msgstr xml:lang="id">Tak Lengkap</msgstr>
+<msgstr xml:lang="is">Ófullgert</msgstr>
 <msgstr xml:lang="it">Incompleto</msgstr>
 <msgstr xml:lang="ja">不完全</msgstr>
 <msgstr xml:lang="km">មិន​ពេញលេញ</msgstr>
@@ -1465,6 +1544,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="mr">अपूर्ण</msgstr>
 <msgstr xml:lang="nb">Uferdig</msgstr>
 <msgstr xml:lang="nl">Incompleet</msgstr>
+<msgstr xml:lang="oc">Incomplet</msgstr>
 <msgstr xml:lang="or">ଅସମ୍ପୂର୍ଣ୍ଣ</msgstr>
 <msgstr xml:lang="pa">ਅਧੂਰਾ</msgstr>
 <msgstr xml:lang="pl">Nieukończony</msgstr>
@@ -1501,6 +1581,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Индекс</msgstr>
 <msgstr xml:lang="bn">সূচী</msgstr>
 <msgstr xml:lang="bn-IN">সূচি</msgstr>
+<msgstr xml:lang="bs">Indeks</msgstr>
 <msgstr xml:lang="ca">Índex</msgstr>
 <msgstr xml:lang="ca-valencia">Índex</msgstr>
 <msgstr xml:lang="cs">Rejstřík</msgstr>
@@ -1519,6 +1600,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">فهرست</msgstr>
 <msgstr xml:lang="fi">Hakemisto</msgstr>
 <msgstr xml:lang="fr">Index</msgstr>
+<msgstr xml:lang="fur">Indiç analitic</msgstr>
 <msgstr xml:lang="ga">Innéacs</msgstr>
 <msgstr xml:lang="gl">Índice</msgstr>
 <msgstr xml:lang="gu">અનુક્રમણિકા</msgstr>
@@ -1526,6 +1608,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">विषय सूची</msgstr>
 <msgstr xml:lang="hu">Tárgymutató</msgstr>
 <msgstr xml:lang="id">Indeks</msgstr>
+<msgstr xml:lang="is">Atriðaskrá</msgstr>
 <msgstr xml:lang="it">Indice analitico</msgstr>
 <msgstr xml:lang="ja">索引</msgstr>
 <msgstr xml:lang="ka">სათაური</msgstr>
@@ -1581,6 +1664,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">আইনসন্মত</msgstr>
 <msgstr xml:lang="be">Прававыя ўмовы</msgstr>
 <msgstr xml:lang="bg">Правна информация</msgstr>
+<msgstr xml:lang="bs">Pravno</msgstr>
 <msgstr xml:lang="ca">Legal</msgstr>
 <msgstr xml:lang="ca-valencia">Legal</msgstr>
 <msgstr xml:lang="cs">Právní poznámky</msgstr>
@@ -1595,11 +1679,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">حقوقی</msgstr>
 <msgstr xml:lang="fi">Lainopilliset huomautukset</msgstr>
 <msgstr xml:lang="fr">Informations légales</msgstr>
+<msgstr xml:lang="fur">Legâl</msgstr>
 <msgstr xml:lang="gl">Aviso legal</msgstr>
 <msgstr xml:lang="he">חוקיות</msgstr>
 <msgstr xml:lang="hi">लीगल</msgstr>
 <msgstr xml:lang="hu">Jogi nyilatkozat</msgstr>
 <msgstr xml:lang="id">Hukum</msgstr>
+<msgstr xml:lang="is">Lagalegt</msgstr>
 <msgstr xml:lang="it">Legale</msgstr>
 <msgstr xml:lang="ja">法的通知</msgstr>
 <msgstr xml:lang="km">ស្រប​ច្បាប់</msgstr>
@@ -1611,6 +1697,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">നിയമപരം</msgstr>
 <msgstr xml:lang="nb">Juridisk</msgstr>
 <msgstr xml:lang="nl">Legal</msgstr>
+<msgstr xml:lang="oc">Avís legal</msgstr>
 <msgstr xml:lang="pa">ਲੀਗਲ</msgstr>
 <msgstr xml:lang="pl">Kwestie prawne</msgstr>
 <msgstr xml:lang="pt">Legal</msgstr>
@@ -1641,6 +1728,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">অনুজ্ঞাপত্ৰ</msgstr>
 <msgstr xml:lang="be">Ліцэнзія</msgstr>
 <msgstr xml:lang="bg">Лиценз</msgstr>
+<msgstr xml:lang="bs">Licenca</msgstr>
 <msgstr xml:lang="ca">Llicència</msgstr>
 <msgstr xml:lang="ca-valencia">Llicència</msgstr>
 <msgstr xml:lang="cs">Licence</msgstr>
@@ -1655,11 +1743,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">گواهینامه</msgstr>
 <msgstr xml:lang="fi">Lisenssi</msgstr>
 <msgstr xml:lang="fr">Licence</msgstr>
+<msgstr xml:lang="fur">Licence</msgstr>
 <msgstr xml:lang="gl">Licenza</msgstr>
 <msgstr xml:lang="he">רישיון</msgstr>
 <msgstr xml:lang="hi">लाइसेंस</msgstr>
 <msgstr xml:lang="hu">Licenc</msgstr>
 <msgstr xml:lang="id">Lisensi</msgstr>
+<msgstr xml:lang="is">Notkunarleyfi</msgstr>
 <msgstr xml:lang="it">Licenza</msgstr>
 <msgstr xml:lang="ja">ライセンス</msgstr>
 <msgstr xml:lang="km">អាជ្ញាបណ្ណ</msgstr>
@@ -1671,6 +1761,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">അനുമതിപത്രം</msgstr>
 <msgstr xml:lang="nb">Lisens</msgstr>
 <msgstr xml:lang="nl">Licentie</msgstr>
+<msgstr xml:lang="oc">Licéncia</msgstr>
 <msgstr xml:lang="pa">ਲਾਈਸੈਂਸ</msgstr>
 <msgstr xml:lang="pl">Licencja</msgstr>
 <msgstr xml:lang="pt">Licença</msgstr>
@@ -1702,6 +1793,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">ব্যৱস্থাপিত</msgstr>
 <msgstr xml:lang="be">Даглядчыкі</msgstr>
 <msgstr xml:lang="bg">Поддържа се от</msgstr>
+<msgstr xml:lang="bs">Održava</msgstr>
 <msgstr xml:lang="ca">Mantingut per</msgstr>
 <msgstr xml:lang="ca-valencia">Mantingut per</msgstr>
 <msgstr xml:lang="cs">Správci</msgstr>
@@ -1716,11 +1808,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نگهداری توسط</msgstr>
 <msgstr xml:lang="fi">Ylläpito</msgstr>
 <msgstr xml:lang="fr">Maintenu par</msgstr>
+<msgstr xml:lang="fur">Mantignût di</msgstr>
 <msgstr xml:lang="gl">Mantido por</msgstr>
 <msgstr xml:lang="he">מתוחזק על ידי</msgstr>
 <msgstr xml:lang="hi">द्वारा अनुरक्षित</msgstr>
 <msgstr xml:lang="hu">Karbantartja</msgstr>
 <msgstr xml:lang="id">Dikelola Oleh</msgstr>
+<msgstr xml:lang="is">Umsjónarmaður</msgstr>
 <msgstr xml:lang="it">Mantenuto da</msgstr>
 <msgstr xml:lang="ja">メンテナー</msgstr>
 <msgstr xml:lang="km">បាន​ថែទាំ​ដោយ</msgstr>
@@ -1732,9 +1826,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">പരിപാലിക്കുന്നത്</msgstr>
 <msgstr xml:lang="nb">Vedlikeholdt av</msgstr>
 <msgstr xml:lang="nl">Onderhouden door</msgstr>
+<msgstr xml:lang="oc">Mantengut per</msgstr>
 <msgstr xml:lang="pa">ਪਰਬੰਧ ਅਧੀਨ</msgstr>
 <msgstr xml:lang="pl">Opiekuni</msgstr>
-<msgstr xml:lang="pt">Mantido Por</msgstr>
+<msgstr xml:lang="pt">Mantido por</msgstr>
 <msgstr xml:lang="pt-BR">Mantido por</msgstr>
 <msgstr xml:lang="ro">Întreținut de</msgstr>
 <msgstr xml:lang="ru">Сопровождается</msgstr>
@@ -1762,6 +1857,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">অধিক তথ্য</msgstr>
 <msgstr xml:lang="be">Больш інфармацыі</msgstr>
 <msgstr xml:lang="bg">Допълнителна информация</msgstr>
+<msgstr xml:lang="bs">Više informacija</msgstr>
 <msgstr xml:lang="ca">Més informació</msgstr>
 <msgstr xml:lang="ca-valencia">Més informació</msgstr>
 <msgstr xml:lang="cs">Další informace</msgstr>
@@ -1776,11 +1872,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">اطلاعات بیشتر</msgstr>
 <msgstr xml:lang="fi">Lisätietoja</msgstr>
 <msgstr xml:lang="fr">Plus d'informations</msgstr>
+<msgstr xml:lang="fur">Plui informazions</msgstr>
 <msgstr xml:lang="gl">Máis información</msgstr>
 <msgstr xml:lang="he">מידע נוסף</msgstr>
 <msgstr xml:lang="hi">अधिक जानकारी</msgstr>
 <msgstr xml:lang="hu">További információk</msgstr>
 <msgstr xml:lang="id">Informasi Lanjut</msgstr>
+<msgstr xml:lang="is">Nánari upplýsingar</msgstr>
 <msgstr xml:lang="it">Ulteriori informazioni</msgstr>
 <msgstr xml:lang="ja">詳細</msgstr>
 <msgstr xml:lang="km">ព័ត៌មាន​បន្ថែម</msgstr>
@@ -1792,9 +1890,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">കൂടുതല്‍ വിവരം</msgstr>
 <msgstr xml:lang="nb">Mer informasjon</msgstr>
 <msgstr xml:lang="nl">Meer informatie</msgstr>
+<msgstr xml:lang="oc">Mai d'entresenhas</msgstr>
 <msgstr xml:lang="pa">ਹੋਰ ਜਾਣਕਾਰੀ</msgstr>
 <msgstr xml:lang="pl">Więcej informacji</msgstr>
-<msgstr xml:lang="pt">Mais Informação</msgstr>
+<msgstr xml:lang="pt">Mais informação</msgstr>
 <msgstr xml:lang="pt-BR">Mais informações</msgstr>
 <msgstr xml:lang="ro">Mai multe informații</msgstr>
 <msgstr xml:lang="ru">Дополнительная информация</msgstr>
@@ -1824,6 +1923,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Siguiente</msgstr>
 <msgstr xml:lang="be">Наперад</msgstr>
 <msgstr xml:lang="bg">Следващо</msgstr>
+<msgstr xml:lang="bs">Sljedeći</msgstr>
 <msgstr xml:lang="ca">Següent</msgstr>
 <msgstr xml:lang="ca-valencia">Següent</msgstr>
 <msgstr xml:lang="cs">Následující</msgstr>
@@ -1838,11 +1938,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">بعدی</msgstr>
 <msgstr xml:lang="fi">Seuraava</msgstr>
 <msgstr xml:lang="fr">Suivant</msgstr>
+<msgstr xml:lang="fur">Indenant</msgstr>
 <msgstr xml:lang="gl">Seguinte</msgstr>
 <msgstr xml:lang="he">הבא</msgstr>
 <msgstr xml:lang="hi">अगला</msgstr>
 <msgstr xml:lang="hu">Következő</msgstr>
 <msgstr xml:lang="id">Selanjutnya</msgstr>
+<msgstr xml:lang="is">Næsta</msgstr>
 <msgstr xml:lang="it">Avanti</msgstr>
 <msgstr xml:lang="ja">次へ</msgstr>
 <msgstr xml:lang="km">បន្ទាប់</msgstr>
@@ -1854,6 +1956,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">അടുത്തത്</msgstr>
 <msgstr xml:lang="nb">Neste</msgstr>
 <msgstr xml:lang="nl">Volgende</msgstr>
+<msgstr xml:lang="oc">Seguent</msgstr>
 <msgstr xml:lang="pa">ਅੱਗੇ</msgstr>
 <msgstr xml:lang="pl">Następna</msgstr>
 <msgstr xml:lang="pt">Seguinte</msgstr>
@@ -1889,6 +1992,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Бележка</msgstr>
 <msgstr xml:lang="bn">নোট</msgstr>
 <msgstr xml:lang="bn-IN">উল্লেখ্য</msgstr>
+<msgstr xml:lang="bs">Napomena</msgstr>
 <msgstr xml:lang="ca">Nota</msgstr>
 <msgstr xml:lang="ca-valencia">Nota</msgstr>
 <msgstr xml:lang="cs">Upozornění</msgstr>
@@ -1907,6 +2011,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نکته</msgstr>
 <msgstr xml:lang="fi">Huomautus</msgstr>
 <msgstr xml:lang="fr">Note</msgstr>
+<msgstr xml:lang="fur">Note</msgstr>
 <msgstr xml:lang="ga">Nóta</msgstr>
 <msgstr xml:lang="gl">Nota</msgstr>
 <msgstr xml:lang="gu">નોંધ</msgstr>
@@ -1914,6 +2019,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">टिप्पणी</msgstr>
 <msgstr xml:lang="hu">Megjegyzés</msgstr>
 <msgstr xml:lang="id">Catatan</msgstr>
+<msgstr xml:lang="is">Minnispunktur</msgstr>
 <msgstr xml:lang="it">Annotazione</msgstr>
 <msgstr xml:lang="ja">注記</msgstr>
 <msgstr xml:lang="ka">შენიშვნა</msgstr>
@@ -1971,6 +2077,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">অন্য কৃতিত্বসমূহ</msgstr>
 <msgstr xml:lang="be">Іншыя памочнікі</msgstr>
 <msgstr xml:lang="bg">Други заслуги</msgstr>
+<msgstr xml:lang="bs">Druge zasluge</msgstr>
 <msgstr xml:lang="ca">Altres crèdits</msgstr>
 <msgstr xml:lang="ca-valencia">Altres crèdits</msgstr>
 <msgstr xml:lang="cs">Ostatní zásluhy</msgstr>
@@ -1985,11 +2092,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">سازندگان دیگر</msgstr>
 <msgstr xml:lang="fi">Muut tunnustukset</msgstr>
 <msgstr xml:lang="fr">Autres crédits</msgstr>
+<msgstr xml:lang="fur">Altris ricognossiments</msgstr>
 <msgstr xml:lang="gl">Outros créditos</msgstr>
 <msgstr xml:lang="he">תודות נוספות</msgstr>
 <msgstr xml:lang="hi">अन्य क्रेडिट</msgstr>
 <msgstr xml:lang="hu">További köszönet</msgstr>
 <msgstr xml:lang="id">Kredit Lain</msgstr>
+<msgstr xml:lang="is">Önnur framlög</msgstr>
 <msgstr xml:lang="it">Ulteriori riconoscimenti</msgstr>
 <msgstr xml:lang="ja">その他のクレジット</msgstr>
 <msgstr xml:lang="km">បញ្ជី​អ្នក​ចូលរួម​ផ្សេង​ទៀត</msgstr>
@@ -2001,9 +2110,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">മറ്റു ബഹുമതികള്‍</msgstr>
 <msgstr xml:lang="nb">Andre bidragsytere</msgstr>
 <msgstr xml:lang="nl">Andere medewerkers</msgstr>
+<msgstr xml:lang="oc">Autres credits</msgstr>
 <msgstr xml:lang="pa">ਹੋਰ ਮਾਣ</msgstr>
 <msgstr xml:lang="pl">Inne zasługi</msgstr>
-<msgstr xml:lang="pt">Outros Reconhecimentos</msgstr>
+<msgstr xml:lang="pt">Outros reconhecimentos</msgstr>
 <msgstr xml:lang="pt-BR">Outros créditos</msgstr>
 <msgstr xml:lang="ro">Alți contribuitori</msgstr>
 <msgstr xml:lang="ru">Другие участники</msgstr>
@@ -2032,6 +2142,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Pervieyu</msgstr>
 <msgstr xml:lang="be">Састарэла</msgstr>
 <msgstr xml:lang="bg">Неактуално</msgstr>
+<msgstr xml:lang="bs">Zastarjelo</msgstr>
 <msgstr xml:lang="ca">Desactualitzat</msgstr>
 <msgstr xml:lang="ca-valencia">Desactualitzat</msgstr>
 <msgstr xml:lang="cs">Neaktuální</msgstr>
@@ -2046,11 +2157,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">قدیمی</msgstr>
 <msgstr xml:lang="fi">Vanhentunut</msgstr>
 <msgstr xml:lang="fr">Périmé</msgstr>
+<msgstr xml:lang="fur">Sorpassât</msgstr>
 <msgstr xml:lang="gl">Obsoleto</msgstr>
 <msgstr xml:lang="he">מיושן</msgstr>
 <msgstr xml:lang="hi">अप्रचलित</msgstr>
 <msgstr xml:lang="hu">Elavult</msgstr>
 <msgstr xml:lang="id">Kadaluarsa</msgstr>
+<msgstr xml:lang="is">Úrelt</msgstr>
 <msgstr xml:lang="it">Non aggiornato</msgstr>
 <msgstr xml:lang="ja">古くなっています</msgstr>
 <msgstr xml:lang="km">ហួស​សម័យ</msgstr>
@@ -2062,6 +2175,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">കാലഹരണപ്പെട്ടത്</msgstr>
 <msgstr xml:lang="nb">Utdatert</msgstr>
 <msgstr xml:lang="nl">Verouderd</msgstr>
+<msgstr xml:lang="oc">Obsolèt</msgstr>
 <msgstr xml:lang="pa">ਪੁਰਾਣਾ</msgstr>
 <msgstr xml:lang="pl">Przestarzałe</msgstr>
 <msgstr xml:lang="pt">Obsoleto</msgstr>
@@ -2072,7 +2186,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">Zastarelo</msgstr>
 <msgstr xml:lang="sr">Застарело</msgstr>
 <msgstr xml:lang="sr-Latn">Zastarelo</msgstr>
-<msgstr xml:lang="sv">Utdaterad</msgstr>
+<msgstr xml:lang="sv">Föråldrad</msgstr>
 <msgstr xml:lang="ta">காலாவதியானது</msgstr>
 <msgstr xml:lang="te">పురాతన </msgstr>
 <msgstr xml:lang="tg">Кӯҳна</msgstr>
@@ -2093,6 +2207,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Posar</msgstr>
 <msgstr xml:lang="be">Паўза</msgstr>
 <msgstr xml:lang="bg">Пауза</msgstr>
+<msgstr xml:lang="bs">Pauza</msgstr>
 <msgstr xml:lang="ca">Fes una pausa</msgstr>
 <msgstr xml:lang="ca-valencia">Fes una pausa</msgstr>
 <msgstr xml:lang="cs">Pozastavit</msgstr>
@@ -2107,11 +2222,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">مکث</msgstr>
 <msgstr xml:lang="fi">Keskeytä</msgstr>
 <msgstr xml:lang="fr">Pause</msgstr>
+<msgstr xml:lang="fur">Pause</msgstr>
 <msgstr xml:lang="gl">Pausa</msgstr>
 <msgstr xml:lang="he">השהיה</msgstr>
 <msgstr xml:lang="hi">ठहरें</msgstr>
 <msgstr xml:lang="hu">Szünet</msgstr>
 <msgstr xml:lang="id">Jeda</msgstr>
+<msgstr xml:lang="is">Í bið</msgstr>
 <msgstr xml:lang="it">Pausa</msgstr>
 <msgstr xml:lang="ja">一時停止</msgstr>
 <msgstr xml:lang="km">ផ្អាក</msgstr>
@@ -2123,6 +2240,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">തല്‍ക്കാലത്തേക്ക് നിര്‍ത്തുക</msgstr>
 <msgstr xml:lang="nb">Pause</msgstr>
 <msgstr xml:lang="nl">Pauze</msgstr>
+<msgstr xml:lang="oc">Metre en pausa</msgstr>
 <msgstr xml:lang="pa">ਪੌਜ਼</msgstr>
 <msgstr xml:lang="pl">Wstrzymuje</msgstr>
 <msgstr xml:lang="pt">Pausa</msgstr>
@@ -2155,6 +2273,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Reproducir</msgstr>
 <msgstr xml:lang="be">Зайграць</msgstr>
 <msgstr xml:lang="bg">Изпълнение</msgstr>
+<msgstr xml:lang="bs">Pokreni</msgstr>
 <msgstr xml:lang="ca">Reprodueix</msgstr>
 <msgstr xml:lang="ca-valencia">Reprodueix</msgstr>
 <msgstr xml:lang="cs">Přehrát</msgstr>
@@ -2169,11 +2288,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">پخش</msgstr>
 <msgstr xml:lang="fi">Toista</msgstr>
 <msgstr xml:lang="fr">Lecture</msgstr>
+<msgstr xml:lang="fur">Riprodûs</msgstr>
 <msgstr xml:lang="gl">Reproducir</msgstr>
 <msgstr xml:lang="he">נגינה</msgstr>
 <msgstr xml:lang="hi">चलायें</msgstr>
 <msgstr xml:lang="hu">Lejátszás</msgstr>
 <msgstr xml:lang="id">Putar</msgstr>
+<msgstr xml:lang="is">Spila</msgstr>
 <msgstr xml:lang="it">Riproduci</msgstr>
 <msgstr xml:lang="ja">再生</msgstr>
 <msgstr xml:lang="km">ចាក់</msgstr>
@@ -2185,6 +2306,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">കളിക്കുക</msgstr>
 <msgstr xml:lang="nb">Spill av</msgstr>
 <msgstr xml:lang="nl">Afspelen</msgstr>
+<msgstr xml:lang="oc">Lectura</msgstr>
 <msgstr xml:lang="pa">ਚਲਾਓ</msgstr>
 <msgstr xml:lang="pl">Odtwarza</msgstr>
 <msgstr xml:lang="pt">Reproduzir</msgstr>
@@ -2217,6 +2339,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Anterior</msgstr>
 <msgstr xml:lang="be">Назад</msgstr>
 <msgstr xml:lang="bg">Предишно</msgstr>
+<msgstr xml:lang="bs">Prethodni</msgstr>
 <msgstr xml:lang="ca">Anterior</msgstr>
 <msgstr xml:lang="ca-valencia">Anterior</msgstr>
 <msgstr xml:lang="cs">Předchozí</msgstr>
@@ -2231,11 +2354,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">قبلی</msgstr>
 <msgstr xml:lang="fi">Edellinen</msgstr>
 <msgstr xml:lang="fr">Précédent</msgstr>
+<msgstr xml:lang="fur">Indaûr</msgstr>
 <msgstr xml:lang="gl">Anterior</msgstr>
 <msgstr xml:lang="he">הקודם</msgstr>
 <msgstr xml:lang="hi">पिछला</msgstr>
 <msgstr xml:lang="hu">Előző</msgstr>
 <msgstr xml:lang="id">Sebelumnya</msgstr>
+<msgstr xml:lang="is">Fyrri</msgstr>
 <msgstr xml:lang="it">Indietro</msgstr>
 <msgstr xml:lang="ja">前へ</msgstr>
 <msgstr xml:lang="km">មុន</msgstr>
@@ -2247,6 +2372,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">മുമ്പത്തെ</msgstr>
 <msgstr xml:lang="nb">Forrige</msgstr>
 <msgstr xml:lang="nl">Vorige</msgstr>
+<msgstr xml:lang="oc">Precedent</msgstr>
 <msgstr xml:lang="pa">ਪਿੱਛੇ</msgstr>
 <msgstr xml:lang="pl">Poprzednia</msgstr>
 <msgstr xml:lang="pt">Anterior</msgstr>
@@ -2277,6 +2403,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">প্ৰকাশক</msgstr>
 <msgstr xml:lang="be">Публікацыя</msgstr>
 <msgstr xml:lang="bg">Издадено от</msgstr>
+<msgstr xml:lang="bs">Objavio</msgstr>
 <msgstr xml:lang="ca">Publicat per</msgstr>
 <msgstr xml:lang="ca-valencia">Publicat per</msgstr>
 <msgstr xml:lang="cs">Vydali</msgstr>
@@ -2289,11 +2416,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">منتشر شده توسط</msgstr>
 <msgstr xml:lang="fi">Julkaissut</msgstr>
 <msgstr xml:lang="fr">Publié par</msgstr>
+<msgstr xml:lang="fur">Publicât di</msgstr>
 <msgstr xml:lang="gl">Publicado por</msgstr>
 <msgstr xml:lang="he">פורסם ע״י</msgstr>
 <msgstr xml:lang="hi">द्वारा प्रकाशित</msgstr>
 <msgstr xml:lang="hu">Közzétette:</msgstr>
 <msgstr xml:lang="id">Diterbitkan Oleh</msgstr>
+<msgstr xml:lang="is">Gefið út af</msgstr>
 <msgstr xml:lang="it">Pubblicato da</msgstr>
 <msgstr xml:lang="ja">発行者</msgstr>
 <msgstr xml:lang="ko">출판</msgstr>
@@ -2301,9 +2430,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="lv">Izdeva</msgstr>
 <msgstr xml:lang="ml">പ്രസിദ്ധീകരിച്ചത്</msgstr>
 <msgstr xml:lang="nb">Publisert av</msgstr>
+<msgstr xml:lang="oc">Publicat per</msgstr>
 <msgstr xml:lang="pa">ਪਬਲਿਸ਼ ਕੀਤਾ: </msgstr>
 <msgstr xml:lang="pl">Opublikowane przez</msgstr>
-<msgstr xml:lang="pt">Publicado Por</msgstr>
+<msgstr xml:lang="pt">Publicado por</msgstr>
 <msgstr xml:lang="pt-BR">Publicado por</msgstr>
 <msgstr xml:lang="ro">Publicat de</msgstr>
 <msgstr xml:lang="ru">Опубликовано</msgstr>
@@ -2311,9 +2441,12 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">Objavili:</msgstr>
 <msgstr xml:lang="sr">Издавач</msgstr>
 <msgstr xml:lang="sr-Latn">Izdavač</msgstr>
+<msgstr xml:lang="sv">Publicerat av</msgstr>
 <msgstr xml:lang="ta">வெளியிட்டோர்</msgstr>
 <msgstr xml:lang="tg">Ношир</msgstr>
+<msgstr xml:lang="tr">Yayınlayan:</msgstr>
 <msgstr xml:lang="ug">تارقاتقۇچى</msgstr>
+<msgstr xml:lang="vi">Xuất bản bằng</msgstr>
 <msgstr xml:lang="zh-CN">发布者</msgstr>
 <msgstr xml:lang="zh-HK">發行者</msgstr>
 <msgstr xml:lang="zh-TW">發行者</msgstr>
@@ -2327,6 +2460,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="be">Гатова да праверкі</msgstr>
 <msgstr xml:lang="bg">За преглед</msgstr>
 <msgstr xml:lang="bn-IN">পরিমার্জনার জন্য প্রস্তুত</msgstr>
+<msgstr xml:lang="bs">Spreman za pregled</msgstr>
 <msgstr xml:lang="ca">Preparat per revisar</msgstr>
 <msgstr xml:lang="ca-valencia">Preparat per revisar</msgstr>
 <msgstr xml:lang="cs">Připraveno na kontrolu</msgstr>
@@ -2342,6 +2476,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">آماده جهت بررسی</msgstr>
 <msgstr xml:lang="fi">Valmis katselmointiin</msgstr>
 <msgstr xml:lang="fr">Prêt pour la relecture</msgstr>
+<msgstr xml:lang="fur">Pront pe revision</msgstr>
 <msgstr xml:lang="ga">Réidh d'athbhreithniú</msgstr>
 <msgstr xml:lang="gl">Listo para revisión</msgstr>
 <msgstr xml:lang="gu">નિરીક્ષણ માટે તૈયાર</msgstr>
@@ -2349,6 +2484,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">समीक्षा के लिए तैयार</msgstr>
 <msgstr xml:lang="hu">Átnézésre kész</msgstr>
 <msgstr xml:lang="id">Siap diperiksa</msgstr>
+<msgstr xml:lang="is">Senda í yfirlestur</msgstr>
 <msgstr xml:lang="it">Pronto per la revisione</msgstr>
 <msgstr xml:lang="ja">査読待ち</msgstr>
 <msgstr xml:lang="km">ត្រៀម​មើល​ឡើង​វិញ</msgstr>
@@ -2361,6 +2497,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="mr">पूनरावलोकन करीता सज्ज</msgstr>
 <msgstr xml:lang="nb">Klar for gjennomsyn</msgstr>
 <msgstr xml:lang="nl">Gereed voor proeflezen</msgstr>
+<msgstr xml:lang="oc">Prèst per la relectura</msgstr>
 <msgstr xml:lang="or">ସମୀକ୍ଷା ପାଇଁ ପ୍ରସ୍ତୁତ</msgstr>
 <msgstr xml:lang="pa">ਪੜਚੋਲ ਲਈ ਤਿਆਰ</msgstr>
 <msgstr xml:lang="pl">Gotowy do zrecenzowania</msgstr>
@@ -2396,6 +2533,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Виж също</msgstr>
 <msgstr xml:lang="bn">অতিরিক্ত দেখুন</msgstr>
 <msgstr xml:lang="bn-IN">অতিরিক্ত পাঠ</msgstr>
+<msgstr xml:lang="bs">Vidite i</msgstr>
 <msgstr xml:lang="ca">Vegeu també</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu també</msgstr>
 <msgstr xml:lang="cs">Viz také</msgstr>
@@ -2414,6 +2552,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">همچنین ببینید</msgstr>
 <msgstr xml:lang="fi">Lue myös</msgstr>
 <msgstr xml:lang="fr">Voir aussi</msgstr>
+<msgstr xml:lang="fur">Viodi ancje</msgstr>
 <msgstr xml:lang="ga">Féach Freisin</msgstr>
 <msgstr xml:lang="gl">Vexa tamén</msgstr>
 <msgstr xml:lang="gu">આ પણ જુઓ</msgstr>
@@ -2421,6 +2560,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">यह भी देखें</msgstr>
 <msgstr xml:lang="hu">Lásd még</msgstr>
 <msgstr xml:lang="id">Lihat Juga</msgstr>
+<msgstr xml:lang="is">Sjá einnig</msgstr>
 <msgstr xml:lang="it">Confronta anche</msgstr>
 <msgstr xml:lang="ja">関連項目</msgstr>
 <msgstr xml:lang="ka">ასევე იხილეთ</msgstr>
@@ -2440,10 +2580,11 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ne">हेर्नुहोस् पनि</msgstr>
 <msgstr xml:lang="nl">Zie ook</msgstr>
 <msgstr xml:lang="nn">SjÃ¥ Ã²g</msgstr>
+<msgstr xml:lang="oc">Vejatz tanben</msgstr>
 <msgstr xml:lang="or">ଏହାକୁ ମଧ୍ଯ ଦେଖନ୍ତୁ</msgstr>
 <msgstr xml:lang="pa">ਇਹ ਵੀ ਵੇਖੋ</msgstr>
 <msgstr xml:lang="pl">Proszę zobaczyć także</msgstr>
-<msgstr xml:lang="pt">Consulte Também</msgstr>
+<msgstr xml:lang="pt">Consulte também</msgstr>
 <msgstr xml:lang="pt-BR">Veja também</msgstr>
 <msgstr xml:lang="ro">Vezi și</msgstr>
 <msgstr xml:lang="ru">Смотрите также</msgstr>
@@ -2474,6 +2615,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Menguar imáxenes</msgstr>
 <msgstr xml:lang="be">Паменшыць выявы</msgstr>
 <msgstr xml:lang="bg">Намаляване на изображенията</msgstr>
+<msgstr xml:lang="bs">Smanji slike</msgstr>
 <msgstr xml:lang="ca">Fes les imatges més petites</msgstr>
 <msgstr xml:lang="ca-valencia">Fes les imatges més petites</msgstr>
 <msgstr xml:lang="cs">Zmenšit obrázky</msgstr>
@@ -2488,11 +2630,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">کوچک کردن تصویرها</msgstr>
 <msgstr xml:lang="fi">Sovita kuvat pienemmiksi</msgstr>
 <msgstr xml:lang="fr">Réduire la taille des images</msgstr>
+<msgstr xml:lang="fur">Impiçulìs imagjins</msgstr>
 <msgstr xml:lang="gl">Reducir imaxes</msgstr>
 <msgstr xml:lang="he">הקטנת התמונות</msgstr>
 <msgstr xml:lang="hi">छवियों को नीचे स्केल करें</msgstr>
 <msgstr xml:lang="hu">Képek zsugorítása</msgstr>
 <msgstr xml:lang="id">Perkecil gambar</msgstr>
+<msgstr xml:lang="is">Kvarða myndir niður</msgstr>
 <msgstr xml:lang="it">Rimpicciolisci immagini</msgstr>
 <msgstr xml:lang="ja">画像を縮小する</msgstr>
 <msgstr xml:lang="km">បន្ថយ​មាត្រដ្ឋាន​រូបភាព</msgstr>
@@ -2504,6 +2648,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">ചിത്രം ചെറുതാക്കുക</msgstr>
 <msgstr xml:lang="nb">Skaled ned bilder</msgstr>
 <msgstr xml:lang="nl">Afbeeldingen verkleinen</msgstr>
+<msgstr xml:lang="oc">Redusir la talha dels imatges</msgstr>
 <msgstr xml:lang="pa">ਚਿੱਤਰ ਸਕੇਲ ਕਰਕੇ ਛੋਟਾ ਕਰੋ</msgstr>
 <msgstr xml:lang="pl">Zmniejsza obrazy</msgstr>
 <msgstr xml:lang="pt">Reduzir dimensão das imagens</msgstr>
@@ -2525,7 +2670,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="vi">Co nhỏ ảnh</msgstr>
 <msgstr xml:lang="zh-CN">缩小图像</msgstr>
 <msgstr xml:lang="zh-HK">縮小圖片</msgstr>
-<msgstr xml:lang="zh-TW">縮小圖片</msgstr>
+<msgstr xml:lang="zh-TW">縮小影像</msgstr>
 </msg>
 
 <msg id="Sidebar">
@@ -2535,6 +2680,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Barra llateral</msgstr>
 <msgstr xml:lang="be">Бакавая панэль</msgstr>
 <msgstr xml:lang="bg">Странична лента</msgstr>
+<msgstr xml:lang="bs">Bočna traka</msgstr>
 <msgstr xml:lang="ca">Nota al marge</msgstr>
 <msgstr xml:lang="ca-valencia">Nota al marge</msgstr>
 <msgstr xml:lang="cs">Postranní</msgstr>
@@ -2549,11 +2695,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نوارکناری</msgstr>
 <msgstr xml:lang="fi">Sivupalkki</msgstr>
 <msgstr xml:lang="fr">Panneau latéral</msgstr>
+<msgstr xml:lang="fur">Sbare laterâl</msgstr>
 <msgstr xml:lang="gl">Barra lateral</msgstr>
 <msgstr xml:lang="he">סרגל צד</msgstr>
 <msgstr xml:lang="hi">बाज़ू पट्टी</msgstr>
 <msgstr xml:lang="hu">Oldalsáv</msgstr>
 <msgstr xml:lang="id">Bilah sisi</msgstr>
+<msgstr xml:lang="is">Hliðarspjald</msgstr>
 <msgstr xml:lang="it">Barra laterale</msgstr>
 <msgstr xml:lang="ja">サイドバー</msgstr>
 <msgstr xml:lang="km">របារ​ចំហៀង</msgstr>
@@ -2565,6 +2713,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">വശത്തെ പട്ട</msgstr>
 <msgstr xml:lang="nb">Sidelinje</msgstr>
 <msgstr xml:lang="nl">Zijbalk</msgstr>
+<msgstr xml:lang="oc">Barra laterala</msgstr>
 <msgstr xml:lang="pa">ਬਾਹੀ</msgstr>
 <msgstr xml:lang="pl">Panel boczny</msgstr>
 <msgstr xml:lang="pt">Barra lateral</msgstr>
@@ -2598,6 +2747,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="be">Накід</msgstr>
 <msgstr xml:lang="bg">Мъниче</msgstr>
 <msgstr xml:lang="bn-IN">স্বল্প তথ্য</msgstr>
+<msgstr xml:lang="bs">U začetku</msgstr>
 <msgstr xml:lang="ca">Esquelet</msgstr>
 <msgstr xml:lang="ca-valencia">Esquelet</msgstr>
 <msgstr xml:lang="cs">Pahýl</msgstr>
@@ -2613,6 +2763,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">متوقف</msgstr>
 <msgstr xml:lang="fi">Tynkä</msgstr>
 <msgstr xml:lang="fr">Ébauche</msgstr>
+<msgstr xml:lang="fur">Aboç</msgstr>
 <msgstr xml:lang="ga">Stumpa</msgstr>
 <msgstr xml:lang="gl">Stub</msgstr>
 <msgstr xml:lang="gu">સ્ટબ</msgstr>
@@ -2620,6 +2771,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">स्टब</msgstr>
 <msgstr xml:lang="hu">Csonk</msgstr>
 <msgstr xml:lang="id">Stub</msgstr>
+<msgstr xml:lang="is">Stubbur</msgstr>
 <msgstr xml:lang="it">Abbozzo</msgstr>
 <msgstr xml:lang="ja">スタブ</msgstr>
 <msgstr xml:lang="km">កន្ទុយ</msgstr>
@@ -2632,6 +2784,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="mr">स्टब</msgstr>
 <msgstr xml:lang="nb">Stubbe</msgstr>
 <msgstr xml:lang="nl">Beginnetje</msgstr>
+<msgstr xml:lang="oc">Esbòs</msgstr>
 <msgstr xml:lang="or">ଷ୍ଟବ</msgstr>
 <msgstr xml:lang="pa">ਸਟੱਬ</msgstr>
 <msgstr xml:lang="pl">Zalążek</msgstr>
@@ -2667,6 +2820,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Резюме</msgstr>
 <msgstr xml:lang="bn">সারাংশ</msgstr>
 <msgstr xml:lang="bn-IN">সারাংশ</msgstr>
+<msgstr xml:lang="bs">Siže</msgstr>
 <msgstr xml:lang="ca">Resum</msgstr>
 <msgstr xml:lang="ca-valencia">Resum</msgstr>
 <msgstr xml:lang="cs">Souhrn</msgstr>
@@ -2685,6 +2839,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">خلاصه</msgstr>
 <msgstr xml:lang="fi">Tiivistelmä</msgstr>
 <msgstr xml:lang="fr">Synopsis</msgstr>
+<msgstr xml:lang="fur">Struc</msgstr>
 <msgstr xml:lang="ga">Achoimre</msgstr>
 <msgstr xml:lang="gl">Sinopse</msgstr>
 <msgstr xml:lang="gu">સંજ્ઞાઓ</msgstr>
@@ -2692,6 +2847,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">सारांश</msgstr>
 <msgstr xml:lang="hu">Szinopszis</msgstr>
 <msgstr xml:lang="id">Ringkasan</msgstr>
+<msgstr xml:lang="is">Samantekt</msgstr>
 <msgstr xml:lang="it">Sinossi</msgstr>
 <msgstr xml:lang="ja">書式</msgstr>
 <msgstr xml:lang="ka">ანოტაცია</msgstr>
@@ -2711,6 +2867,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ne">संक्षेप</msgstr>
 <msgstr xml:lang="nl">Samenvatting</msgstr>
 <msgstr xml:lang="nn">Synopsis</msgstr>
+<msgstr xml:lang="oc">Resumit</msgstr>
 <msgstr xml:lang="or">ସାରାଂଶ</msgstr>
 <msgstr xml:lang="pa">ਸੰਖੇਪ</msgstr>
 <msgstr xml:lang="pl">Streszczenie</msgstr>
@@ -2747,6 +2904,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Подсказка</msgstr>
 <msgstr xml:lang="bn">ইঙ্গিত</msgstr>
 <msgstr xml:lang="bn-IN">উপদেশ</msgstr>
+<msgstr xml:lang="bs">Savjet</msgstr>
 <msgstr xml:lang="ca">Suggeriment</msgstr>
 <msgstr xml:lang="ca-valencia">Suggeriment</msgstr>
 <msgstr xml:lang="cs">Tip</msgstr>
@@ -2765,6 +2923,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">راهنمایی</msgstr>
 <msgstr xml:lang="fi">Vinkki</msgstr>
 <msgstr xml:lang="fr">Astuce</msgstr>
+<msgstr xml:lang="fur">Sugjeriment</msgstr>
 <msgstr xml:lang="ga">Leid</msgstr>
 <msgstr xml:lang="gl">Suxestión</msgstr>
 <msgstr xml:lang="gu">મદદ</msgstr>
@@ -2772,6 +2931,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">संकेत</msgstr>
 <msgstr xml:lang="hu">Tipp</msgstr>
 <msgstr xml:lang="id">Tip</msgstr>
+<msgstr xml:lang="is">Vísbending</msgstr>
 <msgstr xml:lang="it">Suggerimento</msgstr>
 <msgstr xml:lang="ja">ヒント</msgstr>
 <msgstr xml:lang="ka">კარნახი</msgstr>
@@ -2825,6 +2985,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">অনুবাদ কৰিছে</msgstr>
 <msgstr xml:lang="be">Пераклад</msgstr>
 <msgstr xml:lang="bg">Преведено от</msgstr>
+<msgstr xml:lang="bs">Preveli</msgstr>
 <msgstr xml:lang="ca">Traduït per</msgstr>
 <msgstr xml:lang="ca-valencia">Traduït per</msgstr>
 <msgstr xml:lang="cs">Přeložili</msgstr>
@@ -2839,11 +3000,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ترجمه شده توسط</msgstr>
 <msgstr xml:lang="fi">Käännös</msgstr>
 <msgstr xml:lang="fr">Traduit par</msgstr>
+<msgstr xml:lang="fur">Tradusût di</msgstr>
 <msgstr xml:lang="gl">Traducido por</msgstr>
 <msgstr xml:lang="he">תורגם על ידי</msgstr>
 <msgstr xml:lang="hi">अनुवादक</msgstr>
 <msgstr xml:lang="hu">Fordította</msgstr>
 <msgstr xml:lang="id">Diterjemahkan Oleh</msgstr>
+<msgstr xml:lang="is">Þýtt af</msgstr>
 <msgstr xml:lang="it">Tradotto da</msgstr>
 <msgstr xml:lang="ja">翻訳者</msgstr>
 <msgstr xml:lang="km">បាន​បកប្រែ​ដោយ</msgstr>
@@ -2855,9 +3018,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">പരിഭാഷപ്പെടുത്തിയത്</msgstr>
 <msgstr xml:lang="nb">Oversatt av</msgstr>
 <msgstr xml:lang="nl">Vertaald door</msgstr>
+<msgstr xml:lang="oc">Traduch per</msgstr>
 <msgstr xml:lang="pa">ਅਨੁਵਾਦ ਕੀਤਾ</msgstr>
 <msgstr xml:lang="pl">Przetłumaczone przez</msgstr>
-<msgstr xml:lang="pt">Traduzido Por</msgstr>
+<msgstr xml:lang="pt">Traduzido por</msgstr>
 <msgstr xml:lang="pt-BR">Traduzido por</msgstr>
 <msgstr xml:lang="ro">Tradus de</msgstr>
 <msgstr xml:lang="ru">Переведено</msgstr>
@@ -2887,6 +3051,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Ver imáxenes a tamañu normal</msgstr>
 <msgstr xml:lang="be">Прагляд выяў у звычайным памеры</msgstr>
 <msgstr xml:lang="bg">Нормален размер на изображенията</msgstr>
+<msgstr xml:lang="bs">Slike u normalnoj veličini</msgstr>
 <msgstr xml:lang="ca">Mostra les imatges a la mida normal</msgstr>
 <msgstr xml:lang="ca-valencia">Mostra les imatges a la mida normal</msgstr>
 <msgstr xml:lang="cs">Zobrazit obrázky v normální velikosti</msgstr>
@@ -2901,11 +3066,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نمایش تصویرها با اندازه واقعی</msgstr>
 <msgstr xml:lang="fi">Näytä kuvat alkuperäisessä koossa</msgstr>
 <msgstr xml:lang="fr">Voir les images à taille normale</msgstr>
+<msgstr xml:lang="fur">Viôt imagjins ae dimension normâl</msgstr>
 <msgstr xml:lang="gl">Ver as imaxes en tamaño normal</msgstr>
 <msgstr xml:lang="he">צפייה בתמונות בגודלן המקורי</msgstr>
 <msgstr xml:lang="hi">सामान्य आकार में छवियों को देखने के लिये</msgstr>
 <msgstr xml:lang="hu">Képek megjelenítése normál méretben</msgstr>
 <msgstr xml:lang="id">Tilik gambar pada ukuran normal</msgstr>
+<msgstr xml:lang="is">Skoða myndir í venjulegri stærð</msgstr>
 <msgstr xml:lang="it">Visualizza immagini alla dimensione normale</msgstr>
 <msgstr xml:lang="ja">画像を通常のサイズで表示</msgstr>
 <msgstr xml:lang="km">មើល​រូបភាព​ត្រឹម​ទំហំ​ធម្មតា</msgstr>
@@ -2917,9 +3084,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">സാധാരണവലിപ്പത്തില്‍ ചിത്രങ്ങള്‍ കാണുക</msgstr>
 <msgstr xml:lang="nb">Vis bilder i normal størrelse</msgstr>
 <msgstr xml:lang="nl">Afbeeldingen op normale grootte bekijken</msgstr>
+<msgstr xml:lang="oc">Veire los imatges a talha normala</msgstr>
 <msgstr xml:lang="pa">ਚਿੱਤਰ ਆਮ ਆਕਾਰ ਦੇ ਵੇਖੋ</msgstr>
 <msgstr xml:lang="pl">Wyświetla obrazy w zwykłym rozmiarze</msgstr>
-<msgstr xml:lang="pt">Visualizar as imagens no seu tamanho original</msgstr>
+<msgstr xml:lang="pt">Ver as imagens no seu tamanho original</msgstr>
 <msgstr xml:lang="pt-BR">Vizualizar imagens no tamanho normal</msgstr>
 <msgstr xml:lang="ro">Vizualizați imaginile la dimensiunea normală</msgstr>
 <msgstr xml:lang="ru">Обычный размер изображений</msgstr>
@@ -2938,7 +3106,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="vi">Xem ảnh cỡ thường</msgstr>
 <msgstr xml:lang="zh-CN">以正常大小查看图像</msgstr>
 <msgstr xml:lang="zh-HK">以圖片的原始尺寸顯示</msgstr>
-<msgstr xml:lang="zh-TW">以圖片的原始尺寸顯示</msgstr>
+<msgstr xml:lang="zh-TW">以影像的原始尺寸顯示</msgstr>
 </msg>
 
 <msg id="Warning">
@@ -2951,6 +3119,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="bg">Предупреждение</msgstr>
 <msgstr xml:lang="bn">সতর্কবাণী</msgstr>
 <msgstr xml:lang="bn-IN">সতর্কবাণী</msgstr>
+<msgstr xml:lang="bs">Upozoranje</msgstr>
 <msgstr xml:lang="ca">Atenció</msgstr>
 <msgstr xml:lang="ca-valencia">Atenció</msgstr>
 <msgstr xml:lang="cs">Varování</msgstr>
@@ -2969,6 +3138,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">هشدار</msgstr>
 <msgstr xml:lang="fi">Varoitus</msgstr>
 <msgstr xml:lang="fr">Avertissement</msgstr>
+<msgstr xml:lang="fur">Avertiment</msgstr>
 <msgstr xml:lang="ga">Rabhadh</msgstr>
 <msgstr xml:lang="gl">Aviso</msgstr>
 <msgstr xml:lang="gu">ચેતવણી</msgstr>
@@ -2976,6 +3146,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="hi">चेतावनी</msgstr>
 <msgstr xml:lang="hu">Figyelmeztetés</msgstr>
 <msgstr xml:lang="id">Peringatan</msgstr>
+<msgstr xml:lang="is">Aðvörun</msgstr>
 <msgstr xml:lang="it">Avvertimento</msgstr>
 <msgstr xml:lang="ja">警告</msgstr>
 <msgstr xml:lang="ka">გაფრთხილება</msgstr>
@@ -3033,6 +3204,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">লিখিছে</msgstr>
 <msgstr xml:lang="be">Аўтарства</msgstr>
 <msgstr xml:lang="bg">Създадено от</msgstr>
+<msgstr xml:lang="bs">Napisali</msgstr>
 <msgstr xml:lang="ca">Escrit per</msgstr>
 <msgstr xml:lang="ca-valencia">Escrit per</msgstr>
 <msgstr xml:lang="cs">Napsali</msgstr>
@@ -3047,11 +3219,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نوشته شده توسط</msgstr>
 <msgstr xml:lang="fi">Kirjoittanut</msgstr>
 <msgstr xml:lang="fr">Écrit par</msgstr>
+<msgstr xml:lang="fur">Scrit di</msgstr>
 <msgstr xml:lang="gl">Escrito por</msgstr>
 <msgstr xml:lang="he">נכתב על ידי</msgstr>
 <msgstr xml:lang="hi">लेखक</msgstr>
 <msgstr xml:lang="hu">Írta</msgstr>
 <msgstr xml:lang="id">Ditulis Oleh</msgstr>
+<msgstr xml:lang="is">Skrifað af</msgstr>
 <msgstr xml:lang="it">Scritto da</msgstr>
 <msgstr xml:lang="ja">著者</msgstr>
 <msgstr xml:lang="km">បាន​សរសេរ​ដោយ</msgstr>
@@ -3063,9 +3237,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">എഴുതിയത്</msgstr>
 <msgstr xml:lang="nb">Skrevet av</msgstr>
 <msgstr xml:lang="nl">Geschreven door</msgstr>
+<msgstr xml:lang="oc">Escrich per</msgstr>
 <msgstr xml:lang="pa">ਲਿਖਿਆ</msgstr>
 <msgstr xml:lang="pl">Napisane przez</msgstr>
-<msgstr xml:lang="pt">Escrito Por</msgstr>
+<msgstr xml:lang="pt">Escrito por</msgstr>
 <msgstr xml:lang="pt-BR">Escrito por</msgstr>
 <msgstr xml:lang="ro">Autori</msgstr>
 <msgstr xml:lang="ru">Написано</msgstr>
@@ -3096,6 +3271,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Ver la entrada <biblioentry.label/> de la biliografía.</msgstr>
 <msgstr xml:lang="be">Бібліяграфічны запіс <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="bg">Вижте в библиографията <biblioentry.label/>.</msgstr>
+<msgstr xml:lang="bs">Pogledaj bibliotečnu stavku <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="ca">Vegeu l'entrada de bibliografia <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu l'entrada de bibliografia <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="cs">Zobrazit bibliografický záznam <biblioentry.label/>.</msgstr>
@@ -3110,11 +3286,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">نمایش ورودی فهرست کتب <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="fi">Näytä kirjallisuusviite <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="fr">Voir l'entrée bibliographique <biblioentry.label/>.</msgstr>
+<msgstr xml:lang="fur">Viôt la vôs bibliografiche <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="gl">Ver la entrada <biblioentry.label/> da bibliografía.</msgstr>
 <msgstr xml:lang="he">צפייה ברשומת הביבליוגרפיה <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="hi"><biblioentry.label/> ग्रंथ सूची प्रविष्टि देखें.</msgstr>
 <msgstr xml:lang="hu">Ezen irodalomjegyzék-bejegyzés megjelenítése: <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="id">Tilik entri bibliografi <biblioentry.label/>.</msgstr>
+<msgstr xml:lang="is">Skoða heimildafærsluna <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="it">Visualizza la voce bibliografica <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="ja">参考文献のエントリ <biblioentry.label/> を表示する。</msgstr>
 <msgstr xml:lang="km">មើល​ធាតុ​របស់​គន្ថនិទ្ទេស <biblioentry.label/> ។</msgstr>
@@ -3126,6 +3304,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><biblioentry.label/> എന്ന ഗ്രന്ഥസൂചിക എന്‍ട്രി കാണുക.</msgstr>
 <msgstr xml:lang="nb">Vis bibliografioppføring <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="nl">Bibliografie-item ‘<biblioentry.label/>’ bekijken.</msgstr>
+<msgstr xml:lang="oc">Veire l'entrada bibliografica <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="pa">ਕਿਤਾਬ-ਸੂਚੀ ਐਂਟਰੀ <biblioentry.label/> ਵੇਖੋ।</msgstr>
 <msgstr xml:lang="pl">Wpis bibliograficzny <biblioentry.label/>.</msgstr>
 <msgstr xml:lang="pt">Consultar a entrada na bibliografia <biblioentry.label/>.</msgstr>
@@ -3157,6 +3336,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">(<biblioentry.label/>)</msgstr>
 <msgstr xml:lang="be">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="bg">[<biblioentry.label/>]</msgstr>
+<msgstr xml:lang="bs">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="ca">«<biblioentry.label/>»</msgstr>
 <msgstr xml:lang="ca-valencia">«<biblioentry.label/>»</msgstr>
 <msgstr xml:lang="cs">[<biblioentry.label/>]</msgstr>
@@ -3171,11 +3351,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="fi">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="fr">(<biblioentry.label/>)</msgstr>
+<msgstr xml:lang="fur">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="gl">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="he">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="hi">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="hu">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="id">[<biblioentry.label/>]</msgstr>
+<msgstr xml:lang="is">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="it">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="ja">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="km">[<biblioentry.label/>]</msgstr>
@@ -3187,6 +3369,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="nb">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="nl">[<biblioentry.label/>]</msgstr>
+<msgstr xml:lang="oc">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="pa">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="pl">[<biblioentry.label/>]</msgstr>
 <msgstr xml:lang="pt">[<biblioentry.label/>]</msgstr>
@@ -3218,6 +3401,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">(<citation.label/>)</msgstr>
 <msgstr xml:lang="be">[<citation.label/>]</msgstr>
 <msgstr xml:lang="bg">[<citation.label/>]</msgstr>
+<msgstr xml:lang="bs">[<citation.label/>]</msgstr>
 <msgstr xml:lang="ca">«<citation.label/>»</msgstr>
 <msgstr xml:lang="ca-valencia">«<citation.label/>»</msgstr>
 <msgstr xml:lang="cs">[<citation.label/>]</msgstr>
@@ -3232,11 +3416,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">[<citation.label/>]</msgstr>
 <msgstr xml:lang="fi">(<citation.label/>)</msgstr>
 <msgstr xml:lang="fr">(<citation.label/>)</msgstr>
+<msgstr xml:lang="fur">[<citation.label/>]</msgstr>
 <msgstr xml:lang="gl">[<citation.label/>]</msgstr>
 <msgstr xml:lang="he">[<citation.label/>]</msgstr>
 <msgstr xml:lang="hi">[<citation.label/>]</msgstr>
 <msgstr xml:lang="hu">[<citation.label/>]</msgstr>
 <msgstr xml:lang="id">[<citation.label/>]</msgstr>
+<msgstr xml:lang="is">[<citation.label/>]</msgstr>
 <msgstr xml:lang="it">[<citation.label/>]</msgstr>
 <msgstr xml:lang="ja">[<citation.label/>]</msgstr>
 <msgstr xml:lang="km">[<citation.label/>]</msgstr>
@@ -3248,6 +3434,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><citation.label/>]</msgstr>
 <msgstr xml:lang="nb">[<citation.label/>]</msgstr>
 <msgstr xml:lang="nl">[<citation.label/>]</msgstr>
+<msgstr xml:lang="oc">[<citation.label/>]</msgstr>
 <msgstr xml:lang="pa">[<citation.label/>]</msgstr>
 <msgstr xml:lang="pl">[<citation.label/>]</msgstr>
 <msgstr xml:lang="pt">[<citation.label/>]</msgstr>
@@ -3279,6 +3466,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">de <comment.name/> el <comment.date/></msgstr>
 <msgstr xml:lang="be">ад <comment.name/>, <comment.date/></msgstr>
 <msgstr xml:lang="bg">от <comment.name/> на <comment.date/></msgstr>
+<msgstr xml:lang="bs">napisao <comment.name/> dana <comment.date/></msgstr>
 <msgstr xml:lang="ca">de <comment.name/> a <comment.date/></msgstr>
 <msgstr xml:lang="ca-valencia">de <comment.name/> a <comment.date/></msgstr>
 <msgstr xml:lang="cs">autor <comment.name/>, datum <comment.date/></msgstr>
@@ -3293,11 +3481,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">از <comment.name/> در <comment.date/></msgstr>
 <msgstr xml:lang="fi"> — <comment.name/>, <comment.date/></msgstr>
 <msgstr xml:lang="fr">par <comment.name/>, le <comment.date/></msgstr>
+<msgstr xml:lang="fur">di <comment.name/> in date <comment.date/></msgstr>
 <msgstr xml:lang="gl">de <comment.name/> o <comment.date/></msgstr>
 <msgstr xml:lang="he">מאת <comment.name/> ב־<comment.date/></msgstr>
 <msgstr xml:lang="hi"><comment.name/> से <comment.date/> पर</msgstr>
 <msgstr xml:lang="hu">tőle: <comment.name/> ekkor: <comment.date/></msgstr>
 <msgstr xml:lang="id">dari <comment.name/> pada <comment.date/></msgstr>
+<msgstr xml:lang="is">frá <comment.name/> þann <comment.date/></msgstr>
 <msgstr xml:lang="it">da <comment.name/> in data <comment.date/></msgstr>
 <msgstr xml:lang="ja"><comment.date/> <comment.name/> より</msgstr>
 <msgstr xml:lang="km">ពី <comment.name/> នៅ​ <comment.date/></msgstr>
@@ -3309,6 +3499,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><comment.date/> തിയതിയില്‍ <comment.name/> നിന്ന്</msgstr>
 <msgstr xml:lang="nb">fra <comment.name/> <comment.date/></msgstr>
 <msgstr xml:lang="nl">door <comment.name/> op <comment.date/></msgstr>
+<msgstr xml:lang="oc">per <comment.name/>, lo <comment.date/></msgstr>
 <msgstr xml:lang="pa"><comment.name/> ਵਲੋਂ <comment.date/> ਨੂੰ</msgstr>
 <msgstr xml:lang="pl">autorstwa <comment.name/> dnia <comment.date/></msgstr>
 <msgstr xml:lang="pt">de <comment.name/> em <comment.date/></msgstr>
@@ -3327,7 +3518,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="tr"><comment.name/> tarafından <comment.date/> tarihinde</msgstr>
 <msgstr xml:lang="ug"><comment.date/> دا <comment.name/> دىن كەلگەن</msgstr>
 <msgstr xml:lang="uk">з <comment.name/> в <comment.date/></msgstr>
-<msgstr xml:lang="vi">từ <comment.name/> thời điểm <comment.date/></msgstr>
+<msgstr xml:lang="vi">từ <comment.name/> vào <comment.date/></msgstr>
 <msgstr xml:lang="zh-CN">来自 <comment.name/>，于 <comment.date/></msgstr>
 <msgstr xml:lang="zh-HK">從 <comment.name/> 於 <comment.date/></msgstr>
 <msgstr xml:lang="zh-TW">從 <comment.name/> 於 <comment.date/></msgstr>
@@ -3340,6 +3531,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">de <comment.name/></msgstr>
 <msgstr xml:lang="be">ад <comment.name/></msgstr>
 <msgstr xml:lang="bg">от <comment.name/></msgstr>
+<msgstr xml:lang="bs">napisao <comment.name/></msgstr>
 <msgstr xml:lang="ca">de <comment.name/></msgstr>
 <msgstr xml:lang="ca-valencia">de <comment.name/></msgstr>
 <msgstr xml:lang="cs">autor <comment.name/></msgstr>
@@ -3354,11 +3546,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">از <comment.name/></msgstr>
 <msgstr xml:lang="fi"> — <comment.name/></msgstr>
 <msgstr xml:lang="fr">par <comment.name/></msgstr>
+<msgstr xml:lang="fur">di <comment.name/></msgstr>
 <msgstr xml:lang="gl">de <comment.name/></msgstr>
 <msgstr xml:lang="he">מאת <comment.name/></msgstr>
 <msgstr xml:lang="hi"><comment.name/> से</msgstr>
 <msgstr xml:lang="hu">tőle: <comment.name/></msgstr>
 <msgstr xml:lang="id">dari <comment.name/></msgstr>
+<msgstr xml:lang="is">frá <comment.name/></msgstr>
 <msgstr xml:lang="it">da <comment.name/></msgstr>
 <msgstr xml:lang="ja"><comment.name/> より</msgstr>
 <msgstr xml:lang="km">ពី <comment.name/></msgstr>
@@ -3369,6 +3563,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><comment.name/> ല്‍ നിന്ന്</msgstr>
 <msgstr xml:lang="nb">fra <comment.name/></msgstr>
 <msgstr xml:lang="nl">door <comment.name/></msgstr>
+<msgstr xml:lang="oc">per <comment.name/></msgstr>
 <msgstr xml:lang="pa"><comment.name/> ਵਲੋਂ</msgstr>
 <msgstr xml:lang="pl">autorstwa <comment.name/></msgstr>
 <msgstr xml:lang="pt">de <comment.name/></msgstr>
@@ -3399,6 +3594,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="as">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="be">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="bg">© <copyright.years/> <copyright.name/></msgstr>
+<msgstr xml:lang="bs">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="ca">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="ca-valencia">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="cs">© <copyright.years/> <copyright.name/></msgstr>
@@ -3413,11 +3609,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="fi">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="fr">© <copyright.years/> <copyright.name/></msgstr>
+<msgstr xml:lang="fur">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="gl">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="he">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="hi">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="hu">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="id">© <copyright.years/> <copyright.name/></msgstr>
+<msgstr xml:lang="is">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="it">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="ja">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="kn">© <copyright.years/> <copyright.name/></msgstr>
@@ -3428,6 +3626,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="nb">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="nl">© <copyright.years/> <copyright.name/></msgstr>
+<msgstr xml:lang="oc">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="pa">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="pl">© <copyright.years/> <copyright.name/></msgstr>
 <msgstr xml:lang="pt">© <copyright.years/> <copyright.name/></msgstr>
@@ -3459,10 +3658,11 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Unviar corréu electrónicu a «<string/>».</msgstr>
 <msgstr xml:lang="be">Паслаць электронны ліст для "<string/>".</msgstr>
 <msgstr xml:lang="bg">Изпращане на е-писмо до „<string/>“.</msgstr>
+<msgstr xml:lang="bs">Pošalji poruku za ‘<string/>’.</msgstr>
 <msgstr xml:lang="ca">Envieu un correu a «<string/>».</msgstr>
 <msgstr xml:lang="ca-valencia">Envieu un correu a «<string/>».</msgstr>
 <msgstr xml:lang="cs">Poslat e-mail na „<string/>“.</msgstr>
-<msgstr xml:lang="da">Send e-post til "<string/>".</msgstr>
+<msgstr xml:lang="da">Send e-mail til "<string/>".</msgstr>
 <msgstr xml:lang="de">E-Mail an »<string/>« verschicken.</msgstr>
 <msgstr xml:lang="el">Αποστολή μηνύματος στη διεύθυνση ‘<string/>’.</msgstr>
 <msgstr xml:lang="en-GB">Send e-mail to ‘<string/>’.</msgstr>
@@ -3473,11 +3673,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ارسال ایمیل به ‘<string/>’.</msgstr>
 <msgstr xml:lang="fi">Lähetä sähköpostia vastaanottajalle ”<string/>”.</msgstr>
 <msgstr xml:lang="fr">Envoyer un courriel à « <string/> ».</msgstr>
+<msgstr xml:lang="fur">Invie e-mail a ‘<string/>’.</msgstr>
 <msgstr xml:lang="gl">Enviar correo electrónico a «<string/>». </msgstr>
 <msgstr xml:lang="he">שליחת דוא״ל אל ‘<string/>’.</msgstr>
 <msgstr xml:lang="hi">ई-मेल भेजें ‘<string/>’.</msgstr>
 <msgstr xml:lang="hu">E-mail küldése ide: „<string/>”.</msgstr>
 <msgstr xml:lang="id">Kirim surel ke ‘<string/>’.</msgstr>
+<msgstr xml:lang="is">Senda tölvupóst á ‘<string/>’.</msgstr>
 <msgstr xml:lang="it">Invia email a «<string/>».</msgstr>
 <msgstr xml:lang="ja">‘<string/>’ にメールを送る</msgstr>
 <msgstr xml:lang="km">ផ្ញើ​អ៊ីមែល​ទៅកាន់ ‘<string/>’ ។</msgstr>
@@ -3489,9 +3691,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">‘<string/>’ ലേക്ക് ഇമെയില്‍ അയയ്ക്കുക.</msgstr>
 <msgstr xml:lang="nb">Send e-post til «<string/>».</msgstr>
 <msgstr xml:lang="nl">E-mail versturen naar ‘<string/>’.</msgstr>
+<msgstr xml:lang="oc">Mandar un corrièl a « <string/> ».</msgstr>
 <msgstr xml:lang="pa">‘<string/>’ ਨੂੰ ਈਮੇਲ ਭੇਜੋ।</msgstr>
-<msgstr xml:lang="pl">Wyślij wiadomość do "<string/>".</msgstr>
-<msgstr xml:lang="pt">Enviar email para ‘<string/>’.</msgstr>
+<msgstr xml:lang="pl">Wyślij wiadomość do „<string/>”.</msgstr>
+<msgstr xml:lang="pt">Enviar email para "<string/>".</msgstr>
 <msgstr xml:lang="pt-BR">Enviar e-mail para "<string/>".</msgstr>
 <msgstr xml:lang="ro">Trimiteți email către „<string/>”.</msgstr>
 <msgstr xml:lang="ru">Послать письмо по эл. почте «<string/>».</msgstr>
@@ -3499,7 +3702,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">Pošljite elektronsko sporočilo na ‘<string/>’.</msgstr>
 <msgstr xml:lang="sr">Пошаљите поруку „<string/>“.</msgstr>
 <msgstr xml:lang="sr-Latn">Pošaljite poruku „<string/>“.</msgstr>
-<msgstr xml:lang="sv">Skicka e-post till "<string/>".</msgstr>
+<msgstr xml:lang="sv">Skicka e-post till ”<string/>”.</msgstr>
 <msgstr xml:lang="ta">‘<string/>’ க்கு மின்னஞ்சல் அனுப்பு.</msgstr>
 <msgstr xml:lang="te">‘<string/>’కి ఈమెయిల్ పంపండి.</msgstr>
 <msgstr xml:lang="tg">Фиристодани паёми электронӣ ба ‘<string/>’.</msgstr>
@@ -3507,7 +3710,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="tr">‘<string/>’ adresine e-posta gönder.</msgstr>
 <msgstr xml:lang="ug">ئېلخەتنى ‘<string/>’ غا يوللايدۇ.</msgstr>
 <msgstr xml:lang="uk">Надіслати листа до « <string/>».</msgstr>
-<msgstr xml:lang="vi">Gửi email cho ‘<string/>’.</msgstr>
+<msgstr xml:lang="vi">Gửi thư điện tử đến ‘<string/>’.</msgstr>
 <msgstr xml:lang="zh-CN">发送邮件至 <string/>。</msgstr>
 <msgstr xml:lang="zh-HK">傳送電子郵件至位址「<string/>」。</msgstr>
 <msgstr xml:lang="zh-TW">傳送電子郵件至位址「<string/>」。</msgstr>
@@ -3520,6 +3723,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Llei la definición pa «<glossterm/>».</msgstr>
 <msgstr xml:lang="be">Дэфініцыя для "<glossterm/>".</msgstr>
 <msgstr xml:lang="bg">Проверете дефиницията на „<b><glossterm/></b>“.</msgstr>
+<msgstr xml:lang="bs">Pročitaj definiciju za ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="ca">Llegiu la definició de «<glossterm/>».</msgstr>
 <msgstr xml:lang="ca-valencia">Llegiu la definició de «<glossterm/>».</msgstr>
 <msgstr xml:lang="cs">Přečíst definici „<glossterm/>“.</msgstr>
@@ -3534,11 +3738,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">خواندن تعریف برای ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="fi">Lue termin ”<glossterm/>” määritelmä.</msgstr>
 <msgstr xml:lang="fr">Lire la définition de « <glossterm/> ».</msgstr>
+<msgstr xml:lang="fur">Lei la definizion di ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="gl">Ler a definición de «<glossterm/>».</msgstr>
 <msgstr xml:lang="he">קריאת ההגדרה עבור ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="hi">परिभाषा पढ़ें ‘<glossterm/>’ के लिये.</msgstr>
 <msgstr xml:lang="hu">„<glossterm/>” definíciójának elolvasása.</msgstr>
 <msgstr xml:lang="id">Baca definisi untuk ‘<glossterm/>’</msgstr>
+<msgstr xml:lang="is">Lesa skilgreininguna fyrir ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="it">Consulta la definizione di «<glossterm/>».</msgstr>
 <msgstr xml:lang="ja">‘<glossterm/>’の定義を参照する。</msgstr>
 <msgstr xml:lang="km">អាន​និយមន័យ ‘<glossterm/>’ ។</msgstr>
@@ -3550,9 +3756,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">‘<glossterm/>’ ന്റെ വിവരണം വായിക്കുക .</msgstr>
 <msgstr xml:lang="nb">Les definisjonen for «<glossterm/>».</msgstr>
 <msgstr xml:lang="nl">De definitie van ‘<glossterm/>’ lezen.</msgstr>
+<msgstr xml:lang="oc">Legir la definicion de « <glossterm/> ».</msgstr>
 <msgstr xml:lang="pa">‘<glossterm/>’ ਲਈ ਪ੍ਰੀਭਾਸ਼ਾ ਪੜ੍ਹੋ।</msgstr>
-<msgstr xml:lang="pl">Definicja dla "<glossterm/>".</msgstr>
-<msgstr xml:lang="pt">Consultar a definição de ‘<glossterm/>’.</msgstr>
+<msgstr xml:lang="pl">Definicja dla „<glossterm/>”.</msgstr>
+<msgstr xml:lang="pt">Consultar a definição de "<glossterm/>".</msgstr>
 <msgstr xml:lang="pt-BR">Ler a definição para "<glossterm/>".</msgstr>
 <msgstr xml:lang="ro">Citiți definiția pentru „<glossterm/>”.</msgstr>
 <msgstr xml:lang="ru">Смотрите определение «<glossterm/>».</msgstr>
@@ -3560,7 +3767,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">Preberite definicijo pojma ‘<glossterm/>’.</msgstr>
 <msgstr xml:lang="sr">Прочитајте дефиницију за „<glossterm/>“.</msgstr>
 <msgstr xml:lang="sr-Latn">Pročitajte definiciju za „<glossterm/>“.</msgstr>
-<msgstr xml:lang="sv">Läs definitionen för "<glossterm/>".</msgstr>
+<msgstr xml:lang="sv">Läs definitionen för ”<glossterm/>”.</msgstr>
 <msgstr xml:lang="ta"> ‘<glossterm/>’ க்கு வரையறையை படி</msgstr>
 <msgstr xml:lang="te">‘<glossterm/>’నకు నిర్వచనాన్ని చదువండి.</msgstr>
 <msgstr xml:lang="tg">Таъриф барои ‘<glossterm/>’.</msgstr>
@@ -3581,6 +3788,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Consulta <glosssee/>.</msgstr>
 <msgstr xml:lang="be">Глядзіце <glosssee/>.</msgstr>
 <msgstr xml:lang="bg">Виж <b><glosssee/></b>.</msgstr>
+<msgstr xml:lang="bs">Vidi<glosssee/>.</msgstr>
 <msgstr xml:lang="ca">Vegeu <glosssee/>.</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu <glosssee/>.</msgstr>
 <msgstr xml:lang="cs">Viz <glosssee/>.</msgstr>
@@ -3595,11 +3803,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ببینید <glosssee/>.</msgstr>
 <msgstr xml:lang="fi">Katso <glosssee/>.</msgstr>
 <msgstr xml:lang="fr">Voir <glosssee/>.</msgstr>
+<msgstr xml:lang="fur">Consultâ <glosssee/>.</msgstr>
 <msgstr xml:lang="gl">Consulte <glosssee/>.</msgstr>
 <msgstr xml:lang="he">ניתן לעיין ב<glosssee/>.</msgstr>
 <msgstr xml:lang="hi">देखें <glosssee/>.</msgstr>
 <msgstr xml:lang="hu">Lásd: <glosssee/>.</msgstr>
 <msgstr xml:lang="id">Lihat <glosssee/>.</msgstr>
+<msgstr xml:lang="is">Sjá <glosssee/>.</msgstr>
 <msgstr xml:lang="it">Consultare <glosssee/>.</msgstr>
 <msgstr xml:lang="ja"><glosssee/> を参照。</msgstr>
 <msgstr xml:lang="km">សូម​មើល <glosssee/> ។</msgstr>
@@ -3611,6 +3821,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><glosssee/> കാണുക.</msgstr>
 <msgstr xml:lang="nb">Se <glosssee/>.</msgstr>
 <msgstr xml:lang="nl">Zie <glosssee/>.</msgstr>
+<msgstr xml:lang="oc">Veire <glosssee/>.</msgstr>
 <msgstr xml:lang="pa"><glosssee/> ਵੇਖੋ।</msgstr>
 <msgstr xml:lang="pl">Proszę zobaczyć <glosssee/>.</msgstr>
 <msgstr xml:lang="pt">Consulte <glosssee/>.</msgstr>
@@ -3642,6 +3853,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Consulta tamién <glosssee/>.</msgstr>
 <msgstr xml:lang="be">Таксама глядзіце <glosssee/>.</msgstr>
 <msgstr xml:lang="bg">Виж също <b><glosssee/></b></msgstr>
+<msgstr xml:lang="bs">Vidi i <glosssee/>.</msgstr>
 <msgstr xml:lang="ca">Vegeu també <glosssee/>.</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu també <glosssee/>.</msgstr>
 <msgstr xml:lang="cs">Viz také <glosssee/>.</msgstr>
@@ -3656,11 +3868,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">همچنین ببینید <glosssee/>.</msgstr>
 <msgstr xml:lang="fi">Katso myös <glosssee/>.</msgstr>
 <msgstr xml:lang="fr">Voir aussi <glosssee/>.</msgstr>
+<msgstr xml:lang="fur">Consultâ ancje <glosssee/>.</msgstr>
 <msgstr xml:lang="gl">Consulte tamén <glosssee/>.</msgstr>
 <msgstr xml:lang="he">לקריאה נוספת: <glosssee/>.</msgstr>
 <msgstr xml:lang="hi">यह भी देखें <glosssee/>.</msgstr>
 <msgstr xml:lang="hu">Lásd még: <glosssee/>.</msgstr>
 <msgstr xml:lang="id">Lihat juga <glosssee/>.</msgstr>
+<msgstr xml:lang="is">Sjá einnig <glosssee/>.</msgstr>
 <msgstr xml:lang="it">Consultare anche <glosssee/>.</msgstr>
 <msgstr xml:lang="ja"><glosssee/> も参照。</msgstr>
 <msgstr xml:lang="km">សូម​មើល​ <glosssee/> ផង​ដែរ ។</msgstr>
@@ -3672,6 +3886,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><glosssee/> യും കാണുക.</msgstr>
 <msgstr xml:lang="nb">Se også <glosssee/>.</msgstr>
 <msgstr xml:lang="nl">Zie ook <glosssee/>.</msgstr>
+<msgstr xml:lang="oc">Vejatz tanben <glosssee/>.</msgstr>
 <msgstr xml:lang="pa"><glosssee/> ਵੀ ਵੇਖੋ।</msgstr>
 <msgstr xml:lang="pl">Proszę zobaczyć także <glosssee/>.</msgstr>
 <msgstr xml:lang="pt">Consulte também <glosssee/>.</msgstr>
@@ -3703,6 +3918,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">“<node/>”</msgstr>
 <msgstr xml:lang="be">"<node/>"</msgstr>
 <msgstr xml:lang="bg">„<node/>“</msgstr>
+<msgstr xml:lang="bs">“<node/>”</msgstr>
 <msgstr xml:lang="ca">«<node/>»</msgstr>
 <msgstr xml:lang="ca-valencia">«<node/>»</msgstr>
 <msgstr xml:lang="cs">„<node/>“</msgstr>
@@ -3717,11 +3933,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">“<node/>”</msgstr>
 <msgstr xml:lang="fi">“<node/>”</msgstr>
 <msgstr xml:lang="fr">« <node/> »</msgstr>
+<msgstr xml:lang="fur">“<node/>”</msgstr>
 <msgstr xml:lang="gl">«<node/>»</msgstr>
 <msgstr xml:lang="he">„<node/>”</msgstr>
 <msgstr xml:lang="hi">“<node/>”</msgstr>
 <msgstr xml:lang="hu">„<node/>”</msgstr>
 <msgstr xml:lang="id">“<node/>”</msgstr>
+<msgstr xml:lang="is">“<node/>”</msgstr>
 <msgstr xml:lang="it">“<node/>”</msgstr>
 <msgstr xml:lang="ja">“<node/>”</msgstr>
 <msgstr xml:lang="km">“<node/>”</msgstr>
@@ -3733,8 +3951,9 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">“<node/>”</msgstr>
 <msgstr xml:lang="nb">«<node/>»</msgstr>
 <msgstr xml:lang="nl">‘<node/>’</msgstr>
+<msgstr xml:lang="oc">« <node/> »</msgstr>
 <msgstr xml:lang="pa">“<node/>”</msgstr>
-<msgstr xml:lang="pl">"<node/>"</msgstr>
+<msgstr xml:lang="pl">„<node/>”</msgstr>
 <msgstr xml:lang="pt">“<node/>”</msgstr>
 <msgstr xml:lang="pt-BR">"<node/>"</msgstr>
 <msgstr xml:lang="ro">„<node/>”</msgstr>
@@ -3743,7 +3962,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">“<node/>”</msgstr>
 <msgstr xml:lang="sr">„<node/>“</msgstr>
 <msgstr xml:lang="sr-Latn">„<node/>“</msgstr>
-<msgstr xml:lang="sv">"<node/>"</msgstr>
+<msgstr xml:lang="sv">”<node/>”</msgstr>
 <msgstr xml:lang="ta">“<node/>”</msgstr>
 <msgstr xml:lang="te">“<node/>”</msgstr>
 <msgstr xml:lang="tg">“<node/>”</msgstr>
@@ -3764,6 +3983,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">‘<node/>’</msgstr>
 <msgstr xml:lang="be">"<node/>"</msgstr>
 <msgstr xml:lang="bg">«<node/>»</msgstr>
+<msgstr xml:lang="bs">‘<node/>’</msgstr>
 <msgstr xml:lang="ca">“<node/>”</msgstr>
 <msgstr xml:lang="ca-valencia">“<node/>”</msgstr>
 <msgstr xml:lang="cs">‚<node/>‘</msgstr>
@@ -3778,11 +3998,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">’<node/>’</msgstr>
 <msgstr xml:lang="fi">”<node/>”</msgstr>
 <msgstr xml:lang="fr">“<node/>”</msgstr>
+<msgstr xml:lang="fur">‘<node/>’</msgstr>
 <msgstr xml:lang="gl">«<node/>»</msgstr>
 <msgstr xml:lang="he">‘<node/>’</msgstr>
 <msgstr xml:lang="hi">‘<node/>’</msgstr>
 <msgstr xml:lang="hu">»<node/>«</msgstr>
 <msgstr xml:lang="id">‘<node/>’</msgstr>
+<msgstr xml:lang="is">‘<node/>’</msgstr>
 <msgstr xml:lang="it">"<node/>"</msgstr>
 <msgstr xml:lang="ja">‘<node/>’</msgstr>
 <msgstr xml:lang="km">‘<node/>’</msgstr>
@@ -3794,9 +4016,10 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml">‘<node/>’</msgstr>
 <msgstr xml:lang="nb">'<node/>'</msgstr>
 <msgstr xml:lang="nl">“<node/>”</msgstr>
+<msgstr xml:lang="oc">« <node/> »</msgstr>
 <msgstr xml:lang="pa">‘<node/>’</msgstr>
 <msgstr xml:lang="pl">«<node/>»</msgstr>
-<msgstr xml:lang="pt">‘<node/>’</msgstr>
+<msgstr xml:lang="pt">"<node/>"</msgstr>
 <msgstr xml:lang="pt-BR">'<node/>'</msgstr>
 <msgstr xml:lang="ro">„<node/>”</msgstr>
 <msgstr xml:lang="ru">„<node/>”</msgstr>
@@ -3804,7 +4027,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="sl">‘<node/>’</msgstr>
 <msgstr xml:lang="sr">„<node/>“</msgstr>
 <msgstr xml:lang="sr-Latn">„<node/>“</msgstr>
-<msgstr xml:lang="sv">‘<node/>’</msgstr>
+<msgstr xml:lang="sv">’<node/>’</msgstr>
 <msgstr xml:lang="ta">‘<node/>’</msgstr>
 <msgstr xml:lang="te">‘<node/>’</msgstr>
 <msgstr xml:lang="tg">‘<node/>’</msgstr>
@@ -3825,6 +4048,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Consulta <seeie/>.</msgstr>
 <msgstr xml:lang="be">Глядзіце <seeie/>.</msgstr>
 <msgstr xml:lang="bg">Виж <seeie/>.</msgstr>
+<msgstr xml:lang="bs">Vidi <seeie/>.</msgstr>
 <msgstr xml:lang="ca">Vegeu <seeie/>.</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu <seeie/>.</msgstr>
 <msgstr xml:lang="cs">Viz <seeie/>.</msgstr>
@@ -3839,11 +4063,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">ببینید <seeie/>.</msgstr>
 <msgstr xml:lang="fi">Katso <seeie/>.</msgstr>
 <msgstr xml:lang="fr">Voir <seeie/>.</msgstr>
+<msgstr xml:lang="fur">Consultâ <seeie/>.</msgstr>
 <msgstr xml:lang="gl">Consulte <seeie/>.</msgstr>
 <msgstr xml:lang="he">ניתן לעיין ב<seeie/>.</msgstr>
 <msgstr xml:lang="hi">देखें <seeie/>.</msgstr>
 <msgstr xml:lang="hu">Lásd: <seeie/>.</msgstr>
 <msgstr xml:lang="id">Lihat <seeie/>.</msgstr>
+<msgstr xml:lang="is">Sjá <seeie/>.</msgstr>
 <msgstr xml:lang="it">Consultare <seeie/>.</msgstr>
 <msgstr xml:lang="ja"><seeie/> を参照。</msgstr>
 <msgstr xml:lang="km">មើល <seeie/> ។</msgstr>
@@ -3855,6 +4081,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><seeie/> കാണുക.</msgstr>
 <msgstr xml:lang="nb">Se <seeie/>.</msgstr>
 <msgstr xml:lang="nl">Zie <seeie/>.</msgstr>
+<msgstr xml:lang="oc">Vejatz <seeie/>.</msgstr>
 <msgstr xml:lang="pa"><seeie/> ਵੇਖੋ।</msgstr>
 <msgstr xml:lang="pl">Proszę zobaczyć <seeie/>.</msgstr>
 <msgstr xml:lang="pt">Consulte <seeie/>.</msgstr>
@@ -3886,6 +4113,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ast">Consulta tamién <seeie/>.</msgstr>
 <msgstr xml:lang="be">Таксама глядзіце <seeie/>.</msgstr>
 <msgstr xml:lang="bg">Виж също <seeie/>.</msgstr>
+<msgstr xml:lang="bs">Vidi i <seeie/>.</msgstr>
 <msgstr xml:lang="ca">Vegeu també <seeie/>.</msgstr>
 <msgstr xml:lang="ca-valencia">Vegeu també <seeie/>.</msgstr>
 <msgstr xml:lang="cs">Viz také <seeie/>.</msgstr>
@@ -3900,11 +4128,13 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="fa">همچنین ببینید <seeie/>.</msgstr>
 <msgstr xml:lang="fi">Katso myös <seeie/>.</msgstr>
 <msgstr xml:lang="fr">Voir aussi <seeie/>.</msgstr>
+<msgstr xml:lang="fur">Consultâ ancje <seeie/>.</msgstr>
 <msgstr xml:lang="gl">Consulte tamén <seeie/>.</msgstr>
 <msgstr xml:lang="he">לקריאה נוספת: <seeie/>.</msgstr>
 <msgstr xml:lang="hi">यह भी देखें <seeie/>.</msgstr>
 <msgstr xml:lang="hu">Lásd még: <seeie/>.</msgstr>
 <msgstr xml:lang="id">Lihat juga <seeie/>.</msgstr>
+<msgstr xml:lang="is">Sjá einnig <seeie/>.</msgstr>
 <msgstr xml:lang="it">Consultare anche <seeie/>.</msgstr>
 <msgstr xml:lang="ja"><seeie/> も参照。</msgstr>
 <msgstr xml:lang="km">មើល <seeie/>.</msgstr>
@@ -3916,6 +4146,7 @@ $ make yelp-xsl.pot
 <msgstr xml:lang="ml"><seeie/> യും കാണുക.</msgstr>
 <msgstr xml:lang="nb">Se også <seeie/>.</msgstr>
 <msgstr xml:lang="nl">Zie ook <seeie/>.</msgstr>
+<msgstr xml:lang="oc">Vejatz tanben <seeie/>.</msgstr>
 <msgstr xml:lang="pa"><seeie/> ਵੀ ਵੇਖੋ।</msgstr>
 <msgstr xml:lang="pl">Proszę zobaczyć także <seeie/>.</msgstr>
 <msgstr xml:lang="pt">Consulte também <seeie/>.</msgstr>

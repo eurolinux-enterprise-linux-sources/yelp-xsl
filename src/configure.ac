@@ -1,4 +1,4 @@
-AC_INIT([yelp-xsl],[3.14.0],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
+AC_INIT([yelp-xsl],[3.20.1],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
 
 AC_CONFIG_MACRO_DIR([m4])
 
@@ -11,7 +11,7 @@ dnl  bug reports after busted tarballs were shipped, we use -W compat
 dnl  whenever our awk is gawk.
 AC_PROG_AWK
 if test x$AWK = xgawk; then
-   YELP_XSL_AWK='gawk -W compat';
+   YELP_XSL_AWK='gawk --traditional';
 else
    YELP_XSL_AWK=$AWK;
 fi

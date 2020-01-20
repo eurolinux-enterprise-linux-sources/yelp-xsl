@@ -1,17 +1,17 @@
 Name:           yelp-xsl
-Version:        3.14.0
+Version:        3.20.1
 Release:        1%{?dist}
 Summary:        XSL stylesheets for the yelp help browser
 
-License:        LGPLv2+
+License:        LGPLv2+ and GPLv2+
 Group:          Applications/System
-URL:            http://download.gnome.org/sources/yelp-xsl
-Source0:        http://download.gnome.org/sources/yelp-xsl/3.14/yelp-xsl-%{version}.tar.xz
+URL:            https://download.gnome.org/sources/yelp-xsl
+Source0:        https://download.gnome.org/sources/%{name}/3.20/%{name}-%{version}.tar.xz
 BuildArch:      noarch
 
-BuildRequires:  libxml2-devel
 BuildRequires:  libxml2-python
-BuildRequires:  libxslt-devel
+BuildRequires:  /usr/bin/xmllint
+BuildRequires:  /usr/bin/xsltproc
 BuildRequires:  intltool
 BuildRequires:  itstool
 
@@ -39,11 +39,12 @@ make %{?_smp_mflags}
 
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+%make_install
 
 
 %files
-%doc README COPYING AUTHORS
+%doc README AUTHORS
+%license COPYING COPYING.GPL COPYING.LGPL
 %{_datadir}/yelp-xsl
 
 
@@ -52,6 +53,10 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 
 
 %changelog
+* Wed Apr 13 2016 Kalev Lember <klember@redhat.com> - 3.20.1-1
+- Update to 3.20.1
+- Resolves: #1387064
+
 * Tue Sep 23 2014 Kalev Lember <kalevlember@gmail.com> - 3.14.0-1
 - Update to 3.14.0
 - Resolves: #1174423
