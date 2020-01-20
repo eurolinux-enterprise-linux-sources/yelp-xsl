@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -35,14 +37,12 @@ in %{mal2html.svg.mode}.
 
 <!--%%==========================================================================
 mal2html.svg.mode
-Output SVG and handle Mallard extensions.
-:Revision: version="3.18" date="2015-05-04" status="final"
+Output SVG and handle Mallard extension.
+:Revision: version="1.0" date="2010-06-04" status="final"
 
 This mode is used for processing SVG embedded into Mallard documents. For most
-types of SVG content, it simply copies the input directly, except it outputs
-the SVG in a way that allows the namespace to stripped for non-XML output. It
-checks for Mallard linking using the #{mal:xref} attribute and transforms this
-to an XLink #{xlink:href} attribute.
+types of SVG content, it simply copies the input directly. It does check for
+certain Mallard extensions, for example to use the Mallard linking mechanism.
 -->
 <xsl:template mode="mal2html.svg.mode" match="svg:*">
   <xsl:choose>
@@ -59,24 +59,23 @@ to an XLink #{xlink:href} attribute.
           <xsl:with-param name="role" select="'text'"/>
         </xsl:call-template>
       </xsl:variable>
-      <svg:a xlink:href="{$target}" xlink:title="{$title}">
-        <xsl:element name="{local-name(.)}" namespace="{$html.svg.namespace}">
-          <xsl:for-each select="@*[
-                                namespace-uri(.)!='http://projectmallard.org/1.0/' and
-                                namespace-uri(.)!='http://www.w3.org/1999/xlink']">
-            <xsl:copy-of select="."/>
+      <svg:a xlink:href="{$target}" xlink:show="replace"
+             xlink:title="{$title}" target="_top">
+        <xsl:copy>
+          <xsl:for-each select="@*">
+            <xsl:copy/>
           </xsl:for-each>
           <xsl:apply-templates mode="mal2html.svg.mode" select="node()"/>
-        </xsl:element>
+        </xsl:copy>
       </svg:a>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:element name="{local-name(.)}" namespace="{$html.svg.namespace}">
-        <xsl:for-each select="@*[namespace-uri(.)!='http://projectmallard.org/1.0/']">
-          <xsl:copy-of select="."/>
+      <xsl:copy>
+        <xsl:for-each select="@*">
+          <xsl:copy/>
         </xsl:for-each>
         <xsl:apply-templates mode="mal2html.svg.mode" select="node()"/>
-      </xsl:element>
+      </xsl:copy>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -100,18 +99,38 @@ to an XLink #{xlink:href} attribute.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>svg</xsl:text>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
-    <xsl:apply-templates mode="mal2html.svg.mode" select="."/>
-  </div>
+  <xsl:choose>
+    <xsl:when test="$html.xhtml">
+      <div>
+        <xsl:attribute name="class">
+          <xsl:text>svg</xsl:text>
+          <xsl:if test="$if != 'true'">
+            <xsl:text> if-if </xsl:text>
+            <xsl:value-of select="$if"/>
+          </xsl:if>
+        </xsl:attribute>
+        <xsl:apply-templates mode="mal2html.svg.mode" select="."/>
+      </div>
+    </xsl:when>
+    <xsl:otherwise>
+      <div>
+        <xsl:attribute name="class">
+          <xsl:text>svg</xsl:text>
+          <xsl:if test="$if != 'true'">
+            <xsl:text> if-if </xsl:text>
+            <xsl:value-of select="$if"/>
+          </xsl:if>
+        </xsl:attribute>
+        <object data="{$id}.svg" type="image/svg+xml">
+          <xsl:copy-of select="@width"/>
+          <xsl:copy-of select="@height"/>
+        </object>
+      </div>
+      <exsl:document href="{$id}.svg">
+        <xsl:apply-templates mode="mal2html.svg.mode" select="."/>
+      </exsl:document>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:if>
 </xsl:template>
 

@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -55,10 +57,7 @@ REMARK: Describe this template
 <xsl:template name="db2html.link" match="link">
   <xsl:param name="linkend" select="@linkend"/>
   <xsl:param name="target" select="key('db.id.key', $linkend)"/>
-  <a>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'link'"/>
-    </xsl:call-template>
+  <a class="link">
     <xsl:attribute name="href">
       <xsl:call-template name="db.xref.target">
         <xsl:with-param name="linkend" select="$linkend"/>
@@ -93,10 +92,7 @@ REMARK: Describe this template
 <xsl:template name="db2html.ulink" match="ulink">
   <xsl:param name="url" select="@url"/>
   <xsl:param name="content" select="false()"/>
-  <a href="{$url}">
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'ulink'"/>
-    </xsl:call-template>
+  <a class="ulink" href="{$url}">
     <xsl:attribute name="title">
       <xsl:call-template name="db.ulink.tooltip"/>
     </xsl:attribute>
@@ -169,10 +165,7 @@ REMARK: Describe this template
   <xsl:param name="endterm"   select="@endterm"/>
   <xsl:param name="xrefstyle" select="@xrefstyle"/>
   <xsl:param name="content"   select="false()"/>
-  <a>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'xref'"/>
-    </xsl:call-template>
+  <a class="xref">
     <xsl:attribute name="href">
       <xsl:call-template name="db.xref.target">
         <xsl:with-param name="linkend" select="$linkend"/>

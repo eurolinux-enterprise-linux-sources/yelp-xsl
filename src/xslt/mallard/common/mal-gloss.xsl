@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -32,14 +34,6 @@ with the Mallard Glossary extension.
 -->
 
 
-<!--++==========================================================================
-mal.gloss.key
-Get a #{gloss:term} element from its #{id} attribute.
-
-This key returns #{gloss:term} elements based on their #{id} attribute. This
-key only applies to elements inside a cache file. Make sure to make the cache
-file the context document before calling this key.
--->
 <xsl:key name="mal.gloss.key"
          match="/cache:cache//mal:info/gloss:term[@id]"
          use="@id"/>

@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -49,13 +51,7 @@ sub sub { font-size: 1em; }
 sup { font-size: 0.83em; }
 sup sup { font-size: 1em; }
 table.table-pgwide { width: 100%; }
-table.table-rules-groups thead + *, table.table-rules-rows thead + *,
-table.table-rules-groups tfoot + *, table.table-rules-rows tfoot + *,
-table.table-rules-groups tbody + *, table.table-rules-rows tbody + *,
-table.table-rules-rows tr + * { border-top: solid 1px; }
-table.table-rules-cols td + *, table.table-rules-cols th + * {
-  border-</xsl:text><xsl:value-of select="$left"/><xsl:text>: solid 1px;
-}
+
 
 td.td-colsep { border-</xsl:text><xsl:value-of select="$right"/><xsl:text>: solid 1px; }
 td.td-rowsep { border-bottom: solid 1px; }
@@ -63,7 +59,7 @@ td.td-rowsep { border-bottom: solid 1px; }
 <!-- == bibliography == -->
 span.bibliolabel {
   font-weight: bold;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
+  color: </xsl:text><xsl:value-of select="$color.text_light"/><xsl:text>;
 }
 div.biblioentry span.title {
   font-weight: normal;
@@ -78,11 +74,11 @@ div.epigraph {
   text-align: </xsl:text><xsl:value-of select="$right"/><xsl:text>;
   margin-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 20%;
   margin-</xsl:text><xsl:value-of select="$right"/><xsl:text>: 0;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
+  color: </xsl:text><xsl:value-of select="$color.text_light"/><xsl:text>;
 }
 div.programlisting .userinput {
   font-weight: bold;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
+  color: </xsl:text><xsl:value-of select="$color.text_light"/><xsl:text>;
 }
 div.address, div.literallayout { white-space: pre; }
 
@@ -90,7 +86,7 @@ div.address, div.literallayout { white-space: pre; }
 <!-- == footnotes == -->
 div.footnotes {
   border-top: solid 2px </xsl:text>
-    <xsl:value-of select="$color.gray"/><xsl:text>;
+    <xsl:value-of select="$color.gray_border"/><xsl:text>;
 }
 div.footnote { margin-top: 1.44em; }
 sup.footnote { font-size: 0.83em; }
@@ -99,47 +95,23 @@ a.footnote {
   text-decoration: none;
   border-bottom: none;
   padding: 0.2em 0.5em 0.2em 0.5em;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
   border-radius: 2px;
 }
 div.footnote > a.footnote {
   margin-</xsl:text><xsl:value-of select="$right"/><xsl:text>: 0.83em;
-  background-color: </xsl:text><xsl:value-of select="$color.bg.gray"/><xsl:text>;
+  background-color: </xsl:text><xsl:value-of select="$color.gray_background"/><xsl:text>;
 }
 div.footnote > a.footnote + p { display: inline-block; margin: 0; }
 a.footnote:hover, div.footnote > a.footnote:hover {
-  background-color: </xsl:text><xsl:value-of select="$color.bg.blue"/><xsl:text>;
+  background-color: </xsl:text><xsl:value-of select="$color.blue_background"/><xsl:text>;
+  -moz-box-shadow: 0 0 2px </xsl:text>
+    <xsl:value-of select="$color.blue_border"/><xsl:text>;
+  -webkit-box-shadow: 0 0 2px </xsl:text>
+    <xsl:value-of select="$color.blue_border"/><xsl:text>;
   box-shadow: 0 0 2px </xsl:text>
-    <xsl:value-of select="$color.blue"/><xsl:text>;
-}
-
-<!-- == indexes == -->
-dt.ixprimary {
-  font-weight: bold;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
-}
-dt.ixprimary * { font-style: normal; }
-dt.ixprimary + dt.ixprimary { margin-top: 1em; }
-dd.ixsecondary {
-  color: </xsl:text><xsl:value-of select="$color.fg.gray"/><xsl:text>;
-}
-dt.ixsecondary, dt.ixtertiary { margin-top: 0.2em; }
-dd.ixlink, dd.ixsee, dd.ixseealso {
-  color: </xsl:text><xsl:value-of select="$color.fg.gray"/><xsl:text>;
-}
-dd.ixlink + dd, dd.ixsee + dd, dd.ixseealso + dd {
-  margin-top: 0.2em;
-}
-dt.ixsecondary:before, dt.ixtertiary:before {
-  content: "⏺";
-  color: </xsl:text><xsl:value-of select="$color.fg.gray"/><xsl:text>;
-}
-dd.ixlink:before {
-  content: "⏺";
-  color: </xsl:text><xsl:value-of select="$color.blue"/><xsl:text>;
-}
-dd.ixsee:before, dd.ixseealso:before {
-  content: "⏺";
-  color: </xsl:text><xsl:value-of select="$color.gray"/><xsl:text>;
+    <xsl:value-of select="$color.blue_border"/><xsl:text>;
 }
 
 <!-- == unsorted == -->
@@ -154,15 +126,17 @@ div.simplelist table { margin-left: 0; border: none; }
 div.simplelist td {
   padding: 0.5em;
   border-</xsl:text><xsl:value-of select="$left"/><xsl:text>: solid 1px </xsl:text>
-    <xsl:value-of select="$color.gray"/><xsl:text>;
+    <xsl:value-of select="$color.gray_border"/><xsl:text>;
 }
-div.simplelist td:first-child {
+<!--
+div.simplelist td.td-first {
   padding-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 0;
   border-</xsl:text><xsl:value-of select="$left"/><xsl:text>: 0;
 }
+-->
 
 span.accel { text-decoration: underline; }
-span.email { font-family: monospace,monospace; font-size: 0.83em; }
+span.email { font-family: monospace; }
 span.firstterm { font-style: italic; }
 span.foreignphrase { font-style: italic; }
 
@@ -179,7 +153,7 @@ span.lineannotation { font-style: italic; }
 span.medialabel { font-style: italic; }
 .methodparam span.parameter { font-style: italic; }
 span.paramdef span.parameter { font-style: italic; }
-span.prompt { font-family: monospace,monospace; font-size: 0.83em; }
+span.prompt { font-family: monospace; }
 span.wordasword { font-style: italic; }
 <!-- FIXME below -->
 
@@ -187,7 +161,6 @@ dt.question {
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
 }
 dd + dt.question { margin-top: 1em; }
 dd.answer {
@@ -196,21 +169,22 @@ dd.answer {
   margin-right: 2em;
 }
 div.qanda-label {
-  line-height: 1.44em;
+  line-height: 1.72em;
   float: </xsl:text><xsl:value-of select="$left"/><xsl:text>;
   margin-</xsl:text><xsl:value-of select="$right"/><xsl:text>: 1em;
   font-weight: bold;
-  color: </xsl:text><xsl:value-of select="$color.fg.dark"/><xsl:text>;
 }
 dl.qandaset ol, dl.qandaset ul, dl.qandaset table { clear: both; }
 
 div.synopfragment { padding-top: 0.5em; }
 span.co {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
   background-color: </xsl:text>
-  <xsl:value-of select="$color.bg.yellow"/><xsl:text>;
+  <xsl:value-of select="$color.yellow_background"/><xsl:text>;
   outline: solid 1px </xsl:text>
-  <xsl:value-of select="$color.yellow"/><xsl:text>;
+  <xsl:value-of select="$color.yellow_border"/><xsl:text>;
 }
 span.co a { text-decoration: none; }
 span.co a:hover { text-decoration: none; }

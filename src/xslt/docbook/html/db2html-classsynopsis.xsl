@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -65,9 +67,7 @@ at the root of a DocBook document.
               classsynopsis     | constructorsynopsis    | fieldsynopsis |
               methodsynopsis    | destructorsynopsis     |
               db:classsynopsis  | db:constructorsynopsis | db:fieldsynopsis |
-              db:methodsynopsis | db:destructorsynopsis  ">
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
+              db:methodsynopsis | db:destructorsynopsis  |">
   <xsl:variable name="language">
     <xsl:choose>
       <xsl:when test="@language">
@@ -80,12 +80,10 @@ at the root of a DocBook document.
   </xsl:variable>
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>synopsis </xsl:text>
-        <xsl:value-of select="local-name(.)"/>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>synopsis </xsl:text>
+      <xsl:value-of select="local-name(.)"/>
+    </xsl:attribute>
     <xsl:call-template name="db2html.anchor"/>
     <pre class="contents {local-name(.)} classsynopsis-{$language}">
       <xsl:choose>
@@ -105,7 +103,6 @@ at the root of a DocBook document.
       </xsl:choose>
     </pre>
   </div>
-  </xsl:if>
 </xsl:template>
 
 <!-- = classsynopsisinfo = -->
@@ -117,10 +114,7 @@ at the root of a DocBook document.
 
 <!-- = methodparam = -->
 <xsl:template match="methodparam | db:methodparam">
-  <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'methodparam'"/>
-    </xsl:call-template>
+  <span class="methodparam">
     <xsl:for-each select="*">
       <xsl:if test="position() != 1">
         <xsl:text> </xsl:text>
@@ -334,10 +328,7 @@ methods is expected to mark the visibility, such as #{public} or #{private}.
 <!-- = methodparam % db2html.class.cpp.mode = -->
 <xsl:template mode="db2html.class.cpp.mode"
               match="methodparam | db:methodparam">
-  <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'methodparam'"/>
-    </xsl:call-template>
+  <span class="methodparam">
     <xsl:for-each select="*">
       <xsl:if test="position() != 1">
         <xsl:text> </xsl:text>

@@ -11,15 +11,18 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:mal="http://projectmallard.org/1.0/"
                 xmlns:cache="http://projectmallard.org/cache/1.0/"
+                xmlns:facet="http://projectmallard.org/facet/1.0/"
                 xmlns:exsl="http://exslt.org/common"
                 xmlns:str="http://exslt.org/strings"
-                exclude-result-prefixes="mal cache exsl str"
+                exclude-result-prefixes="mal cache facet exsl str"
                 version="1.0">
 
 <!--!!==========================================================================
@@ -73,7 +76,7 @@ hash character.
 
 The context node must be in the document @{mal.cache} when this key is called.
 -->
-<xsl:key name="mal.cache.key" match="cache:cache//*" use="@id"/>
+<xsl:key name="mal.cache.key" match="mal:page | mal:section" use="@id"/>
 
 
 <!--++==========================================================================
@@ -91,6 +94,14 @@ The context node must be in the document @{mal.cache} when this key is called.
 <xsl:key name="mal.cache.link.key"
          match="mal:info/mal:link[@type][@xref]"
          use="concat(@type, ':', @xref)"/>
+
+
+<!--============================================================================
+mal.facet.all.key
+-->
+<xsl:key name="mal.facet.all.key"
+         match="mal:page[mal:info/facet:tag] | mal:section[mal:info/facet:tag]"
+         use="''"/>
 
 
 <!--@@==========================================================================
@@ -187,39 +198,26 @@ See *{mal.link.linkid} for more on link IDs.
 <!--**==========================================================================
 mal.link.content
 Output the content for a #{link} element.
-:Revision:version="3.18" date="2015-06-06" status="final"
+:Revision:version="3.4" date="2012-01-17" status="final"
 $node: The #{link} or other element creating the link.
 $action: The #{action} attribute of ${node}.
 $xref: The #{xref} attribute of ${node}.
 $href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title.
-$info: An #{info} element that overrides the info found in a target node.
+$role: A link role, used to select the appropriate title.
 
 This template outputs the automatic text content for a link.  It should only
 be used for links that do not have specified content.  If ${xref} points to a
 valid page or section, the appropriate link title from that page or section
-will be selected, based on the list of roles in ${role}. The first role for
-which a matching link title is found will be used. Otherwise, the link title
-without a role is used, or the primary title. The %{mal.link.content.mode}
-mode is applied to the contents of that title.  Stylesheets using this template
+will be selected, based on ${role}.  The %{mal.link.content.mode} mode will
+be applied to the contents of that title.  Stylesheets using this template
 should map that mode to inline processing.
 
-For inline links, ${node} should be the #{link} element. For links from a
-#{links} element, ${node} should be that #{links} element, or the containing
-element when the #{links} element is implicit.
-
 This template first calls *{mal.link.content.custom} with the same arguments.
-If that template returns a non-empty result, it is used as the return value,
+If that templates returns a non-empty result, it is used as the return value,
 overriding any other behavior of this template.
 
 If only ${href} is provided, that URL is used as the text content.  If a target
 page or section cannot be found, ${xref} is used as the text content.
-
-Normally, this template automatically looks up information from a targret node
-according to the ${xref} parameter. However, if the ${info} parameter is given,
-information in that node set is used instead. This is useful for external info
-links, where the target information is provided as child elements to the #{link}
-element.
 -->
 <xsl:template name="mal.link.content">
   <xsl:param name="node" select="."/>
@@ -227,7 +225,6 @@ element.
   <xsl:param name="xref" select="$node/@xref"/>
   <xsl:param name="href" select="$node/@href"/>
   <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
   <xsl:variable name="custom">
     <xsl:call-template name="mal.link.content.custom">
       <xsl:with-param name="node" select="$node"/>
@@ -235,7 +232,6 @@ element.
       <xsl:with-param name="xref" select="$xref"/>
       <xsl:with-param name="href" select="$href"/>
       <xsl:with-param name="role" select="$role"/>
-      <xsl:with-param name="info" select="$info"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:choose>
@@ -252,29 +248,16 @@ element.
       <xsl:for-each select="$mal.cache">
         <xsl:variable name="target" select="key('mal.cache.key', $linkid)"/>
         <xsl:choose>
-          <xsl:when test="$target or $info">
-            <xsl:variable name="infos" select="$target/mal:info | $info"/>
-            <xsl:variable name="titles" select="$infos/mal:title[@type = 'link']"/>
-            <xsl:variable name="realrole">
-              <xsl:for-each select="str:split($role)">
-                <xsl:variable name="thisrole" select="string(.)"/>
-                <xsl:if test="$titles[@role=$thisrole]">
-                  <xsl:value-of select="concat($thisrole, ' ')"/>
-                </xsl:if>
-              </xsl:for-each>
-            </xsl:variable>
+          <xsl:when test="$target">
+            <xsl:variable name="titles" select="$target/mal:info/mal:title[@type = 'link']"/>
             <xsl:choose>
-              <xsl:when test="$realrole != ''">
+              <xsl:when test="$role != '' and $titles[@role = $role]">
                 <xsl:apply-templates mode="mal.link.content.mode"
-                                     select="$titles[@role = substring-before($realrole, ' ')][1]/node()"/>
+                                     select="$titles[@role = $role][1]/node()"/>
               </xsl:when>
               <xsl:when test="$titles[not(@role)]">
                 <xsl:apply-templates mode="mal.link.content.mode"
                                      select="$titles[not(@role)][1]/node()"/>
-              </xsl:when>
-              <xsl:when test="$info/mal:title[not(@type)]">
-                <xsl:apply-templates mode="mal.link.content.mode"
-                                     select="$info/mal:title[not(@type)][1]/node()"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:apply-templates mode="mal.link.content.mode"
@@ -306,13 +289,12 @@ element.
 mal.link.content.custom
 Output the content for a custom #{link} element.
 :Stub: true
-:Revision:version="3.18" date="2015-06-06" status="final"
+:Revision:version="3.4" date="2012-01-17" status="final"
 $node: The #{link} or other element creating the link.
 $action: The #{action} attribute of ${node}.
 $xref: The #{xref} attribute of ${node}.
 $href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title.
-$info: An #{info} element that overrides the info found in a target node.
+$role: A link role, used to select the appropriate title.
 
 This template is called by *{mal.link.content} to create content for custom
 links. Use this template to support the #{action} attribute or extended #{xref}
@@ -324,7 +306,6 @@ attributes containing slash or colon characters.
   <xsl:param name="xref" select="$node/@xref"/>
   <xsl:param name="href" select="$node/@href"/>
   <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
 </xsl:template>
 
 
@@ -343,137 +324,26 @@ By default, it returns the string value of its input.  Stylesheets that use
 
 
 <!--**==========================================================================
-mal.link.desc
-Output the desc content for a #{link} element.
-:Revision:version="3.18" date="2015-06-06" status="final"
-$node: The #{link} or other element creating the link.
-$action: The #{action} attribute of ${node}.
-$xref: The #{xref} attribute of ${node}.
-$href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate desc.
-$info: An #{info} element that overrides the info found in a target node.
-
-This template outputs the secondary desc text content for a link. If ${xref}
-points to a valid page or section, the desc from that page or section will be
-used. The %{mal.link.content.mode} mode is applied to the contents of that
-desc. Stylesheets using this template should map that mode to inline processing.
-
-For inline links, ${node} should be the #{link} element. For links from a
-#{links} element, ${node} should be that #{links} element, or the containing
-element when the #{links} element is implicit.
-
-This template first calls *{mal.link.desc.custom} with the same arguments.
-If that template returns a non-empty result, it is used as the return value,
-overriding any other behavior of this template.
-
-Normally, this template automatically looks up information from a targret node
-according to the ${xref} parameter. However, if the ${info} parameter is given,
-information in that node set is used instead. This is useful for external info
-links, where the target information is provided as child elements to the #{link}
-element.
--->
-<xsl:template name="mal.link.desc">
-  <xsl:param name="node" select="."/>
-  <xsl:param name="action" select="$node/@action"/>
-  <xsl:param name="xref" select="$node/@xref"/>
-  <xsl:param name="href" select="$node/@href"/>
-  <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
-  <xsl:variable name="custom">
-    <xsl:call-template name="mal.link.desc.custom">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="action" select="$action"/>
-      <xsl:with-param name="xref" select="$xref"/>
-      <xsl:with-param name="href" select="$href"/>
-      <xsl:with-param name="role" select="$role"/>
-      <xsl:with-param name="info" select="$info"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:choose>
-    <xsl:when test="exsl:node-set($custom)/node()">
-      <xsl:copy-of select="$custom"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:variable name="linkid">
-        <xsl:call-template name="mal.link.xref.linkid">
-          <xsl:with-param name="node" select="$node"/>
-          <xsl:with-param name="xref" select="$xref"/>
-        </xsl:call-template>
-      </xsl:variable>
-      <xsl:for-each select="$mal.cache">
-        <xsl:variable name="target" select="key('mal.cache.key', $linkid)"/>
-        <xsl:choose>
-          <xsl:when test="$target or $info">
-            <xsl:variable name="infos" select="$target/mal:info | $info"/>
-            <xsl:variable name="descs" select="$infos/mal:desc"/>
-            <xsl:apply-templates mode="mal.link.content.mode"
-                                 select="$descs[1]/node()"/>
-          </xsl:when>
-        </xsl:choose>
-      </xsl:for-each>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-
-<!--**==========================================================================
-mal.link.desc.custom
-Output the desc content for a custom #{link} element.
-:Stub: true
-:Revision:version="3.18" date="2015-06-06" status="final"
-$node: The #{link} or other element creating the link.
-$action: The #{action} attribute of ${node}.
-$xref: The #{xref} attribute of ${node}.
-$href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title.
-$info: An #{info} element that overrides the info found in a target node.
-
-This template is called by *{mal.link.desc} to create content for custom links.
-Use this template to support the #{action} attribute or extended #{xref}
-attributes containing slash or colon characters.
--->
-<xsl:template name="mal.link.desc.custom">
-  <xsl:param name="node" select="."/>
-  <xsl:param name="action" select="$node/@action"/>
-  <xsl:param name="xref" select="$node/@xref"/>
-  <xsl:param name="href" select="$node/@href"/>
-  <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
-</xsl:template>
-
-
-<!--**==========================================================================
 mal.link.tooltip
 Output a tooltip for a #{link} element.
-:Revision:version="3.18" date="2015-06-06" status="final"
+:Revision:version="3.4" date="2012-01-18" status="final"
 $node: The #{link} or other element creating the link.
 $action: The #{action} attribute of ${node}.
 $xref: The #{xref} attribute of ${node}.
 $href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title.
-$info: An #{info} element that overrides the info found in a target node.
+$role: A link role, used to select the appropriate title.
 
 This template outputs a text-only tooltip for a link. If ${xref} points to a
 valid page or section, the text title from that page or section will be used.
-If the target does not specify a text title, the primary title is used.
-
-For inline links, ${node} should be the #{link} element. For links from a
-#{links} element, ${node} should be that #{links} element, or the containing
-element when the #{links} element is implicit.
+If the target does not specify a text title, the primary title is ued.
 
 This template first calls *{mal.link.tooltip.custom} with the same arguments.
-If that template returns a non-empty string, it is used as the return value,
+If that templates returns a non-empty string, it is used as the return value,
 overriding any other behavior of this template.
 
 If only ${href} is provided, that URL is used as the tooltip. If a target
 page or section cannot be found, ${xref} is used as the text content. Special
 tooltips may be provided for certain URI schemes.
-
-Normally, this template automatically looks up information from a targret node
-according to the ${xref} parameter. However, if the ${info} parameter is given,
-information in that node set is used instead. This is useful for external info
-links, where the target information is provided as child elements to the #{link}
-element.
 -->
 <xsl:template name="mal.link.tooltip">
   <xsl:param name="node" select="."/>
@@ -481,7 +351,6 @@ element.
   <xsl:param name="xref" select="$node/@xref"/>
   <xsl:param name="href" select="$node/@href"/>
   <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
   <xsl:variable name="custom">
     <xsl:call-template name="mal.link.tooltip.custom">
       <xsl:with-param name="node" select="$node"/>
@@ -489,7 +358,6 @@ element.
       <xsl:with-param name="xref" select="$xref"/>
       <xsl:with-param name="href" select="$href"/>
       <xsl:with-param name="role" select="$role"/>
-      <xsl:with-param name="info" select="$info"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:choose>
@@ -505,13 +373,9 @@ element.
       </xsl:variable>
       <xsl:for-each select="$mal.cache">
         <xsl:variable name="target" select="key('mal.cache.key', $linkid)"/>
-        <xsl:variable name="infos" select="$target/mal:info | $info"/>
         <xsl:choose>
-          <xsl:when test="$infos/mal:title[@type = 'text']">
-            <xsl:value-of select="normalize-space($infos/mal:title[@type = 'text'][1])"/>
-          </xsl:when>
-          <xsl:when test="$info/mal:title[not(@type)]">
-            <xsl:value-of select="normalize-space($info/mal:title[not(@type)])"/>
+          <xsl:when test="$target/mal:info/mal:title[@type = 'text']">
+            <xsl:value-of select="normalize-space($target/mal:info/mal:title[@type = 'text'][1])"/>
           </xsl:when>
           <xsl:when test="$target/mal:title">
             <xsl:value-of select="normalize-space($target/mal:title[1])"/>
@@ -544,13 +408,12 @@ element.
 mal.link.tooltip.custom
 Output a tooltip for a custom #{link} element.
 :Stub: true
-:Revision:version="3.18" date="2015-06-06" status="final"
+:Revision:version="3.4" date="2012-01-17" status="final"
 $node: The #{link} or other element creating the link.
 $action: The #{action} attribute of ${node}.
 $xref: The #{xref} attribute of ${node}.
 $href: The #{href} attribute of ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title.
-$info: An #{info} element that overrides the info found in a target node.
+$role: A link role, used to select the appropriate title.
 
 This template is called by *{mal.link.tooltip} to create tooltips for custom
 links. Use this template to support the #{action} attribute or extended #{xref}
@@ -562,14 +425,13 @@ attributes containing slash or colon characters.
   <xsl:param name="xref" select="$node/@xref"/>
   <xsl:param name="href" select="$node/@href"/>
   <xsl:param name="role" select="''"/>
-  <xsl:param name="info" select="/false"/>
 </xsl:template>
 
 
 <!--**==========================================================================
 mal.link.target
 Output the target URL for a #{link} or other linking element.
-:Revision:version="3.28" date="2017-08-11" status="final"
+:Revision:version="3.4" date="2012-01-17" status="final"
 $node: The #{link} or other element creating the link.
 $action: The #{action} attribute of ${node}.
 $xref: The #{xref} attribute of ${node}.
@@ -580,17 +442,9 @@ linking attributes.  If ${xref} points to a valid page or section, it uses
 a file name based on the ID of the target page plus @{mal.link.extension}.
 Otherwise, the link will point to ${href}.
 
-For inline links, ${node} should be the #{link} element. For links from a
-#{links} element, ${node} should be that #{links} element, or the containing
-element when the #{links} element is implicit.
-
 This template first calls *{mal.link.target.custom} with the same arguments.
-If that template returns a non-empty string, it is used as the return value,
+If that templates returns a non-empty string, it is used as the return value,
 overriding any other behavior of this template.
-
-If ${xref} contains a #{/} or #{:} character, this template calls
-*{mal.link.target.extended}, which by default just uses ${href} instead.
-Override that template to provide extended xref behavior.
 -->
 <xsl:template name="mal.link.target">
   <xsl:param name="node" select="."/>
@@ -609,41 +463,11 @@ Override that template to provide extended xref behavior.
     <xsl:when test="$custom != ''">
       <xsl:value-of select="$custom"/>
     </xsl:when>
-    <xsl:otherwise>
-      <xsl:call-template name="_mal.link.target.default">
-        <xsl:with-param name="node" select="$node"/>
-        <xsl:with-param name="action" select="$action"/>
-        <xsl:with-param name="xref" select="$xref"/>
-        <xsl:with-param name="href" select="$href"/>
-      </xsl:call-template>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-
-<!--#* _mal.link.target.default -->
-<!--
-Note sure yet if I want to make this public API. If so, we should
-do it to all the mal.link.* templates. This allows you, if you
-really want, to override mal.link.target completely, but still
-fallback to the built-in behavior.
--->
-<xsl:template name="_mal.link.target.default">
-  <xsl:param name="node" select="."/>
-  <xsl:param name="action" select="$node/@action"/>
-  <xsl:param name="xref" select="$node/@xref"/>
-  <xsl:param name="href" select="$node/@href"/>
-  <xsl:choose>
     <xsl:when test="string($xref) = ''">
       <xsl:value-of select="$href"/>
     </xsl:when>
     <xsl:when test="contains($xref, '/') or contains($xref, ':')">
-      <xsl:call-template name="mal.link.target.extended">
-        <xsl:with-param name="node" select="$node"/>
-        <xsl:with-param name="action" select="$action"/>
-        <xsl:with-param name="xref" select="$xref"/>
-        <xsl:with-param name="href" select="$href"/>
-      </xsl:call-template>
+      <xsl:value-of select="$href"/>
     </xsl:when>
     <xsl:when test="contains($xref, '#')">
       <xsl:variable name="pageid" select="substring-before($xref, '#')"/>
@@ -657,30 +481,6 @@ fallback to the built-in behavior.
       <xsl:value-of select="concat($mal.link.prefix, $xref, $mal.link.extension)"/>
     </xsl:otherwise>
   </xsl:choose>
-</xsl:template>
-
-
-<!--**==========================================================================
-mal.link.target.extended
-Output the target URL for an element with an extended #{xref} attribute.
-:Stub: true
-:Revision:version="3.28" date="2017-08-11" status="final"
-$node: The #{link} or other element creating the link.
-$action: The #{action} attribute of ${node}.
-$xref: The #{xref} attribute of ${node}.
-$href: The #{href} attribute of ${node}.
-
-This template is called by *{mal.link.target} to create URLs for links with
-a #{/} or #{:} in the #{xref} attribute. By default, it just outputs the
-value of ${href}. Override this template to provide behavior for extended
-#{xref} attributes.
--->
-<xsl:template name="mal.link.target.extended">
-  <xsl:param name="node" select="."/>
-  <xsl:param name="action" select="$node/@action"/>
-  <xsl:param name="xref" select="$node/@xref"/>
-  <xsl:param name="href" select="$node/@href"/>
-  <xsl:value-of select="$href"/>
 </xsl:template>
 
 
@@ -709,28 +509,21 @@ attributes containing slash or colon characters.
 <!--**==========================================================================
 mal.link.guidelinks
 Output the guide links for a page or section.
-:Revision:version="3.18" date="2015-06-07" status="final"
+:Revision:version="3.4" date="2011-11-01" status="final"
 $node: The #{page} or #{section} element to generate links for.
-$role: A space-separated list of link roles, used to select the appropriate title, default #{"guide"}.
+$role: A link role, used to select the appropriate title, default #{"guide"}.
 
 This template outputs all the guide links for a page or section, whether
 declared as guide links in the page or section or as topic links from another
 guide page.  It outputs each of the links as a #{link} element within the
 Mallard namespace.  Each #{link} element has an #{xref} attribute pointing
-to the target page or section. Or, in the case of external links, the #{link}
-element has an #{href} attribute pointing to the external resource.
+to the target page or section.
 
 Each #{link} element contains a #{title} with #{type="sort"} providing the
 sort title of the target page or section. The ${role} attribute is used to
 select a link title to sort on when a sort title is not present. The results
 are not sorted when returned from this template. Use #{xsl:sort} on the sort
 titles to sort the results.
-
-When a link comes from a guide link on ${node} that has an #{href}
-attribute but not an #{xref} attribute, it is taken to be an external
-link. In that case, the output link has an #{href} attribute instead of
-an #{xref} attribute, and it has an #{info} child element. This element
-has a copy of all the child elements of the source #{link} element.
 
 The output is a result tree fragment.  To use these results, call
 #{exsl:node-set} on them.
@@ -745,44 +538,22 @@ The output is a result tree fragment.  To use these results, call
   </xsl:variable>
   <xsl:variable name="links">
     <xsl:for-each select="$node/mal:info/mal:link[@type = 'guide']">
-      <xsl:variable name="link" select="."/>
-      <xsl:choose>
-        <xsl:when test="$link[@xref]">
-          <xsl:variable name="linklinkid">
-            <xsl:call-template name="mal.link.xref.linkid"/>
-          </xsl:variable>
-          <xsl:for-each select="$mal.cache">
-            <xsl:variable name="linklinknode" select="key('mal.cache.key', $linklinkid)"/>
-            <xsl:if test="count($linklinknode) > 0">
-              <mal:link xref="{$linklinkid}">
-                <mal:title type="sort">
-                  <xsl:call-template name="mal.link.sorttitle">
-                    <xsl:with-param name="node" select="$linklinknode"/>
-                    <xsl:with-param name="role" select="$role"/>
-                  </xsl:call-template>
-                </mal:title>
-              </mal:link>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:when>
-        <xsl:when test="$link[@href]">
-          <mal:link href="{$link/@href}">
+      <xsl:variable name="linklinkid">
+        <xsl:call-template name="mal.link.xref.linkid"/>
+      </xsl:variable>
+      <xsl:for-each select="$mal.cache">
+        <xsl:variable name="linklinknode" select="key('mal.cache.key', $linklinkid)"/>
+        <xsl:if test="count($linklinknode) > 0">
+          <mal:link xref="{$linklinkid}">
             <mal:title type="sort">
-              <xsl:choose>
-                <xsl:when test="mal:title[@type = 'sort']">
-                  <xsl:value-of select="normalize-space(mal:title[@type = 'sort'][1])"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="normalize-space(mal:title[not(@type)][1])"/>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:call-template name="mal.link.sorttitle">
+                <xsl:with-param name="node" select="$linklinknode"/>
+                <xsl:with-param name="role" select="$role"/>
+              </xsl:call-template>
             </mal:title>
-            <mal:info>
-              <xsl:copy-of select="$link/*"/>
-            </mal:info>
           </mal:link>
-        </xsl:when>
-      </xsl:choose>
+        </xsl:if>
+      </xsl:for-each>
     </xsl:for-each>
   </xsl:variable>
   <xsl:copy-of select="$links"/>
@@ -810,17 +581,16 @@ The output is a result tree fragment.  To use these results, call
 <!--**==========================================================================
 mal.link.topiclinks
 Output the topic links for a page or section.
-:Revision:version="3.18" date="2015-06-06" status="final"
+:Revision:version="3.4" date="2011-11-01" status="final"
 $node: The #{page} or #{section} element to generate links for.
 $groups: The list of all valid link groups for ${node}.
-$role: A space-separated list of link roles, used to select the appropriate title, default #{"topic"}.
+$role: A link role, used to select the appropriate title, default #{"topic"}.
 
 This template outputs all the topic links for a guide page or section, whether
 declared as topic links in the page or section or as guide links from another
 page or section.  It outputs each of the links as a #{link} element within the
 Mallard namespace.  Each #{link} element has an #{xref} attribute pointing
-to the target page or section. Or, in the case of external links, the #{link}
-element has an #{href} attribute pointing to the external resource.
+to the target page or section.
 
 Each #{link} element contains a #{title} with #{type="sort"} providing the
 sort title of the target page or section. The ${role} attribute is used to
@@ -835,12 +605,6 @@ contains a #{groupsort} attribute giving the numerical position of the
 #{group} attribute in the normalized group list for ${node}.
 
 The ${groups} parameter can be calculated automatically from ${node}.
-
-When a link comes from a topic link on ${node} that has an #{href}
-attribute but not an #{xref} attribute, it is taken to be an external
-link. In that case, the output link has an #{href} attribute instead of
-an #{xref} attribute, and it has an #{info} child element. This element
-has a copy of all the child elements of the source #{link} element.
 
 The output is a result tree fragment.  To use these results, call
 #{exsl:node-set} on them.
@@ -896,6 +660,9 @@ The output is a result tree fragment.  To use these results, call
   </xsl:variable>
   <xsl:variable name="links">
     <xsl:for-each select="$node/mal:info/mal:link[@type = 'topic']">
+      <xsl:variable name="linklinkid">
+        <xsl:call-template name="mal.link.xref.linkid"/>
+      </xsl:variable>
       <xsl:variable name="link" select="."/>
       <xsl:variable name="grouppos">
         <xsl:if test="$link/@group">
@@ -912,42 +679,10 @@ The output is a result tree fragment.  To use these results, call
           <xsl:value-of select="$defaultpos"/>
         </xsl:if>
       </xsl:variable>
-      <xsl:variable name="groupattrs">
-        <xsl:attribute name="group">
-          <xsl:value-of select="$groupslist[number($groupsort)]"/>
-        </xsl:attribute>
-        <xsl:attribute name="groupsort">
-          <xsl:value-of select="$groupsort"/>
-        </xsl:attribute>
-      </xsl:variable>
-      <xsl:choose>
-        <xsl:when test="$link[@xref]">
-          <xsl:variable name="linklinkid">
-            <xsl:call-template name="mal.link.xref.linkid"/>
-          </xsl:variable>
-          <xsl:for-each select="$mal.cache">
-            <xsl:variable name="linklinknode"
-                          select="key('mal.cache.key', $linklinkid)"/>
-            <xsl:if test="count($linklinknode) > 0">
-              <mal:link xref="{$linklinkid}">
-                <xsl:attribute name="group">
-                  <xsl:value-of select="$groupslist[number($groupsort)]"/>
-                </xsl:attribute>
-                <xsl:attribute name="groupsort">
-                  <xsl:value-of select="$groupsort"/>
-                </xsl:attribute>
-                <mal:title type="sort">
-                  <xsl:call-template name="mal.link.sorttitle">
-                    <xsl:with-param name="node" select="$linklinknode"/>
-                    <xsl:with-param name="role" select="$role"/>
-                  </xsl:call-template>
-                </mal:title>
-              </mal:link>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:when>
-        <xsl:when test="$link[@href]">
-          <mal:link href="{$link/@href}">
+      <xsl:for-each select="$mal.cache">
+        <xsl:variable name="linklinknode" select="key('mal.cache.key', $linklinkid)"/>
+        <xsl:if test="count($linklinknode) > 0">
+          <mal:link xref="{$linklinkid}">
             <xsl:attribute name="group">
               <xsl:value-of select="$groupslist[number($groupsort)]"/>
             </xsl:attribute>
@@ -955,21 +690,14 @@ The output is a result tree fragment.  To use these results, call
               <xsl:value-of select="$groupsort"/>
             </xsl:attribute>
             <mal:title type="sort">
-              <xsl:choose>
-                <xsl:when test="mal:title[@type = 'sort']">
-                  <xsl:value-of select="normalize-space(mal:title[@type = 'sort'][1])"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="normalize-space(mal:title[not(@type)][1])"/>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:call-template name="mal.link.sorttitle">
+                <xsl:with-param name="node" select="$linklinknode"/>
+                <xsl:with-param name="role" select="$role"/>
+              </xsl:call-template>
             </mal:title>
-            <mal:info>
-              <xsl:copy-of select="$link/*"/>
-            </mal:info>
           </mal:link>
-        </xsl:when>
-      </xsl:choose>
+        </xsl:if>
+      </xsl:for-each>
     </xsl:for-each>
   </xsl:variable>
   <xsl:copy-of select="$links"/>
@@ -1023,28 +751,20 @@ The output is a result tree fragment.  To use these results, call
 <!--**==========================================================================
 mal.link.seealsolinks
 Output the see-also links for a page or section.
-:Revision:version="3.18" date="2015-06-07" status="final"
+:Revision:version="3.4" date="2011-11-01" status="final"
 $node: The #{page} or #{section} element to generate links for.
-$role: A space-separated list of link roles, used to select the appropriate title, default #{"seealso"}.
+$role: A link role, used to select the appropriate title, default #{"seealso"}.
 
 This template outputs all the see-also links for a page or section, whether
 declared in the page or section or in another page or section.  It outputs
 each of the links as a #{link} element within the Mallard namespace.  Each
 #{link} element has an #{xref} attribute pointing to the target page or section.
-Or, in the case of external links, the #{link} element has an #{href} attribute
-pointing to the external resource.
 
 Each #{link} element contains a #{title} with #{type="sort"} providing the
 sort title of the target page or section. The ${role} attribute is used to
 select a link title to sort on when a sort title is not present. The results
 are not sorted when returned from this template. Use #{xsl:sort} on the sort
 titles to sort the results.
-
-When a link comes from a topic link on ${node} that has an #{href}
-attribute but not an #{xref} attribute, it is taken to be an external
-link. In that case, the output link has an #{href} attribute instead of
-an #{xref} attribute, and it has an #{info} child element. This element
-has a copy of all the child elements of the source #{link} element.
 
 The output is a result tree fragment.  To use these results, call
 #{exsl:node-set} on them.
@@ -1059,44 +779,22 @@ The output is a result tree fragment.  To use these results, call
   </xsl:variable>
   <xsl:variable name="links">
     <xsl:for-each select="$node/mal:info/mal:link[@type = 'seealso']">
-      <xsl:variable name="link" select="."/>
-      <xsl:choose>
-        <xsl:when test="$link[@xref]">
-          <xsl:variable name="linklinkid">
-            <xsl:call-template name="mal.link.xref.linkid"/>
-          </xsl:variable>
-          <xsl:for-each select="$mal.cache">
-            <xsl:variable name="linklinknode" select="key('mal.cache.key', $linklinkid)"/>
-            <xsl:if test="count($linklinknode) > 0">
-              <mal:link xref="{$linklinkid}">
-                <mal:title type="sort">
-                  <xsl:call-template name="mal.link.sorttitle">
-                    <xsl:with-param name="node" select="$linklinknode"/>
-                    <xsl:with-param name="role" select="$role"/>
-                  </xsl:call-template>
-                </mal:title>
-              </mal:link>
-            </xsl:if>
-          </xsl:for-each>
-        </xsl:when>
-        <xsl:when test="$link[@href]">
-          <mal:link href="{$link/@href}">
+      <xsl:variable name="linklinkid">
+        <xsl:call-template name="mal.link.xref.linkid"/>
+      </xsl:variable>
+      <xsl:for-each select="$mal.cache">
+        <xsl:variable name="linklinknode" select="key('mal.cache.key', $linklinkid)"/>
+        <xsl:if test="count($linklinknode) > 0">
+          <mal:link xref="{$linklinkid}">
             <mal:title type="sort">
-              <xsl:choose>
-                <xsl:when test="mal:title[@type = 'sort']">
-                  <xsl:value-of select="normalize-space(mal:title[@type = 'sort'][1])"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:value-of select="normalize-space(mal:title[not(@type)][1])"/>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:call-template name="mal.link.sorttitle">
+                <xsl:with-param name="node" select="$linklinknode"/>
+                <xsl:with-param name="role" select="$role"/>
+              </xsl:call-template>
             </mal:title>
-            <mal:info>
-              <xsl:copy-of select="$link/*"/>
-            </mal:info>
           </mal:link>
-        </xsl:when>
-      </xsl:choose>
+        </xsl:if>
+      </xsl:for-each>
     </xsl:for-each>
   </xsl:variable>
   <xsl:copy-of select="$links"/>
@@ -1231,11 +929,98 @@ FIXME:
 
 
 <!--**==========================================================================
+mal.link.facetlinks
+Output the facet links for a facets page or section.
+:Revision:version="3.0" date="2010-12-16" status="final"
+$node: The #{page} or #{section} element to generate links for.
+
+This template outputs all the facet links for facets page or section. Links are
+output for each page or section that matches all #{facet:match} elements from
+${node}, excluding those which will be included in descendant facets nodes. It
+outputs each of the links as a #{link} element within the Mallard namespace.
+Each #{link} element has an #{xref} attribute pointing to the target page
+or section.
+
+Each #{link} element contains a #{title} with #{type="sort"} providing the
+sort title of the target page or section.  The results are not sorted when
+returned from this template.  Use #{xsl:sort} on the sort titles to sort
+the results.
+
+Each #{link} element contains a copy of all the #{facet:tag} elements from
+the #{info} element of the target page or section.
+
+The output is a result tree fragment.  To use these results, call
+#{exsl:node-set} on them.
+-->
+<xsl:template name="mal.link.facetlinks">
+  <xsl:param name="node" select="."/>
+  <xsl:if test="$node/mal:info/facet:match">
+    <xsl:for-each select="$mal.cache">
+      <xsl:for-each select="key('mal.facet.all.key', '')">
+        <xsl:variable name="fnode" select="."/>
+        <xsl:variable name="linkid">
+          <xsl:call-template name="mal.link.linkid">
+            <xsl:with-param name="node" select="$fnode"/>
+          </xsl:call-template>
+        </xsl:variable>
+        <xsl:variable name="include">
+          <xsl:for-each select="$node/ancestor-or-self::*/mal:info/facet:match">
+            <xsl:variable name="match" select="."/>
+            <xsl:choose>
+              <xsl:when test="@values">
+                <xsl:if test="not(str:split($fnode/mal:info/facet:tag[@key = $match/@key]/@values)
+                              = str:split($match/@values))">
+                  <xsl:text>x</xsl:text>
+                </xsl:if>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:if test="not($fnode/mal:info/facet:tag[@key = $match/@key])">
+                  <xsl:text>x</xsl:text>
+                </xsl:if>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="exclude">
+          <xsl:for-each select="$node//mal:section/mal:info/facet:match">
+            <xsl:variable name="match" select="."/>
+            <xsl:choose>
+              <xsl:when test="@values">
+                <xsl:if test="str:split($fnode/mal:info/facet:tag[@key = $match/@key]/@values)
+                              = str:split($match/@values)">
+                  <xsl:text>x</xsl:text>
+                </xsl:if>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:if test="$fnode/mal:info/facet:tag[@key = $match/@key]">
+                  <xsl:text>x</xsl:text>
+                </xsl:if>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:for-each>
+        </xsl:variable>
+        <xsl:if test="not(contains($include, 'x')) and not(contains($exclude, 'x'))">
+          <mal:link xref="{$linkid}">
+            <mal:title type="sort">
+              <xsl:call-template name="mal.link.sorttitle">
+                <xsl:with-param name="node" select="$fnode"/>
+              </xsl:call-template>
+            </mal:title>
+            <xsl:copy-of select="mal:info/facet:tag"/>
+          </mal:link>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:for-each>
+  </xsl:if>
+</xsl:template>
+
+
+<!--**==========================================================================
 mal.link.sorttitle
 Output the sort title for a page or section.
-:Revision:version="3.10" date="2013-07-30" status="final"
+:Revision:version="3.4" date="2011-11-01" status="final"
 $node: The #{page} or #{section} element to output a sort title for.
-$role: A space-separated list of link roles, used to select the appropriate title.
+$role: A link role, used to select an appropriate link title.
 
 This template returns a sort title for a page or section as a normalized string.
 If ${node} defines a sort title in its #{info} element, the value of that title

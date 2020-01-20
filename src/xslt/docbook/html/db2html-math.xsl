@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -45,11 +47,7 @@ then outputs MathML content. It sets the #{display} attribute on the output to
 -->
 <xsl:template name="db2html.math.div">
   <xsl:param name="node" select="."/>
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="class" select="'math'"/>
-    </xsl:call-template>
+  <div class="math">
     <xsl:call-template name="html.lang.attrs">
       <xsl:with-param name="node" select="$node"/>
     </xsl:call-template>

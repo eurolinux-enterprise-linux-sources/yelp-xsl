@@ -106,7 +106,7 @@ msgstr "Odp:"
 #.
 #: yelp-xsl.xml.in:109
 msgid "About"
-msgstr "O dokumentu"
+msgstr "O aplikaci"
 
 #. (itstool) path: msg/msgstr
 #. Accessible title for an advanced note.

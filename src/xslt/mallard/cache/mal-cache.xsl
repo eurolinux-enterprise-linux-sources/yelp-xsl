@@ -11,13 +11,14 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform'
                 xmlns:mal='http://projectmallard.org/1.0/'
                 xmlns:cache='http://projectmallard.org/cache/1.0/'
-                xmlns:site='http://projectmallard.org/site/1.0/'
                 xmlns='http://projectmallard.org/1.0/'
                 version='1.0'>
 
@@ -48,6 +49,18 @@ mal.cache.id
 
 
 <!--**==========================================================================
+mal.cache.xref
+-->
+<xsl:template name="mal.cache.xref">
+  <xsl:param name="node" select="."/>
+  <xsl:param name="node_in"/>
+  <xsl:attribute name="xref">
+    <xsl:value-of select="$node/@xref"/>
+  </xsl:attribute>
+</xsl:template>
+
+
+<!--**==========================================================================
 mal.cache.info
 -->
 <xsl:template name="mal.cache.info">
@@ -56,7 +69,21 @@ mal.cache.info
   <xsl:param name="node_in"/>
   <info>
     <xsl:for-each select="$info/*">
-      <xsl:copy-of select="."/>
+      <xsl:choose>
+        <xsl:when test="self::mal:link">
+          <link>
+            <xsl:call-template name="mal.cache.xref">
+              <xsl:with-param name="node_in" select="$node_in"/>
+            </xsl:call-template>
+            <xsl:for-each select="attribute::*[not(name(.) = 'xref')] | *">
+              <xsl:copy-of select="."/>
+            </xsl:for-each>
+          </link>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="."/>
+        </xsl:otherwise>
+      </xsl:choose>
     </xsl:for-each>
   </info>
 </xsl:template>
@@ -80,8 +107,9 @@ mal.cache.info
   <xsl:param name="node_in"/>
   <page>
     <xsl:copy-of select="@*"/>
-    <xsl:copy-of select="$node_in/@cache:*"/>
-    <xsl:copy-of select="$node_in/@site:*"/>
+    <xsl:attribute name="cache:href">
+      <xsl:value-of select="$node_in/@cache:href"/>
+    </xsl:attribute>
     <xsl:call-template name="mal.cache.id">
       <xsl:with-param name="node_in" select="$node_in"/>
     </xsl:call-template>

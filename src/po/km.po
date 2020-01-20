@@ -13,7 +13,7 @@ msgstr ""
 "PO-Revision-Date: 2012-02-16 08:10+0000\n"
 "Last-Translator: Khoem Sokhem <khoemsokhem@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros.info>\n"
-"Language: km\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +28,7 @@ msgstr ""
 #.
 #: yelp-xsl.xml.in:27(msg/msgstr)
 msgid "default:LTR"
-msgstr "default:LTR"
+msgstr "លំនាំ​ដើម ៖ LTR"
 
 #. This is used a simple list item seperator in places where simple
 #. inline lists have to be constructed dynamically.  Using the default

@@ -11,14 +11,19 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:mal="http://projectmallard.org/1.0/"
                 xmlns:if="http://projectmallard.org/if/1.0/"
+                xmlns:dyn="http://exslt.org/dynamic"
+                xmlns:func="http://exslt.org/functions"
                 xmlns:str="http://exslt.org/strings"
-                exclude-result-prefixes="mal if str"
+                exclude-result-prefixes="mal if dyn func str"
+                extension-element-prefixes="func"
                 version="1.0">
 
 <!--!!==========================================================================
@@ -115,7 +120,7 @@ $test: The test expression.
 
 This template evaluates the test expression ${test}, which is taken automatically
 from the #{test} or #{if:test} attribute of $node. It splits the expression on
-commas into subexpressions, then splits each subexpression on spaces into tokens.
+commas into subexpression, then splits each subexpression on spaces into tokens.
 A token is taken to be true if it's in one of the space-separated lists from
 @{mal.if.target}, @{mal.if.platform}, @{mal.if.features}, or @{mal.if.custom}.
 If the token starts with an exclamation point, the exclamation point is stripped
@@ -189,7 +194,7 @@ of dynamically showing or hiding content based on those tokens.
             <xsl:otherwise>
               <xsl:variable name="subcond">
                 <xsl:for-each select="str:tokenize($subexpr, ' ')[.!='1']">
-                  <xsl:if test="position() != 1">
+                  <xsl:if test="position != 1">
                     <xsl:text>__</xsl:text>
                   </xsl:if>
                   <xsl:value-of select="."/>
@@ -234,7 +239,7 @@ of dynamically showing or hiding content based on those tokens.
   <xsl:choose>
     <xsl:when test="$token = 'lang:C' or $token = 'lang:c'">
       <xsl:choose>
-        <xsl:when test="not($node/ancestor-or-self::*/@xml:lang)">
+        <xsl:when test="not(ancestor-or-self::*/@xml:lang)">
           <xsl:text>1</xsl:text>
         </xsl:when>
         <xsl:otherwise>

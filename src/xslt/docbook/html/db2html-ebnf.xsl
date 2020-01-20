@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -45,10 +47,7 @@ REMARK: Describe this module
 
 <!-- = productionset = -->
 <xsl:template match="productionset | db:productionset">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'productionset'"/>
-    </xsl:call-template>
+  <div class="productionset">
     <xsl:call-template name="db2html.anchor"/>
     <xsl:apply-templates select="title | db:title | db:info/db:title"/>
     <table class="productionset">

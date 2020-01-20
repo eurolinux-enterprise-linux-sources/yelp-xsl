@@ -291,7 +291,7 @@ msgstr "Pripravljeno za pregled"
 #. Automatic heading above a list of see-also links.
 #: yelp-xsl.xml.in:277
 msgid "See Also"
-msgstr "Poglejte tudi"
+msgstr "Pogjejte tudi"
 
 #. (itstool) path: msg/msgstr
 #. Figures can automatically scale images down to fit the page width.

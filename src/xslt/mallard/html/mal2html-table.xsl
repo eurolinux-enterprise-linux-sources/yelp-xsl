@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -164,26 +166,24 @@ REMARK: Describe this module
     </xsl:choose>
   </xsl:variable>
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>table</xsl:text>
-        <xsl:for-each select="str:tokenize(@style)">
-          <xsl:value-of select="concat(' style-', .)"/>
-        </xsl:for-each>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>table</xsl:text>
+      <xsl:for-each select="str:tokenize(@style)">
+        <xsl:value-of select="concat(' style-', .)"/>
+      </xsl:for-each>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="mal2html.ui.expander.data"/>
     <div class="inner">
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
+      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
       <div class="region">
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
+        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc"/>
         <table class="table">
           <xsl:if test="$style != ''">
             <xsl:attribute name="style">
@@ -226,8 +226,6 @@ REMARK: Describe this module
   <xsl:param name="rowshade"/>
   <xsl:param name="colshade"/>
   <tbody>
-    <xsl:call-template name="html.class.attr"/>
-    <xsl:call-template name="html.lang.attrs"/>
     <xsl:apply-templates select="mal:tr[1]">
       <xsl:with-param name="cols" select="$cols"/>
       <xsl:with-param name="rowrules" select="$rowrules"/>
@@ -246,8 +244,6 @@ REMARK: Describe this module
   <xsl:param name="rowshade"/>
   <xsl:param name="colshade"/>
   <thead>
-    <xsl:call-template name="html.class.attr"/>
-    <xsl:call-template name="html.lang.attrs"/>
     <xsl:apply-templates select="mal:tr[1]">
       <xsl:with-param name="cols" select="$cols"/>
       <xsl:with-param name="rowrules" select="$rowrules"/>
@@ -266,8 +262,6 @@ REMARK: Describe this module
   <xsl:param name="rowshade"/>
   <xsl:param name="colshade"/>
   <tfoot>
-    <xsl:call-template name="html.class.attr"/>
-    <xsl:call-template name="html.lang.attrs"/>
     <xsl:apply-templates select="mal:tr[1]">
       <xsl:with-param name="cols" select="$cols"/>
       <xsl:with-param name="rowrules" select="$rowrules"/>
@@ -286,7 +280,7 @@ REMARK: Describe this module
   <xsl:param name="rowshade"/>
   <xsl:param name="colshade"/>
   <xsl:param name="rowspans">
-    <xsl:for-each select="mal:td | mal:th">
+    <xsl:for-each select="mal:td">
       <xsl:text>0:</xsl:text>
       <xsl:if test="@colspan">
         <xsl:call-template name="utils.repeat_string">
@@ -322,14 +316,12 @@ REMARK: Describe this module
     </xsl:choose>
   </xsl:variable>
   <tr>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:if test="$shaderow = 1">
-          <xsl:text>shade</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
-    <xsl:apply-templates select="mal:td | mal:th">
+    <xsl:if test="$shaderow = 1">
+      <xsl:attribute name="class">
+        <xsl:text>shade</xsl:text>
+      </xsl:attribute>
+    </xsl:if>
+    <xsl:apply-templates select="mal:td">
       <xsl:with-param name="cols" select="$cols"/>
       <xsl:with-param name="rowrules" select="$rowrules"/>
       <xsl:with-param name="colrules" select="$colrules"/>
@@ -356,7 +348,7 @@ REMARK: Describe this module
 <xsl:template name="rowspans">
   <xsl:param name="spans"/>
   <xsl:param name="pos" select="1"/>
-  <xsl:param name="td" select="(mal:td | mal:th)[1]"/>
+  <xsl:param name="td" select="mal:td[1]"/>
   <xsl:param name="times" select="1"/>
   <xsl:variable name="span" select="number($spans[$pos])"/>
 
@@ -405,15 +397,15 @@ REMARK: Describe this module
         <xsl:call-template name="rowspans">
           <xsl:with-param name="spans" select="$spans"/>
           <xsl:with-param name="pos" select="$nextpos"/>
-          <xsl:with-param name="td" select="($td/following-sibling::mal:td | $td/following-sibling::mal:th)[1]"/>
+          <xsl:with-param name="td" select="$td/following-sibling::mal:td[1]"/>
         </xsl:call-template>
       </xsl:if>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
 
-<!-- = td | th = -->
-<xsl:template match="mal:td | mal:th">
+<!-- = td = -->
+<xsl:template match="mal:td">
   <xsl:param name="cols"/>
   <xsl:param name="rowrules"/>
   <xsl:param name="colrules"/>
@@ -421,13 +413,13 @@ REMARK: Describe this module
   <xsl:param name="colshade"/>
   <xsl:param name="rowspans"/>
   <xsl:variable name="trpos" select="count(../preceding-sibling::mal:tr) + 1"/>
-  <xsl:variable name="tdcnt" select="count(preceding-sibling::mal:td) + count(preceding-sibling::mal:th) + 1"/>
+  <xsl:variable name="tdcnt" select="count(preceding-sibling::mal:td) + 1"/>
   <xsl:variable name="spans" select="str:split($rowspans, ':')"/>
   <xsl:variable name="tdstr">
     <xsl:for-each select="$spans[. = '0'][$tdcnt]/preceding-sibling::*[not(. = '0')]">
       <xsl:text>.</xsl:text>
     </xsl:for-each>
-    <xsl:for-each select="preceding-sibling::mal:td | preceding-sibling::mal:th">
+    <xsl:for-each select="preceding-sibling::mal:td">
       <xsl:text>.</xsl:text>
       <xsl:if test="@colspan">
         <xsl:call-template name="utils.repeat_string">
@@ -502,14 +494,12 @@ REMARK: Describe this module
       </xsl:when>
     </xsl:choose>
   </xsl:variable>
-  <xsl:element name="{local-name(.)}" namespace="{$html.namespace}">
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:if test="$shadecol = 1">
-          <xsl:text>shade</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+  <td>
+    <xsl:if test="$shadecol = 1">
+      <xsl:attribute name="class">
+        <xsl:text>shade</xsl:text>
+      </xsl:attribute>
+    </xsl:if>
     <xsl:if test="$style != ''">
       <xsl:attribute name="style">
         <xsl:value-of select="$style"/>
@@ -525,13 +515,8 @@ REMARK: Describe this module
         <xsl:value-of select="@rowspan"/>
       </xsl:attribute>
     </xsl:if>
-    <xsl:if test="self::mal:th/@scope">
-      <xsl:attribute name="scope">
-        <xsl:value-of select="@scope"/>
-      </xsl:attribute>
-    </xsl:if>
     <xsl:apply-templates mode="mal2html.block.mode"/>
-  </xsl:element>
+  </td>
 </xsl:template>
 
 </xsl:stylesheet>

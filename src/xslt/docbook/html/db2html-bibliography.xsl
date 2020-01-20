@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -167,10 +169,7 @@ This mode is used when processing the child elements of a #{biblioentry} or a
 inside a bibliography entry.
 -->
 <xsl:template mode="db2html.biblioentry.mode" match="*">
-  <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="local-name(.)"/>
-    </xsl:call-template>
+  <span class="{local-name(.)}">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:call-template name="db2html.anchor"/>
     <xsl:apply-templates mode="db2html.biblioentry.mode"/>
@@ -182,6 +181,11 @@ inside a bibliography entry.
 
 <!-- = affiliation % db2html.biblioentry.mode = -->
 <xsl:template mode="db2html.biblioentry.mode" match="affiliation | db:affiliation"/>
+
+<!-- = annotation % db2html.biblioentry.mode = -->
+<xsl:template mode="db2html.biblioentry.mode" match="db:annotation">
+  <xsl:apply-templates select="."/>
+</xsl:template>
 
 <!-- = author % db2html.biblioentry.mode = -->
 <xsl:template mode="db2html.biblioentry.mode" match="author | db:author">
@@ -328,36 +332,24 @@ inside a bibliography entry.
 
 <!-- = biblioentry = -->
 <xsl:template match="biblioentry | db:biblioentry">
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'biblioentry'"/>
-    </xsl:call-template>
+  <div class="biblioentry">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:call-template name="db2html.anchor"/>
     <xsl:call-template name="db2html.biblioentry.label"/>
     <xsl:call-template name="db2html.biblioentry.data"/>
   </div>
-  </xsl:if>
 </xsl:template>
 
 <!-- = bibliomixed = -->
 <xsl:template match="bibliomixed | db:bibliomixed">
   <xsl:variable name="node" select="."/>
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'biblimixed'"/>
-    </xsl:call-template>
+  <div class="bibliomixed">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:call-template name="db2html.anchor"/>
     <xsl:call-template name="db2html.biblioentry.label"/>
     <xsl:apply-templates mode="db2html.biblioentry.mode"
                          select="node()[not(set:has-same-node(., $node/*[1]/self::abbrev | $node/*[1]/self::db:abbrev))]"/>
   </div>
-  </xsl:if>
 </xsl:template>
 
 <!-- = bibliolist = -->

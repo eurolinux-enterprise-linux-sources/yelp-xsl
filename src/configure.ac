@@ -1,9 +1,8 @@
-# Do not split AC_INIT across multiple lines without making localbuild.sh smarter
-AC_INIT([yelp-xsl],[3.28.0],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
+AC_INIT([yelp-xsl],[3.8.1],[http://bugzilla.gnome.org/enter_bug.cgi?product=yelp-xsl])
 
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_INIT_AUTOMAKE([1.11.2 no-dist-gzip dist-bzip2])
+AM_INIT_AUTOMAKE([1.10 no-dist-gzip dist-bzip2])
 
 # Check for programs
 dnl  In the interest of portability, we don't use GNU awk extensions,
@@ -12,12 +11,13 @@ dnl  bug reports after busted tarballs were shipped, we use -W compat
 dnl  whenever our awk is gawk.
 AC_PROG_AWK
 if test x$AWK = xgawk; then
-   YELP_XSL_AWK='gawk --traditional';
+   YELP_XSL_AWK='gawk -W compat';
 else
    YELP_XSL_AWK=$AWK;
 fi
 AC_SUBST(YELP_XSL_AWK)
 
+AC_ARG_VAR([ITSTOOL], [Path to the `itstool` command])
 AC_CHECK_PROG([ITSTOOL], [itstool], [itstool])
 if test x"$ITSTOOL" = x; then
   AC_MSG_ERROR([itstool is required to build the translation XML files])
@@ -26,6 +26,13 @@ ITSTOOL_VERSION=`itstool --version | cut -d' ' -f2 | awk -F. '{print $ 1 * 10000
 if test "$ITSTOOL_VERSION" -lt 10200; then
   AC_MSG_ERROR([itstool >= 1.2.0 is required to build the translation XML files])
 fi
+
+# Dependecies
+PKG_CHECK_MODULES(YELP_XSL,
+[
+	libxml-2.0 >= 2.6.12
+	libxslt    >= 1.1.8
+])
 
 # i18n stuff
 GETTEXT_PACKAGE=yelp-xsl
@@ -42,20 +49,18 @@ AC_ARG_ENABLE(doc,
               enable_doc=no)
 AM_CONDITIONAL(ENABLE_DOC, test "x$enable_doc" != "xno")
 
-AS_IF([test "x$enable_doc" != "xno"],[
-AC_CHECK_PROG(XMLLINT, xmllint, xmllint)
-if test x"$XMLLINT" = x; then
-  AC_MSG_ERROR([xmllint not found])
-fi
-AC_CHECK_PROG(XSLTPROC, xsltproc, xsltproc)
-if test x"$XSLTPROC" = x; then
-  AC_MSG_ERROR([xsltproc not found])
-fi
-])
-
 AC_CONFIG_FILES([
 Makefile
 yelp-xsl.pc
+icons/Makefile
+icons/hicolor/Makefile
+icons/hicolor/24x24/Makefile
+icons/hicolor/24x24/status/Makefile
+icons/hicolor/48x48/Makefile
+icons/hicolor/48x48/status/Makefile
+icons/hicolor/scalable/Makefile
+icons/hicolor/scalable/status/Makefile
+icons/hicolor/watermarks/Makefile
 js/Makefile
 doc/Makefile
 doc/yelp-xsl/Makefile
@@ -63,7 +68,6 @@ po/Makefile.in
 xslt/Makefile
 xslt/common/Makefile
 xslt/common/domains/Makefile
-xslt/common/icons/Makefile
 xslt/docbook/Makefile
 xslt/docbook/common/Makefile
 xslt/docbook/html/Makefile

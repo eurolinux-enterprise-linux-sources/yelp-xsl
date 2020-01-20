@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -47,8 +49,8 @@ If ${node} has fallback content, it is used for the #{alt} attribute.
   <xsl:param name="node" select="."/>
   <xsl:param name="inline" select="false()"/>
   <img src="{$node/@src}">
-    <xsl:copy-of select="$node/@height"/>
-    <xsl:copy-of select="$node/@width"/>
+    <xsl:copy-of select="@height"/>
+    <xsl:copy-of select="@width"/>
     <xsl:attribute name="class">
       <xsl:text>media </xsl:text>
       <xsl:choose>
@@ -63,10 +65,7 @@ If ${node} has fallback content, it is used for the #{alt} attribute.
     <xsl:attribute name="alt">
       <xsl:choose>
         <xsl:when test="$inline">
-          <xsl:variable name="alt">
-            <xsl:apply-templates mode="mal2html.inline.mode" select="$node/node()"/>
-          </xsl:variable>
-          <xsl:value-of select="normalize-space($alt)"/>
+          <xsl:value-of select="$node"/>
         </xsl:when>
         <xsl:otherwise>
           <!-- FIXME: This is not ideal.  Nested block container elements
@@ -88,7 +87,6 @@ If ${node} has fallback content, it is used for the #{alt} attribute.
   </img>
 </xsl:template>
 
-
 <!--**==========================================================================
 mal2html.media.video
 Output a #{video} element for a video.
@@ -108,7 +106,7 @@ HTML #{video} element.
 <xsl:template name="mal2html.media.video">
   <xsl:param name="node" select="."/>
   <xsl:param name="inline" select="false()"/>
-  <video src="{$node/@src}" preload="auto">
+  <video src="{$node/@src}" preload="auto" controls="controls">
     <xsl:attribute name="class">
       <xsl:text>media </xsl:text>
       <xsl:choose>
@@ -129,6 +127,16 @@ HTML #{video} element.
         <xsl:value-of select="$poster[1]/@src"/>
       </xsl:attribute>
     </xsl:if>
+    <xsl:attribute name="data-play-label">
+      <xsl:call-template name="l10n.gettext">
+        <xsl:with-param name="msgid" select="'Play'"/>
+      </xsl:call-template>
+    </xsl:attribute>
+    <xsl:attribute name="data-pause-label">
+      <xsl:call-template name="l10n.gettext">
+        <xsl:with-param name="msgid" select="'Pause'"/>
+      </xsl:call-template>
+    </xsl:attribute>
     <xsl:choose>
       <xsl:when test="$inline">
         <xsl:apply-templates mode="mal2html.inline.mode" select="$node/node()"/>
@@ -138,9 +146,6 @@ HTML #{video} element.
       </xsl:otherwise>
     </xsl:choose>
   </video>
-  <xsl:call-template name="html.media.controls">
-    <xsl:with-param name="type" select="'video'"/>
-  </xsl:call-template>
   <xsl:if test="not($inline)">
     <xsl:apply-templates mode="mal2html.ttml.mode" select="tt:tt[1]"/>
   </xsl:if>
@@ -162,7 +167,7 @@ in the source to the #{audio} element's fallback content. If ${inline} is
 <xsl:template name="mal2html.media.audio">
   <xsl:param name="node" select="."/>
   <xsl:param name="inline" select="false()"/>
-  <audio src="{$node/@src}" preload="auto">
+  <audio src="{$node/@src}" preload="auto" controls="controls">
     <xsl:attribute name="class">
       <xsl:text>media </xsl:text>
       <xsl:choose>
@@ -174,6 +179,16 @@ in the source to the #{audio} element's fallback content. If ${inline} is
         </xsl:otherwise>
       </xsl:choose>
     </xsl:attribute>
+    <xsl:attribute name="data-play-label">
+      <xsl:call-template name="l10n.gettext">
+        <xsl:with-param name="msgid" select="'Play'"/>
+      </xsl:call-template>
+    </xsl:attribute>
+    <xsl:attribute name="data-pause-label">
+      <xsl:call-template name="l10n.gettext">
+        <xsl:with-param name="msgid" select="'Pause'"/>
+      </xsl:call-template>
+    </xsl:attribute>
     <xsl:choose>
       <xsl:when test="$inline">
         <xsl:apply-templates mode="mal2html.inline.mode" select="$node/node()"/>
@@ -183,9 +198,6 @@ in the source to the #{audio} element's fallback content. If ${inline} is
       </xsl:otherwise>
     </xsl:choose>
   </audio>
-  <xsl:call-template name="html.media.controls">
-    <xsl:with-param name="type" select="'audio'"/>
-  </xsl:call-template>
   <xsl:if test="not($inline)">
     <xsl:apply-templates mode="mal2html.ttml.mode" select="tt:tt[1]"/>
   </xsl:if>
@@ -243,29 +255,27 @@ the parent media element is played.
 
 <xsl:template mode="mal2html.ttml.mode" match="tt:body">
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>media-ttml</xsl:text>
-        <xsl:choose>
-          <xsl:when test="@xml:space">
-            <xsl:if test="@xml:space='preserve'">
-              <xsl:text> media-ttml-pre</xsl:text>
-            </xsl:if>
-            <xsl:if test="@xml:space='default'">
-              <xsl:text> media-ttml-nopre</xsl:text>
-            </xsl:if>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:if test="../@xml:space='preserve'">
-              <xsl:text> media-ttml-pre</xsl:text>
-            </xsl:if>
-            <xsl:if test="../@xml:space='default'">
-              <xsl:text> media-ttml-nopre</xsl:text>
-            </xsl:if>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>media-ttml</xsl:text>
+      <xsl:choose>
+        <xsl:when test="@xml:space">
+          <xsl:if test="@xml:space='preserve'">
+            <xsl:text> media-ttml-pre</xsl:text>
+          </xsl:if>
+          <xsl:if test="@xml:space='default'">
+            <xsl:text> media-ttml-nopre</xsl:text>
+          </xsl:if>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:if test="../@xml:space='preserve'">
+            <xsl:text> media-ttml-pre</xsl:text>
+          </xsl:if>
+          <xsl:if test="../@xml:space='default'">
+            <xsl:text> media-ttml-nopre</xsl:text>
+          </xsl:if>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs">
       <xsl:with-param name="parent" select="../self::tt:tt"/>
     </xsl:call-template>
@@ -285,17 +295,15 @@ the parent media element is played.
     </xsl:call-template>
   </xsl:variable>
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>media-ttml-node media-ttml-div</xsl:text>
-        <xsl:if test="@xml:space='preserve'">
-          <xsl:text> media-ttml-pre</xsl:text>
-        </xsl:if>
-        <xsl:if test="@xml:space='default'">
-          <xsl:text> media-ttml-nopre</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>media-ttml-node media-ttml-div</xsl:text>
+      <xsl:if test="@xml:space='preserve'">
+        <xsl:text> media-ttml-pre</xsl:text>
+      </xsl:if>
+      <xsl:if test="@xml:space='default'">
+        <xsl:text> media-ttml-nopre</xsl:text>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:copy-of select="@xml:space"/>
     <xsl:attribute name="data-ttml-begin">
@@ -330,17 +338,15 @@ the parent media element is played.
     </xsl:call-template>
   </xsl:variable>
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>media-ttml-node media-ttml-p</xsl:text>
-        <xsl:if test="@xml:space='preserve'">
-          <xsl:text> media-ttml-pre</xsl:text>
-        </xsl:if>
-        <xsl:if test="@xml:space='default'">
-          <xsl:text> media-ttml-nopre</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>media-ttml-node media-ttml-p</xsl:text>
+      <xsl:if test="@xml:space='preserve'">
+        <xsl:text> media-ttml-pre</xsl:text>
+      </xsl:if>
+      <xsl:if test="@xml:space='default'">
+        <xsl:text> media-ttml-nopre</xsl:text>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:attribute name="data-ttml-begin">
       <xsl:value-of select="substring-before($beginend, ',')"/>
@@ -365,17 +371,15 @@ the parent media element is played.
     </xsl:call-template>
   </xsl:variable>
   <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>media-ttml-node media-ttml-span</xsl:text>
-        <xsl:if test="@xml:space='preserve'">
-          <xsl:text> media-ttml-pre</xsl:text>
-        </xsl:if>
-        <xsl:if test="@xml:space='default'">
-          <xsl:text> media-ttml-nopre</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>media-ttml-node media-ttml-span</xsl:text>
+      <xsl:if test="@xml:space='preserve'">
+        <xsl:text> media-ttml-pre</xsl:text>
+      </xsl:if>
+      <xsl:if test="@xml:space='default'">
+        <xsl:text> media-ttml-nopre</xsl:text>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:attribute name="data-ttml-begin">
       <xsl:value-of select="substring-before($beginend, ',')"/>
@@ -391,11 +395,7 @@ the parent media element is played.
 </xsl:template>
 
 <xsl:template mode="mal2html.inline.mode" match="tt:br">
-  <br>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'media-ttml-br'"/>
-    </xsl:call-template>
-  </br>
+  <br class="media-ttml-br"/>
 </xsl:template>
 
 
@@ -428,16 +428,14 @@ the parent media element is played.
     <xsl:when test="$if = ''"/>
     <xsl:when test="@type = 'image' or not(@type)">
       <div>
-        <xsl:call-template name="html.class.attr">
-          <xsl:with-param name="class">
-            <xsl:text>media media-image</xsl:text>
-            <xsl:value-of select="$class"/>
-            <xsl:if test="$if != 'true'">
-              <xsl:text> if-if </xsl:text>
-              <xsl:value-of select="$if"/>
-            </xsl:if>
-          </xsl:with-param>
-        </xsl:call-template>
+        <xsl:attribute name="class">
+          <xsl:text>media media-image</xsl:text>
+          <xsl:value-of select="$class"/>
+          <xsl:if test="$if != 'true'">
+            <xsl:text> if-if </xsl:text>
+            <xsl:value-of select="$if"/>
+          </xsl:if>
+        </xsl:attribute>
         <div class="inner">
           <xsl:call-template name="mal2html.media.image"/>
         </div>
@@ -445,16 +443,14 @@ the parent media element is played.
     </xsl:when>
     <xsl:when test="@type = 'video'">
       <div>
-        <xsl:call-template name="html.class.attr">
-          <xsl:with-param name="class">
-            <xsl:text>media media-video</xsl:text>
-            <xsl:value-of select="$class"/>
-            <xsl:if test="$if != 'true'">
-              <xsl:text> if-if </xsl:text>
-              <xsl:value-of select="$if"/>
-            </xsl:if>
-          </xsl:with-param>
-        </xsl:call-template>
+        <xsl:attribute name="class">
+          <xsl:text>media media-video</xsl:text>
+          <xsl:value-of select="$class"/>
+          <xsl:if test="$if != 'true'">
+            <xsl:text> if-if </xsl:text>
+            <xsl:value-of select="$if"/>
+          </xsl:if>
+        </xsl:attribute>
         <div class="inner">
           <xsl:call-template name="mal2html.media.video"/>
         </div>
@@ -462,16 +458,14 @@ the parent media element is played.
     </xsl:when>
     <xsl:when test="@type = 'audio'">
       <div>
-        <xsl:call-template name="html.class.attr">
-          <xsl:with-param name="class">
-            <xsl:text>media media-audio</xsl:text>
-            <xsl:value-of select="$class"/>
-            <xsl:if test="$if != 'true'">
-              <xsl:text> if-if </xsl:text>
-              <xsl:value-of select="$if"/>
-            </xsl:if>
-          </xsl:with-param>
-        </xsl:call-template>
+        <xsl:attribute name="class">
+          <xsl:text>media media-audio</xsl:text>
+          <xsl:value-of select="$class"/>
+          <xsl:if test="$if != 'true'">
+            <xsl:text> if-if </xsl:text>
+            <xsl:value-of select="$if"/>
+          </xsl:if>
+        </xsl:attribute>
         <div class="inner">
           <xsl:call-template name="mal2html.media.audio"/>
         </div>
@@ -487,7 +481,22 @@ the parent media element is played.
 
 <!-- = mal2html.inline.mode % media = -->
 <xsl:template mode="mal2html.inline.mode" match="mal:media">
-  <xsl:call-template name="mal2html.span"/>
+  <xsl:choose>
+    <xsl:when test="@action | @xref | @href">
+      <a>
+        <xsl:attribute name="href">
+          <xsl:call-template name="mal.link.target"/>
+        </xsl:attribute>
+        <xsl:attribute name="title">
+          <xsl:call-template name="mal.link.tooltip"/>
+        </xsl:attribute>
+        <xsl:apply-templates mode="mal2html.inline.content.mode" select="."/>
+      </a>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:apply-templates mode="mal2html.inline.content.mode" select="."/>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template mode="mal2html.inline.content.mode" match="mal:media">

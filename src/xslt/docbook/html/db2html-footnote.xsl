@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -114,11 +116,7 @@ This templates outputs the actual text of a footnote as a block-level element.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <div id="{$anchor}">
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="class" select="'footnote'"/>
-    </xsl:call-template>
+  <div class="footnote" id="{$anchor}">
     <a class="footnote" href="{$href}">
       <xsl:value-of select="count($node/preceding::footnote | $node/preceding::db:footnote) + 1"/>
     </a>

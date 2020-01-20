@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -63,8 +65,6 @@ $lang: The locale of the text in ${node}
 $name-class: The class to use for the name of the element
 
 REMARK: Document this template
-
-This template handles conditional processing.
 -->
 <xsl:template name="db2html.inline">
   <xsl:param name="node" select="."/>
@@ -75,17 +75,8 @@ This template handles conditional processing.
   <xsl:variable name="xlink" select="$node/@xl:href"/>
   <xsl:variable name="linkend" select="$node/@linkend"/>
 
-  <xsl:variable name="if">
-    <xsl:call-template name="db.profile.test">
-      <xsl:with-param name="node" select="$node"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:if test="$if != ''">
-  <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="class" select="concat($class, ' ', $name-class)"/>
-    </xsl:call-template>
+  <!-- FIXME: do CSS classes, rather than inline styles -->
+  <span class="{$class} {$name-class}">
     <xsl:call-template name="html.lang.attrs">
       <xsl:with-param name="node" select="$node"/>
     </xsl:call-template>
@@ -112,7 +103,6 @@ This template handles conditional processing.
       </xsl:otherwise>
     </xsl:choose>
   </span>
-  </xsl:if>
 </xsl:template>
 
 
@@ -176,6 +166,31 @@ FIXME
   <xsl:call-template name="db2html.inline"/>
 </xsl:template>
 
+<!-- = bibkey-abbrev = -->
+<xsl:key name="bibkey-abbrev"
+         match="biblioentry[@id and *[1]/self::abbrev] |
+                bibliomixed[@id and *[1]/self::abbrev] |
+                db:biblioentry[@xml:id and *[1]/self::db:abbrev] |
+                db:bibliomixed[@xml:id and *[1]/self::db:abbrev]"
+         use="string(*[1])"/>
+
+<!-- = bibkey-label = -->
+<xsl:key name="bibkey-label"
+         match="biblioentry[@id and @xreflabel] |
+                bibliomixed[@id and @xreflabel] |
+                db:biblioentry[@xml:id and @xreflabel] |
+                db:bibliomixed[@xml:id and @xreflabel]"
+         use="string(@xreflabel)"/>
+
+<!-- = bibkey-id = -->
+<xsl:key name="bibkey-id"
+         match="biblioentry[@id] | bibliomixed[@id]"
+         use="string(@id)"/>
+
+<xsl:key name="bibkey-id"
+         match="db:biblioentry[@xml:id] | db:bibliomixed[@xml:id]"
+         use="string(@xml:id)"/>
+
 <!-- = biblioid = -->
 <xsl:template match="db:biblioid">
   <xsl:call-template name="db2html.inline"/>
@@ -199,8 +214,7 @@ FIXME
 <xsl:template mode="l10n.format.mode" match="msg:citation.label">
   <xsl:param name="node"/>
   <xsl:for-each select="$node[1]">
-    <xsl:variable name="entry_abbrev"
-                  select="key('db.biblio.abbrev.key', string($node))"/>
+    <xsl:variable name="entry_abbrev" select="key('bibkey-abbrev', string($node))"/>
     <xsl:choose>
       <xsl:when test="$entry_abbrev">
         <xsl:call-template name="db2html.xref">
@@ -212,8 +226,7 @@ FIXME
         </xsl:call-template>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:variable name="entry_label"
-                      select="key('db.biblio.label.key', string($node))"/>
+        <xsl:variable name="entry_label" select="key('bibkey-label', string($node))"/>
         <xsl:choose>
           <xsl:when test="$entry_label">
             <xsl:call-template name="db2html.xref">
@@ -225,8 +238,7 @@ FIXME
             </xsl:call-template>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:variable name="entry_id"
-                          select="key('db.biblio.id.key', string($node))"/>
+            <xsl:variable name="entry_id" select="key('bibkey-id', string($node))"/>
             <xsl:choose>
               <xsl:when test="$entry_id">
                 <xsl:call-template name="db2html.xref">
@@ -490,6 +502,10 @@ FIXME
   </xsl:call-template>
 </xsl:template>
 
+<!-- = glosskey = -->
+<xsl:key name="glosskey" match="glossentry[@id]" use="string(glossterm)"/>
+<xsl:key name="glosskey" match="db:glossentry[@xml:id]" use="string(db:glossterm)"/>
+
 <!-- = glossterm = -->
 <xsl:template match="glossterm | db:glossterm">
   <xsl:call-template name="db2html.inline"/>
@@ -507,7 +523,7 @@ FIXME
       </xsl:call-template>
     </xsl:when>
     <xsl:when test="not(../self::glossentry) and not(../self::db:glossentry)">
-      <xsl:variable name="glossentry" select="key('db.glossentry.key', string(.))"/>
+      <xsl:variable name="glossentry" select="key('glosskey', string(.))"/>
       <xsl:choose>
         <xsl:when test="$glossentry">
           <xsl:call-template name="db2html.xref">
@@ -635,18 +651,6 @@ FIXME
   <xsl:call-template name="db2html.inline">
     <xsl:with-param name="class" select="'key'"/>
   </xsl:call-template>
-</xsl:template>
-
-<!-- = keycap % db2html.inline.content.mode = -->
-<xsl:template mode="db2html.inline.content.mode" match="keycap | db:keycap">
-  <kbd>
-    <xsl:if test=". = 'Fn'">
-      <xsl:attribute name="class">
-        <xsl:text>key-Fn</xsl:text>
-      </xsl:attribute>
-    </xsl:if>
-    <xsl:apply-templates/>
-  </kbd>
 </xsl:template>
 
 <!-- = keycode = -->
@@ -1170,24 +1174,18 @@ FIXME
 
 <!-- = subscript = -->
 <xsl:template match="subscript | db:subscript">
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
   <sub class="subscript">
     <xsl:call-template name="db2html.anchor"/>
     <xsl:apply-templates/>
   </sub>
-  </xsl:if>
 </xsl:template>
 
 <!-- = superscript = -->
 <xsl:template match="superscript | db:superscript">
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
   <sup class="superscript">
     <xsl:call-template name="db2html.anchor"/>
     <xsl:apply-templates/>
   </sup>
-  </xsl:if>
 </xsl:template>
 
 <!-- = surname = -->

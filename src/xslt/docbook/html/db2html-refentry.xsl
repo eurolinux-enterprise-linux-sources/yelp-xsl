@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -100,12 +102,7 @@ REMARK: Describe this module. Talk about refenty and friends
   <xsl:param name="depth_of_chunk">
     <xsl:call-template name="db.chunk.depth-of-chunk"/>
   </xsl:param>
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'refnamediv'"/>
-    </xsl:call-template>
+  <div class="refnamediv">
     <xsl:call-template name="db2html.anchor"/>
     <xsl:choose>
       <xsl:when test="refdescriptor">
@@ -130,7 +127,6 @@ REMARK: Describe this module. Talk about refenty and friends
     </xsl:call-template>
     <xsl:apply-templates select="refpurpose | db:refpurpose"/>
   </div>
-  </xsl:if>
   <!-- FIXME: what to do with refclass? -->
 </xsl:template>
 

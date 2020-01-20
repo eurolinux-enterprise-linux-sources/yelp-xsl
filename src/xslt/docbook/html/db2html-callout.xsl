@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -55,10 +57,7 @@ element, locate the corresponding #{co} element and call this template on it.
 
 <!-- = co = -->
 <xsl:template match="co | db:co">
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
-    <xsl:call-template name="db2html.callout.label"/>
-  </xsl:if>
+  <xsl:call-template name="db2html.callout.label"/>
 </xsl:template>
 
 <!-- = calloutlist = -->
@@ -69,12 +68,7 @@ element, locate the corresponding #{co} element and call this template on it.
 <!-- = callout == -->
 <xsl:template match="callout | db:callout">
   <xsl:variable name="node" select="."/>
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'callout'"/>
-    </xsl:call-template>
+  <div class="callout">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:call-template name="db2html.anchor"/>
     <div class="co">
@@ -92,7 +86,6 @@ element, locate the corresponding #{co} element and call this template on it.
     </div>
     <xsl:apply-templates/>
   </div>
-  </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

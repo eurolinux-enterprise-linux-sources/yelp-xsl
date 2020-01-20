@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -39,73 +41,6 @@ This key returns any element based on the #{id} attribute, or the #{xml:id}
 attribute in DocBook 5.
 -->
 <xsl:key name="db.id.key" match="*" use="@id | @xml:id"/>
-
-
-<!--++==========================================================================
-db.biblio.abbrev.key
-Get a #{biblioentry} or #{bibliomixed} element from its #{abbrev}.
-:Revision:version="3.18" date="2015-07-23" status="final"
-
-This key returns #{biblioentry} and #{bibliomixed} elements based on their child
-#{abbrev} elements. The #{abbrev} element must be the first child element of the
-#{biblioentry} or #{bibliomixed} element. This key only returns elements that
-have an #{id} attribute for DocBook 4 or an #{xml:id} attribute for DocBook 5.
--->
-<xsl:key name="db.biblio.abbrev.key"
-         match="biblioentry[@id and *[1]/self::abbrev] |
-                bibliomixed[@id and *[1]/self::abbrev] |
-                db:biblioentry[@xml:id and *[1]/self::db:abbrev] |
-                db:bibliomixed[@xml:id and *[1]/self::db:abbrev]"
-         use="string(*[1])"/>
-
-
-<!--++==========================================================================
-db.biblio.label.key
-Get a #{biblioentry} or #{bibliomixed} element from its #{xreflabel}.
-:Revision:version="3.18" date="2015-07-23" status="final"
-
-This key returns #{biblioentry} and #{bibliomixed} elements based on their
-#{xreflabel} attributes. It only returns elements that have an #{id} attribute
-for DocBook 4 or an #{xml:id} attribute for DocBook 5.
--->
-<xsl:key name="db.biblio.label.key"
-         match="biblioentry[@id and @xreflabel] |
-                bibliomixed[@id and @xreflabel] |
-                db:biblioentry[@xml:id and @xreflabel] |
-                db:bibliomixed[@xml:id and @xreflabel]"
-         use="string(@xreflabel)"/>
-
-
-<!--++==========================================================================
-db.biblio.id.key
-Get a #{biblioentry} or #{bibliomixed} element from its #{id}.
-:Revision:version="3.18" date="2015-07-23" status="final"
-
-This key returns #{biblioentry} and #{bibliomixed} elements based on their #{id}
-or #{xml:id} attributes. The {#id} attribute is used for DocBook 4, and the
-#{xml:id} attribute is used for DocBook 5.
--->
-<xsl:key name="db.biblio.id.key"
-         match="biblioentry[@id] | bibliomixed[@id]"
-         use="string(@id)"/>
-<xsl:key name="db.biblio.id.key"
-         match="db:biblioentry[@xml:id] | db:bibliomixed[@xml:id]"
-         use="string(@xml:id)"/>
-
-
-<!--++==========================================================================
-db.glossentry.key
-Get a #{glossentry} element from its #{glossterm}.
-:Revision:version="3.18" date="2015-07-22" status="final"
-
-This key returns #{glossentry} elements based on the text in their #{glossterm}
-child elements. It only returns #{glossentry} elements that have an #{id}
-attribute in DocBook 4 or an #{xml:id} attribute in DocBook 5.
--->
-<xsl:key name="db.glossentry.key"
-         match="glossentry[@id]" use="string(glossterm)"/>
-<xsl:key name="db.glossentry.key"
-         match="db:glossentry[@xml:id]" use="string(db:glossterm)"/>
 
 
 <!--**==========================================================================
@@ -191,64 +126,32 @@ of the same name, counts its lines, and handles any #{startinglinenumber} or
 
 <!--**==========================================================================
 db.orderedlist.start
-Determine the number to use for the first #{listitem} in an #{orderedlist}.
-:Revision:version="3.10" date="2013-08-12" status="final"
-$node: The #{orderedlist} element to use.
-$continuation: The value of the #{continuation} attribute.
+Determines the number to use for the first #{listitem} in an #{orderedlist}
+$node: The #{orderedlist} element to use
 
 This template determines the starting number for an #{orderedlist} element using
-the #{continuation} attribute.  The template finds the first preceding #{orderedlist}
-element and counts its list items.  If that element also uses the #{continuation}
-attribute, this template calls itself recursively to add that element's starting
-line number to its list item count.
-
-This template uses conditional processing when looking at preceding ordered lists
-and their child list items.
-
-The ${continuation} parameter is automatically set based on the #{continuation}
-attribute of ${node}. It exists as a parameter to allow this template to force
-continuation when it calls itself recursively for conditional processing.
+the #{continuation} attribute.  Thi template finds the first preceding #{orderedlist}
+element and counts its list items.  If that element also uses the #{continuation},
+this template calls itself recursively to add that element's starting line number
+to its list item count.
 -->
 <xsl:template name="db.orderedlist.start">
   <xsl:param name="node" select="."/>
-  <xsl:param name="continuation" select="$node/@continuation"/>
   <xsl:choose>
-    <xsl:when test="$continuation != 'continues'">1</xsl:when>
+    <xsl:when test="$node/@continutation != 'continues'">1</xsl:when>
     <xsl:otherwise>
       <xsl:variable name="prevlist"
-                    select="($node/preceding::orderedlist[1] | $node/preceding::db:orderedlist[1])[last()]"/>
+                    select="$node/preceding::orderedlist[1]"/>
       <xsl:choose>
         <xsl:when test="count($prevlist) = 0">1</xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="prevlistif">
-            <xsl:call-template name="db.profile.test">
+          <xsl:variable name="prevlength" select="count($prevlist/listitem)"/>
+          <xsl:variable name="prevstart">
+            <xsl:call-template name="db.orderedlist.start">
               <xsl:with-param name="node" select="$prevlist"/>
             </xsl:call-template>
           </xsl:variable>
-          <xsl:choose>
-            <xsl:when test="$prevlistif = ''">
-              <xsl:call-template name="db.orderedlist.start">
-                <xsl:with-param name="node" select="$prevlist"/>
-                <xsl:with-param name="continuation" select="'continues'"/>
-              </xsl:call-template>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:variable name="prevlength">
-                <xsl:for-each select="$prevlist/listitem | $prevlist/db:listitem">
-                  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-                  <xsl:if test="$if != ''">
-                    <xsl:text>x</xsl:text>
-                  </xsl:if>
-                </xsl:for-each>
-              </xsl:variable>
-              <xsl:variable name="prevstart">
-                <xsl:call-template name="db.orderedlist.start">
-                  <xsl:with-param name="node" select="$prevlist"/>
-                </xsl:call-template>
-              </xsl:variable>
-              <xsl:value-of select="$prevstart + string-length($prevlength)"/>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:value-of select="$prevstart + $prevlength"/>
         </xsl:otherwise>
       </xsl:choose>
     </xsl:otherwise>

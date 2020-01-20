@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -36,12 +38,10 @@ DocBook documents into XHTML. This stylesheet sets the parameter
 
 <xsl:import href="../common/db-chunk.xsl"/>
 <xsl:import href="../common/db-common.xsl"/>
-<xsl:import href="../common/db-profile.xsl"/>
 <xsl:import href="../common/db-title.xsl"/>
 <xsl:import href="../common/db-xref.xsl"/>
 
 <xsl:param name="db.chunk.extension" select="$html.extension"/>
-<xsl:param name="db.profile.outputformat" select="'html;xhtml'"/>
 
 <xsl:include href="db2html-bibliography.xsl"/>
 <xsl:include href="db2html-block.xsl"/>
@@ -54,6 +54,7 @@ DocBook documents into XHTML. This stylesheet sets the parameter
 <xsl:include href="db2html-funcsynopsis.xsl"/>
 <xsl:include href="db2html-index.xsl"/>
 <xsl:include href="db2html-inline.xsl"/>
+<xsl:include href="db2html-l10n.xsl"/>
 <xsl:include href="db2html-links.xsl"/>
 <xsl:include href="db2html-math.xsl"/>
 <xsl:include href="db2html-media.xsl"/>

@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -78,14 +80,14 @@ template.
 <!--**==========================================================================
 mal2html.span
 Output an HTML #{span} element.
-:Revision:version="3.10" date="2013-07-10" status="final"
+:Revision:version="1.0" date="2010-06-03" status="final"
 $node: The source element to output a #{span} for.
 $class: An additional string to prepend to the #{class} attribute.
 
 This template outputs an HTML #{span} element for a source element. It creates
-a #{class} attribute automatically by passing the local name of ${node} and the
-${class} parameter to *{html.class.attr}. To output the contents of ${node}, it
-applies the mode %{mal2html.inline.content.mode} to ${node}.
+a #{class} attribute automatically from the #{class} attribute of ${node},
+prepending any value set in the ${class} parameter. To output the contents
+of ${node}, it applies the mode %{mal2html.inline.content.mode} to ${node}.
 
 This template automatically handles ubiquitous linking if ${node} contains
 an #{xref} or #{href} attribute.
@@ -93,11 +95,7 @@ an #{xref} or #{href} attribute.
 <xsl:template name="mal2html.span">
   <xsl:param name="node" select="."/>
   <xsl:param name="class" select="''"/>
-  <span>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="class" select="concat($class, ' ', local-name($node))"/>
-    </xsl:call-template>
+  <span class="{concat($class, ' ', local-name($node))}">
     <xsl:call-template name="html.lang.attrs">
       <xsl:with-param name="node" select="$node"/>
     </xsl:call-template>
@@ -117,7 +115,6 @@ an #{xref} or #{href} attribute.
           <xsl:attribute name="title">
             <xsl:call-template name="mal.link.tooltip">
               <xsl:with-param name="node" select="$node"/>
-              <xsl:with-param name="role" select="$node/@role"/>
             </xsl:call-template>
           </xsl:attribute>
           <xsl:apply-templates mode="mal2html.inline.content.mode" select="$node"/>
@@ -219,7 +216,7 @@ an #{xref} or #{href} attribute.
   <xsl:call-template name="mal2html.span"/>
 </xsl:template>
 
-<!-- = key % mal2html.inline.content.mode = -->
+<!-- = keyseq % mal2html.inline.content.mode = -->
 <xsl:template mode="mal2html.inline.content.mode" match="mal:key">
   <kbd>
     <xsl:if test=". = 'Fn'">
@@ -280,7 +277,7 @@ an #{xref} or #{href} attribute.
 <!-- = link % mal2html.inline.content.mode = -->
 <xsl:template mode="mal2html.inline.content.mode" match="mal:link">
   <xsl:choose>
-    <xsl:when test="* or normalize-space(.) != ''">
+    <xsl:when test="normalize-space(.) != ''">
       <xsl:apply-templates mode="mal2html.inline.mode"/>
     </xsl:when>
     <xsl:otherwise>

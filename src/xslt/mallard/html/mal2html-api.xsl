@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -50,7 +52,7 @@ elements. It should be called by an appropriate template that handles the
 #{links} element.
 -->
 <xsl:template name="mal2html.api.links.function">
-  <xsl:param name="node" select="."/>
+  <xsl:param name="node"/>
   <xsl:param name="links"/>
   <xsl:choose>
     <xsl:when test="$node/@api:mime = 'text/x-csrc' or $node/@api:mime = 'text/x-chdr'">
@@ -83,7 +85,7 @@ have an #{api:name} element will be passed to *{mal2html.links.ul} after
 the synopsis.
 -->
 <xsl:template name="mal2html.api.links.function.c">
-  <xsl:param name="node" select="."/>
+  <xsl:param name="node"/>
   <xsl:param name="links"/>
   <xsl:variable name="out_">
     <xsl:for-each select="$links">
@@ -127,7 +129,6 @@ the synopsis.
                   <xsl:call-template name="mal.link.tooltip">
                     <xsl:with-param name="node" select="$node"/>
                     <xsl:with-param name="xref" select="$link/@xref"/>
-                    <!-- FIXME: role -->
                   </xsl:call-template>
                 </xsl:attribute>
                 <xsl:value-of select="$function/api:name"/>

@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -75,7 +77,6 @@ include a link to their defining page.
                 <xsl:attribute name="title">
                   <xsl:call-template name="mal.link.tooltip">
                     <xsl:with-param name="xref" select="@xref"/>
-                    <xsl:with-param name="role" select="'gloss:page'"/>
                   </xsl:call-template>
                 </xsl:attribute>
                 <xsl:call-template name="mal.link.content">
@@ -100,10 +101,7 @@ include a link to their defining page.
 
 <xsl:template mode="mal2html.inline.mode" match="gloss:term">
   <xsl:variable name="node" select="."/>
-  <a>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'gloss-term'"/>
-    </xsl:call-template>
+  <a class="gloss-term">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:variable name="target">
       <xsl:call-template name="mal.link.target">
@@ -132,6 +130,44 @@ include a link to their defining page.
       </xsl:for-each>
     </xsl:for-each>
   </a>
+</xsl:template>
+
+
+<!--**==========================================================================
+mal2html.gloss.js
+
+REMARK: FIXME
+-->
+<xsl:template name="mal2html.gloss.js">
+<xsl:text><![CDATA[
+$(document).ready(function () {
+  $('a.gloss-term').each(function () {
+    if ($(this).attr('href') == '#') {
+      $(this).click(function () { return false; });
+    }
+    var showtip = function () {
+      var desc = $(this).children('span.gloss-desc');
+      if (desc.is(':visible'))
+        return;
+      var top = $(this).offset().top + $(this).height() + 1;
+      var left = $(this).offset().left;
+      var cnt = $(this).closest('div.contents');
+      var diff = cnt.offset().left + cnt.width() - desc.width() - 4;
+      if (left > diff)
+        left = diff;
+      desc.css({'top': top + 'px', 'left': left + 'px'}).fadeIn('slow');
+    };
+    var hidetip = function () {
+      if ($(this).is(':focus'))
+        return;
+      $(this).children('span.gloss-desc').fadeOut('fast');
+    };
+    $(this).hover(showtip, hidetip);
+    $(this).focus(showtip);
+    $(this).blur(hidetip);
+  });
+});
+]]></xsl:text>
 </xsl:template>
 
 </xsl:stylesheet>

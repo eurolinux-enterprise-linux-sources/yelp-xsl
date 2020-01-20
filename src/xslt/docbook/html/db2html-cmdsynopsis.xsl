@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 
@@ -80,10 +82,7 @@ This module contains templates to process DocBook command synopsis elements.
         <xsl:text>[</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <span>
-      <xsl:call-template name="html.class.attr">
-        <xsl:with-param name="class" select="'arg'"/>
-      </xsl:call-template>
+    <span class="arg">
       <xsl:for-each select="node()">
         <xsl:choose>
           <xsl:when test="self::sbr or self::db:sbr">
@@ -130,12 +129,10 @@ This module contains templates to process DocBook command synopsis elements.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:param>
-  <xsl:variable name="if"><xsl:call-template name="db.profile.test"/></xsl:variable>
-  <xsl:if test="$if != ''">
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'synopsis cmdsynopsis'"/>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>synopsis cmdsynopsis</xsl:text>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:call-template name="db2html.anchor"/>
     <pre class="contents cmdsynopsis">
@@ -167,7 +164,6 @@ This module contains templates to process DocBook command synopsis elements.
       </xsl:apply-templates>
     </pre>
   </div>
-  </xsl:if>
 </xsl:template>
 
 <!-- = group = -->
@@ -228,10 +224,7 @@ This module contains templates to process DocBook command synopsis elements.
         <xsl:text>[</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
-    <span>
-      <xsl:call-template name="html.class.attr">
-        <xsl:with-param name="class" select="'group'"/>
-      </xsl:call-template>
+    <span class="group">
       <xsl:for-each select="*">
         <xsl:choose>
           <xsl:when test="self::sbr or self::db:sbr">
@@ -281,10 +274,7 @@ This module contains templates to process DocBook command synopsis elements.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:param>
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'synopfragment'"/>
-    </xsl:call-template>
+  <div class="synopfragment">
     <xsl:call-template name="db2html.anchor"/>
     <xsl:variable name="count" select="count(preceding-sibling::synopfragment) +
                                        count(preceding-sibling::db:synopfragment)"/>

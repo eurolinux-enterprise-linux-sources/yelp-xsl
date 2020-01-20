@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -37,7 +39,7 @@ except the list and table elements.
 <!--**==========================================================================
 mal2html.pre
 Output an HTML #{pre} element.
-:Revision:version="3.12" date="2013-11-02" status="final"
+:Revision:version="1.0" date="2010-06-03" status="final"
 $node: The source element to output a #{pre} for.
 
 This template outputs an HTML #{pre} element along with a wrapper #{div} element
@@ -45,47 +47,92 @@ for CSS styling. It should be called for verbatim block elements. It will
 automatically strip leading and trailing newlines using *{utils.strip_newlines}.
 
 If @{html.syntax.highlight} is #{true}, this template automatically outputs
-syntax highlighting support based on the #{mime} attribute of ${node}, using
-*{html.syntax.class} to determine the correct highlighter.
+syntax highlighting support based on the #{mime} attribute of ${node}.
 -->
 <xsl:template name="mal2html.pre">
   <xsl:param name="node" select="."/>
   <xsl:param name="numbered" select="contains(concat(' ', @style, ' '), 'numbered')"/>
-  <xsl:variable name="if">
-    <xsl:call-template name="mal.if.test">
-      <xsl:with-param name="node" select="$node"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xsl:if test="$if != ''">
+  <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <xsl:variable name="first" select="$node/node()[1]/self::text()"/>
   <xsl:variable name="last" select="$node/node()[last()]/self::text()"/>
   <div>
     <xsl:call-template name="html.lang.attrs">
       <xsl:with-param name="node" select="$node"/>
     </xsl:call-template>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="node" select="$node"/>
-      <xsl:with-param name="class">
-        <xsl:value-of select="local-name($node)"/>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:value-of select="local-name($node)"/>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:if test="$numbered">
       <pre class="numbered"><xsl:call-template name="utils.linenumbering">
         <xsl:with-param name="node" select="$node"/>
       </xsl:call-template></pre>
     </xsl:if>
-    <pre class="contents"><code>
-      <xsl:if test="$html.syntax.highlight and ($node/@mime or $node/@type)">
-        <xsl:attribute name="class">
-          <xsl:call-template name="html.syntax.class">
-            <xsl:with-param name="node" select="$node"/>
-          </xsl:call-template>
-        </xsl:attribute>
-      </xsl:if>
+    <pre>
+      <xsl:attribute name="class">
+        <xsl:text>contents </xsl:text>
+        <xsl:if test="$html.syntax.highlight and $node/@mime">
+          <xsl:choose>
+            <xsl:when test="@mime = 'application/x-shellscript'">
+              <xsl:text>syntax brush-bash-script</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-csrc' or @mime = 'text/x-chdr' or
+                            @mime = 'text/x-c++hdr' or @mime = 'text/x-c++src' or
+                            @mime = 'text/x-objcsrc'">
+              <xsl:text>syntax brush-clang</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-csharp'">
+              <xsl:text>syntax brush-csharp</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/css'">
+              <xsl:text>syntax brush-css</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-patch'">
+              <xsl:text>syntax brush-diff</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/html' or @mime = 'application/xml' or
+                            substring(@mime, string-length(@mime) - 3) = '+xml'">
+              <xsl:text>syntax brush-html</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-java'">
+              <xsl:text>syntax brush-java</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'application/javascript'">
+              <xsl:text>syntax brush-javascript</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-scheme' or @mime = 'text/x-emacs-lisp'">
+              <xsl:text>syntax brush-lisp</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-lua'">
+              <xsl:text>syntax brush-lua</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-pascal'">
+              <xsl:text>syntax brush-pascal</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'application/x-perl'">
+              <xsl:text>syntax brush-perl5</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'application/x-php'">
+              <xsl:text>syntax brush-php-script</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-python'">
+              <xsl:text>syntax brush-python</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'application/x-ruby'">
+              <xsl:text>syntax brush-ruby</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'text/x-sql'">
+              <xsl:text>syntax brush-sql</xsl:text>
+            </xsl:when>
+            <xsl:when test="@mime = 'application/x-yaml'">
+              <xsl:text>syntax brush-yaml</xsl:text>
+            </xsl:when>
+          </xsl:choose>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:if test="$first">
         <xsl:call-template name="utils.strip_newlines">
           <xsl:with-param name="string" select="$first"/>
@@ -102,7 +149,7 @@ syntax highlighting support based on the #{mime} attribute of ${node}, using
           <xsl:with-param name="trailing" select="true()"/>
         </xsl:call-template>
       </xsl:if>
-    </code></pre>
+    </pre>
   </div>
 </xsl:if>
 </xsl:template>
@@ -135,38 +182,9 @@ in accordance with the Mallard specification on fallback block content.
       <xsl:text>Unmatched block element: </xsl:text>
       <xsl:value-of select="local-name(.)"/>
     </xsl:message>
-    <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable>
-    <xsl:if test="$if != ''">
-      <div>
-        <xsl:call-template name="html.lang.attrs"/>
-        <xsl:call-template name="html.class.attr">
-          <xsl:with-param name="class">
-            <xsl:text>unknown</xsl:text>
-            <xsl:if test="mal:title and @ui:expanded">
-              <xsl:text> ui-expander</xsl:text>
-            </xsl:if>
-            <xsl:if test="$if != 'true'">
-              <xsl:text> if-if </xsl:text>
-              <xsl:value-of select="$if"/>
-            </xsl:if>
-          </xsl:with-param>
-        </xsl:call-template>
-        <xsl:call-template name="mal2html.ui.expander.data"/>
-        <div class="inner">
-          <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
-          <div class="region">
-            <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
-            <div class="contents">
-              <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
-                <xsl:apply-templates mode="mal2html.block.mode" select=".">
-                  <xsl:with-param name="restricted" select="true()"/>
-                </xsl:apply-templates>
-              </xsl:for-each>
-            </div>
-          </div>
-        </div>
-      </div>
-    </xsl:if>
+    <xsl:apply-templates mode="mal2html.block.mode">
+      <xsl:with-param name="restricted" select="true()"/>
+    </xsl:apply-templates>
   </xsl:if>
 </xsl:template>
 
@@ -176,14 +194,12 @@ in accordance with the Mallard specification on fallback block content.
 <!-- = desc = -->
 <xsl:template mode="mal2html.block.mode" match="mal:desc">
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>desc</xsl:text>
-        <xsl:if test="contains(concat(' ', @style, ' '), ' center ')">
-          <xsl:text> center</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>desc</xsl:text>
+      <xsl:if test="contains(concat(' ', @style, ' '), ' center ')">
+        <xsl:text> center</xsl:text>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:apply-templates mode="mal2html.inline.mode"/>
   </div>
@@ -194,242 +210,6 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:call-template name="mal2html.pre"/>
 </xsl:template>
 
-<xsl:template mode="html.syntax.class.mode" match="mal:code | mal:screen">
-  <xsl:variable name="type" select="concat(' ', translate(@type,
-                                    'ABCDEFGHIJKLMNOPQRSTUVWXYX',
-                                    'abcdefghijklmnopqrstuvwxyz'),
-                                    ' ')"/>
-  <xsl:choose>
-    <!-- First do checks for embedded and derivative things, where people
-         might reasonably put other matched values in the type attribute. -->
-    <!-- Clojure -->
-    <xsl:when test="@mime = 'application/x-clojure' or
-                    contains($type, ' clojure ') or contains($type, ' clj ')">
-      <xsl:text>clojure</xsl:text>
-    </xsl:when>
-    <!-- Django -->
-    <xsl:when test="@mime = 'application/x-django-templating' or contains($type, ' django ')">
-      <xsl:text>django</xsl:text>
-    </xsl:when>
-    <!-- Embedded Ruby -->
-    <xsl:when test="@mime = 'application/x-ruby-templating' or contains($type, ' erb ')">
-      <xsl:text>erb</xsl:text>
-    </xsl:when>
-    <!-- JSON -->
-    <xsl:when test="@mime = 'application/json' or contains($type, ' json ')">
-      <xsl:text>json</xsl:text>
-    </xsl:when>
-    <!-- PHP -->
-    <xsl:when test="@mime = 'application/x-php' or contains($type, ' php ')">
-      <xsl:text>php</xsl:text>
-    </xsl:when>
-    <!-- Scheme -->
-    <xsl:when test="@mime = 'text/x-scheme' or
-                    contains($type, ' scheme ') or contains($type, ' scm ')">
-      <xsl:text>scheme</xsl:text>
-    </xsl:when>
-
-    <!-- Then do the rest of the checks. -->
-    <!-- ActionScript -->
-    <xsl:when test="@mime = 'application/x-actionscript' or contains($type, ' actionscript ')">
-      <xsl:text>actionscript</xsl:text>
-    </xsl:when>
-    <!-- Apache -->
-    <xsl:when test="@mime = 'text/x-apacheconf' or contains($type, ' apache ')">
-      <xsl:text>apache</xsl:text>
-    </xsl:when>
-    <!-- AsciiDoc -->
-    <xsl:when test="@mime = 'text/x-asciidoc' or
-                    contains($type, ' asciidoc ') or contains($type, ' adoc ')">
-      <xsl:text>asciidoc</xsl:text>
-    </xsl:when>
-    <!-- Bash -->
-    <xsl:when test="@mime = 'application/x-shellscript' or
-                    contains($type, ' sh ') or contains($type, ' bash ') or
-                    contains($type, ' csh ')">
-      <xsl:text>bash</xsl:text>
-    </xsl:when>
-    <!-- C -->
-    <xsl:when test="@mime = 'text/x-csrc' or @mime = 'text/x-chdr' or
-                    contains($type, ' c ')">
-      <xsl:text>c</xsl:text>
-    </xsl:when>
-    <!-- C# -->
-    <xsl:when test="@mime = 'text/x-csharp' or
-                    contains($type, ' cs ') or contains($type, ' csharp ')">
-      <xsl:text>cs</xsl:text>
-    </xsl:when>
-    <!-- C++ -->
-    <xsl:when test="@mime = 'text/x-c++hdr' or @mime = 'text/x-c++src' or
-                    contains($type, ' cpp ') or contains($type, ' c++ ')">
-      <xsl:text>cpp</xsl:text>
-    </xsl:when>
-    <!-- CMake -->
-    <xsl:when test="@mime = 'text/x-cmake' or contains($type, ' cmake ')">
-      <xsl:text>cmake</xsl:text>
-    </xsl:when>
-    <!-- CSS -->
-    <xsl:when test="@mime = 'text/css' or contains($type, ' css ')">
-      <xsl:text>css</xsl:text>
-    </xsl:when>
-    <!-- D -->
-    <xsl:when test="@mime = 'text/x-d' or contains($type, ' d ')">
-      <xsl:text>d</xsl:text>
-    </xsl:when>
-    <!-- Diff -->
-    <xsl:when test="@mime = 'text/x-diff' or @mime = 'text/x-patch' or
-                    contains($type, ' diff ') or contains($type, ' patch ')">
-      <xsl:text>diff</xsl:text>
-    </xsl:when>
-    <!-- Dockerfile -->
-    <xsl:when test="contains($type, ' dockerfile ')">
-      <xsl:text>dockerfile</xsl:text>
-    </xsl:when>
-    <!-- DOS -->
-    <xsl:when test="@mime = 'application/x-dos-batch' or contains($type, ' dos ')">
-      <xsl:text>dos</xsl:text>
-    </xsl:when>
-    <!-- F# -->
-    <xsl:when test="@mime = 'text/x-fsharp' or contains($type, ' fsharp ')">
-      <xsl:text>fsharp</xsl:text>
-    </xsl:when>
-    <!-- Go -->
-    <xsl:when test="@mime = 'text/x-go' or contains($type, ' go ')">
-      <xsl:text>go</xsl:text>
-    </xsl:when>
-    <!-- Nginx -->
-    <xsl:when test="@mime = 'text/x-haml' or contains($type, ' haml ')">
-      <xsl:text>haml</xsl:text>
-    </xsl:when>
-    <!-- Haskell -->
-    <xsl:when test="@mime = 'text/x-haskell' or
-                    contains($type, ' haskell ') or contains($type, ' hs ')">
-      <xsl:text>hs</xsl:text>
-    </xsl:when>
-    <!-- HTML -->
-    <xsl:when test="@mime = 'text/html' or
-                    contains($type, ' html ') or contains($type, ' xhtml ')">
-      <xsl:text>html</xsl:text>
-    </xsl:when>
-    <!-- HTTP -->
-    <xsl:when test="contains($type, ' http ')">
-      <xsl:text>http</xsl:text>
-    </xsl:when>
-    <!-- INI -->
-    <xsl:when test="contains($type, ' ini ')">
-      <xsl:text>ini</xsl:text>
-    </xsl:when>
-    <!-- Java -->
-    <xsl:when test="@mime = 'text/x-java' or contains($type, ' java ')">
-      <xsl:text>java</xsl:text>
-    </xsl:when>
-    <!-- Javascript -->
-    <xsl:when test="@mime = 'application/javascript' or
-                    contains($type, ' js ') or contains($type, ' javascript ')">
-      <xsl:text>javascript</xsl:text>
-    </xsl:when>
-    <!-- LISP -->
-    <xsl:when test="@mime = 'application/x-lisp' or @mime = 'text/x-emacs-lisp' or
-                    contains($type, ' lisp ') or contains($type, ' el ') or
-                    contains($type, ' cl ') or contains($type, ' lsp ')">
-      <xsl:text>lisp</xsl:text>
-    </xsl:when>
-    <!-- Lua -->
-    <xsl:when test="@mime = 'text/x-lua' or contains($type, ' lua ')">
-      <xsl:text>lua</xsl:text>
-    </xsl:when>
-    <!-- Makefile -->
-    <xsl:when test="@mime = 'text/x-makefile' or
-                    contains($type, ' makefile ') or contains($type, ' make ')">
-      <xsl:text>makefile</xsl:text>
-    </xsl:when>
-    <!-- Markdown -->
-    <xsl:when test="@mime = 'text/x-markdown' or
-                    contains($type, ' markdown ') or contains($type, ' md ')">
-      <xsl:text>markdown</xsl:text>
-    </xsl:when>
-    <!-- MATLAB/Octave -->
-    <xsl:when test="@mime = 'text/x-matlab' or @mime = 'text/x-octave' or
-                    contains($type, ' matlab ') or contains($type, ' octave ')">
-      <xsl:text>matlab</xsl:text>
-    </xsl:when>
-    <!-- Nginx -->
-    <xsl:when test="@mime = 'text/x-nginx-conf' or contains($type, ' nginx ')">
-      <xsl:text>nginx</xsl:text>
-    </xsl:when>
-    <!-- Objective C -->
-    <xsl:when test="@mime = 'text/x-objcsrc' or
-                    contains($type, ' objc ') or contains($type, ' m ')">
-      <xsl:text>objectivec</xsl:text>
-    </xsl:when>
-    <!-- Perl -->
-    <xsl:when test="@mime = 'application/x-perl' or contains($type, ' perl ') or
-                    contains($type, ' pl ') or contains($type, ' pm ')">
-      <xsl:text>perl</xsl:text>
-    </xsl:when>
-    <!-- Python -->
-    <xsl:when test="@mime = 'text/x-python' or
-                    contains($type, ' py ') or contains($type, ' python ')">
-      <xsl:text>python</xsl:text>
-    </xsl:when>
-    <!-- R/S -->
-    <xsl:when test="@mime = 'text/x-r' or @mime = 'text/x-s' or
-                    contains($type, ' r ') or contains($type, ' s ')">
-      <xsl:text>r</xsl:text>
-    </xsl:when>
-    <!-- Ruby -->
-    <xsl:when test="@mime = 'application/x-ruby' or
-                    contains($type, ' ruby ') or contains($type, ' rb ')">
-      <xsl:text>ruby</xsl:text>
-    </xsl:when>
-    <!-- Rust -->
-    <xsl:when test="@mime = 'text/x-rust' or contains($type, ' rust ')">
-      <xsl:text>rust</xsl:text>
-    </xsl:when>
-    <!-- Scala -->
-    <xsl:when test="@mime = 'text/x-scala' or contains($type, ' scala ')">
-      <xsl:text>scala</xsl:text>
-    </xsl:when>
-    <!-- Smalltalk -->
-    <xsl:when test="@mime = 'text/x-smalltalk' or contains($type, ' smalltalk ')">
-      <xsl:text>smalltalk</xsl:text>
-    </xsl:when>
-    <!-- SQL -->
-    <xsl:when test="@mime = 'application/sql' or contains($type, ' sql ')">
-      <xsl:text>sql</xsl:text>
-    </xsl:when>
-    <!-- TCL -->
-    <xsl:when test="@mime = 'application/x-tcl' or @mime = 'text/x-tcl' or
-                    contains($type, ' tcl ')">
-      <xsl:text>tcl</xsl:text>
-    </xsl:when>
-    <!-- TeX -->
-    <xsl:when test="@mime = 'text/x-tex' or
-                    contains($type, ' tex ') or contains($type, ' latex ')">
-      <xsl:text>tex</xsl:text>
-    </xsl:when>
-    <!-- Vala -->
-    <xsl:when test="@mime = 'text/x-vala' or contains($type, ' vala ')">
-      <xsl:text>vala</xsl:text>
-    </xsl:when>
-    <!-- XML -->
-    <xsl:when test="@mime = 'application/xml' or
-                    substring(@mime, string-length(@mime) - 3) = '+xml'
-                    or contains($type, ' xml ')">
-      <xsl:text>xml</xsl:text>
-    </xsl:when>
-    <!-- XQuery -->
-    <xsl:when test="@mime = 'application/xquery' or
-                    contains($type, ' xq ') or contains($type, ' xquery ')">
-      <xsl:text>xquery</xsl:text>
-    </xsl:when>
-    <!-- YAML -->
-    <xsl:when test="@mime = 'application/x-yaml' or contains($type, ' yaml ')">
-      <xsl:text>yaml</xsl:text>
-    </xsl:when>
-  </xsl:choose>
-</xsl:template>
-
 <!-- = comment = -->
 <xsl:template mode="mal2html.block.mode" match="mal:comment">
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
@@ -437,18 +217,16 @@ in accordance with the Mallard specification on fallback block content.
                 or processing-instruction('mal2html.show_comment')">
     <div>
       <xsl:call-template name="html.lang.attrs"/>
-      <xsl:call-template name="html.class.attr">
-        <xsl:with-param name="class">
-          <xsl:text>comment</xsl:text>
-          <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-            <xsl:text> ui-expander</xsl:text>
-          </xsl:if>
-          <xsl:if test="$if != 'true'">
-            <xsl:text> if-if </xsl:text>
-            <xsl:value-of select="$if"/>
-          </xsl:if>
-        </xsl:with-param>
-      </xsl:call-template>
+      <xsl:attribute name="class">
+        <xsl:text>comment</xsl:text>
+        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+          <xsl:text> ui-expander</xsl:text>
+        </xsl:if>
+        <xsl:if test="$if != 'true'">
+          <xsl:text> if-if </xsl:text>
+          <xsl:value-of select="$if"/>
+        </xsl:if>
+      </xsl:attribute>
       <xsl:call-template name="mal2html.ui.expander.data"/>
       <div class="inner">
         <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
@@ -468,10 +246,7 @@ in accordance with the Mallard specification on fallback block content.
 
 <!-- = comment/cite = -->
 <xsl:template mode="mal2html.block.mode" match="mal:comment/mal:cite">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'cite cite-comment'"/>
-    </xsl:call-template>
+  <div class="cite cite-comment">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:choose>
       <xsl:when test="@date">
@@ -511,68 +286,19 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:value-of select="$node/@date"/>
 </xsl:template>
 
-<!-- = div = -->
-<xsl:template mode="mal2html.block.mode" match="mal:div">
-  <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
-  <div>
-    <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>div</xsl:text>
-        <xsl:if test="mal:title and @ui:expanded">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
-    <xsl:call-template name="mal2html.ui.expander.data"/>
-    <div class="inner">
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
-      <div class="region">
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
-        <div class="contents">
-          <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
-            <xsl:apply-templates mode="mal2html.block.mode" select="."/>
-          </xsl:for-each>
-        </div>
-      </div>
-    </div>
-  </div>
-</xsl:if>
-</xsl:template>
-
 <!-- = example = -->
 <xsl:template mode="mal2html.block.mode" match="mal:example">
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <div>
+    <xsl:attribute name="class">
+      <xsl:text>example</xsl:text>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>example</xsl:text>
-        <xsl:if test="mal:title and @ui:expanded">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
-    <xsl:call-template name="mal2html.ui.expander.data"/>
-    <div class="inner">
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
-      <div class="region">
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
-        <div class="contents">
-          <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
-            <xsl:apply-templates mode="mal2html.block.mode" select="."/>
-          </xsl:for-each>
-        </div>
-      </div>
-    </div>
+    <xsl:apply-templates mode="mal2html.block.mode"/>
   </div>
 </xsl:if>
 </xsl:template>
@@ -582,21 +308,19 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>figure</xsl:text>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>figure</xsl:text>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="mal2html.ui.expander.data"/>
     <div class="inner">
-      <a href="#" class="figure-zoom">
+      <a href="#" class="zoom">
         <xsl:attribute name="data-zoom-in-title">
           <xsl:call-template name="l10n.gettext">
             <xsl:with-param name="msgid" select="'View images at normal size'"/>
@@ -607,17 +331,15 @@ in accordance with the Mallard specification on fallback block content.
             <xsl:with-param name="msgid" select="'Scale images down'"/>
           </xsl:call-template>
         </xsl:attribute>
-        <xsl:call-template name="icons.svg.figure.zoom.in"/>
-        <xsl:call-template name="icons.svg.figure.zoom.out"/>
       </a>
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
+      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
       <div class="region">
         <div class="contents">
           <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
             <xsl:apply-templates mode="mal2html.block.mode" select="."/>
           </xsl:for-each>
         </div>
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
+        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc"/>
       </div>
     </div>
   </div>
@@ -629,23 +351,21 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>listing</xsl:text>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>listing</xsl:text>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="mal2html.ui.expander.data"/>
     <div class="inner">
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
+      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
       <div class="region">
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
+        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc"/>
         <div class="contents">
           <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
             <xsl:apply-templates mode="mal2html.block.mode" select="."/>
@@ -660,7 +380,7 @@ in accordance with the Mallard specification on fallback block content.
 <!-- = note = -->
 <xsl:template mode="mal2html.block.mode" match="mal:note">
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
-  <xsl:variable name="notetitle">
+  <xsl:variable name="notestyle">
     <xsl:choose>
       <xsl:when test="contains(concat(' ', @style, ' '), ' advanced ')">
         <xsl:text>Advanced</xsl:text>
@@ -668,17 +388,8 @@ in accordance with the Mallard specification on fallback block content.
       <xsl:when test="contains(concat(' ', @style, ' '), ' bug ')">
         <xsl:text>Bug</xsl:text>
       </xsl:when>
-      <xsl:when test="contains(concat(' ', @style, ' '), ' caution ')">
-        <xsl:text>Caution</xsl:text>
-      </xsl:when>
-      <xsl:when test="contains(concat(' ', @style, ' '), ' danger ')">
-        <xsl:text>Danger</xsl:text>
-      </xsl:when>
       <xsl:when test="contains(concat(' ', @style, ' '), ' important ')">
         <xsl:text>Important</xsl:text>
-      </xsl:when>
-      <xsl:when test="contains(concat(' ', @style, ' '), ' package ')">
-        <xsl:text>Package</xsl:text>
       </xsl:when>
       <xsl:when test="contains(concat(' ', @style, ' '), ' plain ')">
         <xsl:text>plain</xsl:text>
@@ -697,41 +408,29 @@ in accordance with the Mallard specification on fallback block content.
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-  <xsl:variable name="notestyle">
-    <xsl:value-of select="translate($notetitle,
-                          'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                          'abcdefghijklmnopqrstuvwxyz')"/>
-  </xsl:variable>
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>note</xsl:text>
-        <xsl:if test="$notestyle != 'note'">
-          <xsl:value-of select="concat(' note-', $notestyle)"/>
-        </xsl:if>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>note</xsl:text>
+      <xsl:if test="$notestyle != 'Note'">
+        <xsl:value-of select="concat(' note-', translate($notestyle, 'ABISTW', 'abistw'))"/>
+      </xsl:if>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:if test="$notestyle != 'plain'">
       <xsl:attribute name="title">
         <xsl:call-template name="l10n.gettext">
-          <xsl:with-param name="msgid" select="$notetitle"/>
+          <xsl:with-param name="msgid" select="$notestyle"/>
         </xsl:call-template>
       </xsl:attribute>
     </xsl:if>
     <xsl:call-template name="mal2html.ui.expander.data"/>
-    <xsl:if test="$notestyle != 'plain' and $notestyle != 'sidebar'">
-      <xsl:call-template name="icons.svg.note">
-        <xsl:with-param name="style" select="$notestyle"/>
-      </xsl:call-template>
-    </xsl:if>
     <div class="inner">
       <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
       <div class="region">
@@ -756,18 +455,13 @@ in accordance with the Mallard specification on fallback block content.
 <xsl:template mode="mal2html.block.mode" match="mal:p">
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <p>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>p</xsl:text>
-        <xsl:if test="contains(concat(' ', @style, ' '), ' lead ')">
-          <xsl:text> lead</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>p</xsl:text>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:apply-templates mode="mal2html.inline.mode"/>
   </p>
@@ -779,18 +473,16 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>quote</xsl:text>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>quote</xsl:text>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="mal2html.ui.expander.data"/>
     <div class="inner">
       <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
@@ -809,10 +501,7 @@ in accordance with the Mallard specification on fallback block content.
 
 <!-- = quote/cite = -->
 <xsl:template mode="mal2html.block.mode" match="mal:quote/mal:cite">
-  <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class" select="'cite cite-quote'"/>
-    </xsl:call-template>
+  <div class="cite cite-quote">
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:choose>
       <xsl:when test="@href">
@@ -843,23 +532,21 @@ in accordance with the Mallard specification on fallback block content.
   <xsl:variable name="if"><xsl:call-template name="mal.if.test"/></xsl:variable><xsl:if test="$if != ''">
   <div>
     <xsl:call-template name="html.lang.attrs"/>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>synopsis</xsl:text>
-        <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
-          <xsl:text> ui-expander</xsl:text>
-        </xsl:if>
-        <xsl:if test="$if != 'true'">
-          <xsl:text> if-if </xsl:text>
-          <xsl:value-of select="$if"/>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>synopsis</xsl:text>
+      <xsl:if test="mal:title and (@ui:expanded or @uix:expanded)">
+        <xsl:text> ui-expander</xsl:text>
+      </xsl:if>
+      <xsl:if test="$if != 'true'">
+        <xsl:text> if-if </xsl:text>
+        <xsl:value-of select="$if"/>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="mal2html.ui.expander.data"/>
     <div class="inner">
-      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title[1]"/>
+      <xsl:apply-templates mode="mal2html.block.mode" select="mal:title"/>
       <div class="region">
-        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc[1]"/>
+        <xsl:apply-templates mode="mal2html.block.mode" select="mal:desc"/>
         <div class="contents">
           <xsl:for-each select="*[not(self::mal:title or self::mal:desc)]">
             <xsl:apply-templates mode="mal2html.block.mode" select="."/>
@@ -886,18 +573,16 @@ in accordance with the Mallard specification on fallback block content.
   </xsl:variable>
   <xsl:variable name="style" select="concat(' ', @style, ' ')"/>
   <div>
-    <xsl:call-template name="html.class.attr">
-      <xsl:with-param name="class">
-        <xsl:text>title title-</xsl:text>
-        <xsl:value-of select="local-name(..)"/>
-        <xsl:if test="contains($style, ' heading ')">
-          <xsl:text> title-heading</xsl:text>
-        </xsl:if>
-        <xsl:if test="contains($style, ' center ')">
-          <xsl:text> center</xsl:text>
-        </xsl:if>
-      </xsl:with-param>
-    </xsl:call-template>
+    <xsl:attribute name="class">
+      <xsl:text>title title-</xsl:text>
+      <xsl:value-of select="local-name(..)"/>
+      <xsl:if test="contains($style, ' heading ')">
+        <xsl:text> title-heading</xsl:text>
+      </xsl:if>
+      <xsl:if test="contains($style, ' center ')">
+        <xsl:text> center</xsl:text>
+      </xsl:if>
+    </xsl:attribute>
     <xsl:call-template name="html.lang.attrs"/>
     <xsl:element name="{concat('h', $depth_)}" namespace="{$html.namespace}">
       <span class="title">
@@ -931,7 +616,6 @@ in accordance with the Mallard specification on fallback block content.
   </xsl:if>
 </xsl:template>
 
-<!--#% _mal2html.choose.mode -->
 <xsl:template mode="_mal2html.choose.mode" match="if:when">
   <xsl:variable name="if">
     <xsl:call-template name="mal.if.test"/>

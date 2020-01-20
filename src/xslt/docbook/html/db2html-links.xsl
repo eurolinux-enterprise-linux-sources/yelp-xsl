@@ -11,7 +11,9 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see <http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -32,26 +34,16 @@ This stylesheet contains templates to handle implicit automatic links.
 <!--**==========================================================================
 db2html.links.linktrail
 Generate links to pages from ancestor elements.
-:Revision:version="3.20" date="2015-09-15" status="final"
+:Revision:version="3.4" date="2011-11-08" status="final"
 $node: The element to generate links for.
 
-This template outputs a trail of links for the ancestor pages of ${node}. If
-${node} has no ancestors, then it calls *{html.linktrails.empty} instead. This
-template calls *{html.linktrails.prefix} before the first link, passing ${node}
-as that template's #{node} parameter.
+This template outputs a trail of links for the ancestor pages of ${node}.
 -->
 <xsl:template name="db2html.links.linktrail">
   <xsl:param name="node" select="."/>
-  <xsl:variable name="direction">
-    <xsl:call-template name="l10n.direction"/>
-  </xsl:variable>
-  <xsl:choose>
-    <xsl:when test="$node/ancestor::*">
+  <xsl:if test="$node/ancestor::*">
     <div class="trails" role="navigation">
       <div class="trail">
-        <xsl:call-template name="html.linktrails.prefix">
-          <xsl:with-param name="node" select="$node"/>
-        </xsl:call-template>
         <!-- The parens put the nodes back in document order -->
         <xsl:for-each select="($node/ancestor::*)">
           <a class="trail">
@@ -72,24 +64,11 @@ as that template's #{node} parameter.
               <xsl:with-param name="node" select="."/>
             </xsl:call-template>
           </a>
-          <xsl:choose>
-            <xsl:when test="$direction = 'rtl'">
-              <xsl:text>&#x200F;&#x00A0;» &#x200F;</xsl:text>
-            </xsl:when>
-            <xsl:otherwise>
-              <xsl:text>&#x00A0;» </xsl:text>
-            </xsl:otherwise>
-          </xsl:choose>
+          <xsl:text>&#x00A0;» </xsl:text>
         </xsl:for-each>
       </div>
     </div>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:call-template name="html.linktrails.empty">
-        <xsl:with-param name="node" select="$node"/>
-      </xsl:call-template>
-    </xsl:otherwise>
-  </xsl:choose>
+  </xsl:if>
 </xsl:template>
 
 
@@ -135,9 +114,9 @@ and "Next", although the actual page titles are used for tooltips.
   </xsl:variable>
   <xsl:variable name="prev_node" select="key('db.id.key', $prev_id)"/>
   <xsl:variable name="next_node" select="key('db.id.key', $next_id)"/>
-  <nav class="prevnext pagewide"><div class="inner">
+  <div class="links nextlinks">
     <xsl:if test="$prev_id != ''">
-      <a>
+      <a class="nextlinks-prev">
         <xsl:attribute name="href">
           <xsl:call-template name="db.xref.target">
             <xsl:with-param name="linkend" select="$prev_id"/>
@@ -156,9 +135,11 @@ and "Next", although the actual page titles are used for tooltips.
         </xsl:call-template>
       </a>
     </xsl:if>
-    <xsl:choose>
-    <xsl:when test="$next_id != ''">
-      <a>
+    <xsl:if test="$prev_id != '' and $next_id != ''">
+      <xsl:text>&#x00A0;&#x00A0;|&#x00A0;&#x00A0;</xsl:text>
+    </xsl:if>
+    <xsl:if test="$next_id != ''">
+      <a class="nextlinks-next">
         <xsl:attribute name="href">
           <xsl:call-template name="db.xref.target">
             <xsl:with-param name="linkend" select="$next_id"/>
@@ -175,16 +156,8 @@ and "Next", although the actual page titles are used for tooltips.
           <xsl:with-param name="msgid" select="'Next'"/>
         </xsl:call-template>
       </a>
-    </xsl:when>
-    <xsl:otherwise>
-      <span>
-        <xsl:call-template name="l10n.gettext">
-          <xsl:with-param name="msgid" select="'Next'"/>
-        </xsl:call-template>
-      </span>
-    </xsl:otherwise>
-    </xsl:choose>
-  </div></nav>
+    </xsl:if>
+  </div>
 </xsl:template>
 
 

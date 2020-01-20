@@ -11,12 +11,14 @@ FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
 details.
 
 You should have received a copy of the GNU Lesser General Public License
-along with this program; see the file COPYING.LGPL.  If not, see
-<http://www.gnu.org/licenses/>.
+along with this program; see the file COPYING.LGPL.  If not, write to the
+Free Software Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+02111-1307, USA.
 -->
 
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:math="http://exslt.org/math"
+                exclude-result-prefixes="msg"
                 extension-element-prefixes="math"
                 version="1.0">
 
@@ -298,7 +300,7 @@ See #{http://en.wikipedia.org/wiki/Greek_numerals}.
     <xsl:otherwise>
       <xsl:call-template name="l10n.number.ionic.private">
         <xsl:with-param name="value" select="$value"/>
-        <xsl:with-param name="format" select="$format"/>
+        <xsl:with-param name="format" select="'ionic-lower'"/>
         <xsl:with-param name="level" select="1"/>
       </xsl:call-template>
       <xsl:text>´</xsl:text>
@@ -353,6 +355,9 @@ See #{http://en.wikipedia.org/wiki/Greek_numerals}.
         <xsl:when test="$digit = 0"/>
         <xsl:when test="not($stigma) and $digit = 6 and $level = 1">
           <xsl:text>ΣΤ</xsl:text>
+        </xsl:when>
+        <xsl:when test="not($stigma) and $digit = 6 and $level = 1">
+          <xsl:text>,Σ,Τ</xsl:text>
         </xsl:when>
         <xsl:when test="$level = 1 or $level = 4">
           <xsl:if test="$level = 4">
